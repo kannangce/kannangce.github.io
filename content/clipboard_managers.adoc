@@ -1,0 +1,13 @@
+= Text utils – Clipboard managers
+
+:date: 2016-08-16
+:category: Software
+:tags: Softwares, Utils
+
+Clipboard managers are the category of application which is built on top of clipboards(for someone who is new to computers, Clipboard is a black-box in your modern computers which saves the things when you a say cut/copy and it will give a copy of what it has copied when you say paste.)
+
+When you are working on text extensively, whether it be coding,blogging or whatever, think how cool it will be when an application saves everything that you have copied and you can ask it for the history of things that you have copied. Such application are called Clipboard Managers.
+
+This helps you a lot especially in the times when you have to copy multiple portions of a document or even multiple files from different locations. You can copy everything one by one. And paste it one by one by accessing the history.
+
+Currently using https://itunes.apple.com/in/app/flycut-clipboard-manager/id442160987?mt=12[Flycut]. For windows https://bluemars.org/clipx/[Clipx] is a better choice.

@@ -1,0 +1,49 @@
+= X*(X+1)*100+25 – a perfect square
+
+:date: 2013-10-24 10:20
+:category: Mathematics
+:tags: Mathematics, Numbers, Speed Math
+
+
+Once gone through a shortcut to find square of a number that ends with 5.
+
+For any number that is of format `X5` i.e, `10X+5`. The square will be `X*(X+1)*100+25`.
+
+To say it with example, say a number `45`,which is `4*10+5`. Hence here the `X` is `4`. So the square can be calculated quickly as below,
+
+```math
+
+= 4*(4+1)*100+25
+
+= 20*100+25
+
+= 2025
+
+```
+
+The process that we do above might seem tedious at first glance. But actually not! You just calculate `X*(X+1)` then put 25 next to that. At the place of ones and tens you are getting `0` anyhow and adding `25` is same as appending `25` to `X*(X+1)`.
+
+Just tried to write the proof for the above.
+
+So, we wanted to square the number `10X+5`. So see how the equation evolves to get the another form.
+
+
+```math
+
+= 100x^2 + 100x + 25
+
+= 100x(x+1) + 25
+
+= x(x+1)*100 + 25
+
+```
+
+So whatever we see in the format `X(X+1)*100 + 25`, is a perfect square with the square root as `10x+5`.
+
+Hence `9025` is a perfect square with root as `95`.
+
+`13225` is a perfect square with root as `115`.
+
+`38025` is a perfect square with root as `195`.
+
+We just have to see if the number, after stripping off the `25`, is of format `X*(X+1)`.

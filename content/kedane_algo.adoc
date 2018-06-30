@@ -1,0 +1,73 @@
+= Kedane's algorithm
+
+:date: 2014-03-08
+:category: Computer Science, Algorithm
+:tags: Algorithm, Kedane's
+
+*Problem:* Have to find the sequence with the largest sum in a given sequence. To elaborate the question, a sequence is given with positive and negative integers mixed say, `{3, -4, 5,-2, 10}`. In this, continues sequence with the largest sum is `{5, -2, 10}`.
+
+*Personal Background:*
+Had this question in an technical interview. Without knowing that this is a known technical problem, I solved it independently. So just keeping it here as a personal note and memory.
+
+*Code:*
+
+```
+/**
+ * Class to find the continuous sequence with the largest sum in a given sequence.
+ *
+ */
+public class MaxSumSequence {
+ public static void main(String[] args) {
+  // The sequence in which we need to find the (sub-)seuence with the
+  // largest sum.
+  int[] a = {
+   6,
+   -6,
+   1,
+   11
+  };
+  Sequence aMaxSequence = getMaxSumSequence(a);
+  System.out.print("The continuos sequence with the maximum sum:{");
+  for (int i = aMaxSequence.start; i < aMaxSequence.end; i++) {
+   System.out.print(a[i] + ",");
+  }
+  System.out.print(a[aMaxSequence.end] + "}");
+ }
+
+
+ private static Sequence getMaxSumSequence(int[] a) {
+  Sequence theMaxSequence = new Sequence(0, 0, a[0]);
+  Sequence theCurrentSequence = new Sequence(0, -1, 0);
+  for (int i = 0; i < a.length; i++) {
+   theCurrentSequence.end = i;
+   theCurrentSequence.sum += a[i];
+   if (theCurrentSequence.sum > theMaxSequence.sum) {
+    theMaxSequence.start = theCurrentSequence.start;
+    theMaxSequence.end = theCurrentSequence.end;
+    theMaxSequence.sum = theCurrentSequence.sum;
+   }
+   // If the current sequence is not have a sum greater than 0, its not
+   // going to contribute for the sequence
+   if (theCurrentSequence.sum <= 0) {
+    theCurrentSequence.start = i + 1;
+    theCurrentSequence.sum = 0;
+   }
+  }
+  return theMaxSequence;
+ }
+
+ /**
+  * The class represent a sequence.
+  */
+ private static class Sequence {
+  public Sequence(int theStart, int theEnd, int theSum) {
+   start = theStart;
+   end = theEnd;
+   sum = theSum;
+  }
+  int start;
+  int end;
+  int sum;
+ }
+}
+```

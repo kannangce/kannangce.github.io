@@ -1,0 +1,23 @@
+= Number divisible by 2,4,8,16../5,25,125..
+
+:date: 2013-10-30
+:category: Mathematics
+:tags: Numbers, Speed Math
+
+> For any number `2^n`(or `5^n`), if you need to find out if it is a factor of number X, it is enough if you check the last n digits of the number X.
+
+For ex., say a number `120016`, if I need to find if the number is divisible by `16` (=`2^4`), I just need to check if the last 4 digits is divisible by `4`. So here `120016` is divisible by `16`, because the last 4 digit is divisible by 16.
+
+Now, let’s not convinced just with some shortcut.
+
+Let’s understand the concept by taking a 5 digit number represented by `abcde`, where a,b,c,d,e each represents some decimal from `0` to `9`.
+
+I need to find out if the number `abcde` is divisible by `8` (=`2^3`).
+
+Expressing the number abcde as `ab000 +cde`
+
+So now, `ab000` is nothing but `abX1000`, no doubt this is divisible by 8. Because `1000` is a factor for it which is multiple of `8`.
+
+Now we just need to confirm if the number `cde` is divisible by 8. The same applies for any number X , to confirm if it is divisible by `2^n` we just need to check if the *last n digits is divisible by n*.
+
+The similar way we can prove for powers of `5`!

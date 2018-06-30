@@ -1,0 +1,12 @@
+= Our car number
+
+:date: 2013-11-03 10:20
+:category: Mathematics
+:tags: Mathematics, Numbers, SomethingInterestingWithNumbers
+
+
+We bought a new car. The car has been registred with number as `5050`.
+
+Surprisingly, more than just a fancy number, it is sum of numbers from `1` to `100`.
+
+(`100X101`)/`2` = `5050`..;)

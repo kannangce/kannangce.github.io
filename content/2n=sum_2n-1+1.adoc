@@ -1,0 +1,35 @@
+= 2^n = (1+2+4+…2^(n-1))+1
+
+:date: 2013-10-29
+:category: Mathematics
+:tags: Binary, Mathematics, Numbers
+
+This is one thing that I noticed. Then tried proving it, the below is the proof.
+
+There is a proof that we can get through binary.
+
+Take the RHS and express it in binary,
+The binary of
+
+
+`1` is `1`
+`2` is `10`
+`4` is `100`
+.
+.
+
+In the same way, `(2^n)-1` is `100..(n-1)0’s`
+
+
+So when I express the sum `1+2+4+…2^(n-1)` as binary,
+I’ll get `1111...` (n-1 1’s)
+
+Now consider the RHS,
+
+`111...`(n-1 1’s) + 1
+
+So adding 1 at the last will keeps giving a 1 carried to its preceding position.
+And at last you’ll get `100....`(n 0’s)
+
+Which when expressed in decimal is `2^n`
+That’s it..:-)

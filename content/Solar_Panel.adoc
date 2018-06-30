@@ -1,0 +1,57 @@
+= DIY Solar Panel powered charger
+
+:date: 2017-03-13
+:category: DIY
+:tags: DIY Charger, Solar Mobile Charger
+
+== About
+This is a novice guide to build a Solar panel based mobile charger. Recently I built(assembled) a Solar panel based mobile charger, which is pretty decent in performance and gives an output of 5V and 750mA.
+
+All I did is, spent some time on understanding the basics of how to do it, bought each individual components and soldered/assembled it.
+
+== Components Used
+
+=== Power Source
+Obviously the solar panel. A 5W Solar panel available in most of the local electronic shop for less than `₹500`, was enough for a decent charging. The size is ~ `30 X 20 cm`. Almost a size of a laptop, but it is fine for me, after all, an experimental project for my own use. When kept in the morning sunshine, the output is nearly `4.4W`(`10V` X `440mA`).
+
+=== A Converter
+
+Whatever the output that comes from the solar panel cannot be used to charge the mobile directly. There are 2 options that are available here,
+
+- A https://en.wikipedia.org/wiki/Buck_converter[Buck Converter], is to DC as a transformer is to AC. It helps to convert a DC voltage to a desire DC voltage, by increasing/reducing the current, thus maintaining the energy.(When the voltage is stepped up the current will be stepped down and vice-versa)
+
+- A https://en.wikipedia.org/wiki/78xx[78XX Voltage] regulator, just reduces the input voltage to XX but maintains the same input current, and the excessive energy will be dissipated as heat.
+
+Since a Buck converter is efficient with close to 90% efficiency, I chose Buck converter. I got https://www.amazon.in/gp/product/B00TQUU2SA/ref=od_aui_detailpages00?ie=UTF8&psc=1[this] under ₹140. Also there is an adjustment available in this converter, which helps to adjust the output voltage to desired voltage.
+
+=== An O/P Interface
+
+My main intention was to have a mobile charger. So I used a USB female, which can be utilized by many other electronic equipments such camera, power bank, etc.
+
+When you keep the female USB in a way, that the metal connectors faces up, out of 4 metal connectors, the right extreme of the USB is Vcc and the left extreme is GND.  Where Vcc is expected to be `5V` wrt GND.
+
+
+image::images/Solar_Panel/usb-spec.png[]
+
+
+
+=== Misc
+
+Required wires and adapter-pair/Connectors. Utility equipment such as Multimeter and a Soldering gun.
+
+
+=== Assembling Them
+
+Since everything was readily available, assembling them is the only actual work that I have done. I soldered all the components with adapters so that I can assemble or change any of the components when needed(modular).
+
+And as I assembled all these, I am able to charge my mobile using a data-cable.
+
+image::images/Solar_Panel/circuit.jpg[width=500,height=500]
+
+
+
+=== Performance
+
+I am getting an output of `5V` and `0.8A`, which is `4W`, from a solar panel delivering `4.4W`. So I am getting almost `90%` of efficiency.
+
+Daily, I am able to harvest enough energy to charge my 3000mAh mobile battery.

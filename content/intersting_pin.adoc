@@ -1,0 +1,7 @@
+= My interesting PIN number
+
+:date: 2016-03-18
+:category: Mathematics
+:tags: Numbers, SomethingInterestingWithNumbers
+
+`3649`, this was my default pin number that I got for my card.(I can reveal it, I have changed it now..;)). The interesting fact was that it is concatenation of `6²` and `7²`. And one more fact is that any `2` consecutive number is a perfect square. `36`,`64` and `49`…

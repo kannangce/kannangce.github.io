@@ -1,0 +1,17 @@
+.asciimath-inline {
+    /*font-size: 90%;*/
+}
+
+.asciimath-block {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: inline-block;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.asciimath-block .asciimath-line {
+    display: inline-block;
+    margin: 8px 0;
+}
