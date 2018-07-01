@@ -20,7 +20,7 @@ A simple option is having a debug point at a specific line and keep on waiting f
 
 You can tell eclipse to halt at the breakpoint only when the specific condition is met. You can rightclick on a breakpoint, go the “Breakpoint properties“, check the conditional and check box and enter the condition that need to be met to halt at the breakpoint.
 
-image:images/java_debugging/conditional_breakpoint.png
+image::images/java_debugging/conditional_breakpoint.png[]
 
 == Catching a swallowed up Exception
 
@@ -51,10 +51,13 @@ You don’t have to change your code and restart the process of debugging. Inste
 - You can just write the expression in IDE to assign the right value to the variable/attribute.
 - Select the expression, right click and give inspect. DONE!!!
 
-image:images/java_debugging/inspect_execute.png
+image::images/java_debugging/inspect_execute.png[]
 
-# Note the Typo in the variable theSQL.
-# Note the expression to correct the typo for current execution.
+
+
+1) Note the typo in the variable `theSQL`.
+
+2) Note the expression to correct the typo for current execution.
 
 *Please note that,*
 
@@ -72,7 +75,7 @@ While debugging, you realize that the implementation of the method has to be cha
 - Make the modifications and save the file.
 - (If your eclipse is configured to build automatically,) The modified class will be buit and replaced in the running JVM. How sophisticated 🙂
 
-=== Notes:
+==== Notes:
 - Not all the changes are hot-code swappable in standard JVM. The changes to method definitions, without changing the method/class signature can only be swapped.
 - Once the code swap happens, the execution starts from the beginning of the method at which the execution was halted before the swap. So please note that, when the method executes again, duplicate executions are possible.
 - The swapped changes persist only in the currently running JVM. When the app stops and starts again, the changes will be gone.
