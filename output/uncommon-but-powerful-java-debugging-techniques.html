@@ -1,0 +1,288 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Uncommon But Powerful Java Debugging Techniques</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kannan Ramamoorthy">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="My Tech Buddy">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="https://kannangce.github.io/blog/theme/css/milligram.css" type="text/css" />
+  <link rel="stylesheet" href="https://kannangce.github.io/blog/theme/css/custom.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="https://kannangce.github.io/blog/uncommon-but-powerful-java-debugging-techniques.html">
+<meta name="twitter:title" content="My Tech Buddy ~ Uncommon But Powerful Java Debugging Techniques">
+<meta name="twitter:description" content="This article discusses some of the Java debugging techniques that are not so commonly used by developers. But I am sure, these are some powerful techniques which will help you for productive debugging. All these techniques just use the out-of-box functionalities provided by Eclipse and Oracle JVM. This article assumes …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="My Tech Buddy ~ Uncommon But Powerful Java Debugging Techniques" />
+<meta property="og:description" content="This article discusses some of the Java debugging techniques that are not so commonly used by developers. But I am sure, these are some powerful techniques which will help you for productive debugging. All these techniques just use the out-of-box functionalities provided by Eclipse and Oracle JVM. This article assumes …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <div class="container">
+
+    <!-- Navbar -->
+      <div class="navbar">
+        <ul>
+            <div>
+                <li>
+                    <a href="https://kannangce.github.io/blog"><h3>My Tech Buddy</h3></a>
+                </li>
+                <li>
+                </li>
+            </div>
+        </ul>
+      </div>
+
+  <!-- Sidebar -->
+    <sidebar>
+        <ul class="static-item">
+
+        </ul>        
+
+        <ul>
+                <div class="cat-border">
+                <li style="color: #F2F1EF; background-color: #6C7A89;">Categories</li>
+                    <li><a href="https://kannangce.github.io/blog/category/computer-science-algorithm.html">Computer Science, Algorithm</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/diy.html">DIY</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/docker.html">Docker</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/java-java-debugging.html">Java, Java Debugging</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/mathematics.html">Mathematics</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/software.html">Software</a></li>
+                </div>
+        </ul>
+
+   
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="https://kannangce.github.io/blog/theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="https://kannangce.github.io/blog/theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
+    </sidebar>
+    
+    <maincontent>
+<h2>
+    <a href="https://kannangce.github.io/blog/uncommon-but-powerful-java-debugging-techniques.html" rel="bookmark" title="Permalink to Uncommon But Powerful Java Debugging Techniques">Uncommon But Powerful Java Debugging Techniques</a>
+</h2>
+
+<div>
+    <b>By: </b><a href="https://kannangce.github.io/blog/author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Mon 17 July 2017<br />
+    <b>In: </b><a href="https://kannangce.github.io/blog/category/java-java-debugging.html" rel="bookmark" title="Permalink to Java, Java Debugging">Java, Java Debugging</a><br />
+    <em><b>Tags: </b>
+                <span><a href="https://kannangce.github.io/blog/tag/debugging.html">#debugging </a></span>
+                <span><a href="https://kannangce.github.io/blog/tag/hotcode-swap.html">#hotcode swap </a></span>
+                <span><a href="https://kannangce.github.io/blog/tag/java.html">#Java </a></span>
+    </em>
+    <hr>
+</div>
+
+<div>
+    <mainarticle>
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This article discusses some of the Java debugging techniques that are not so commonly used by developers. But I am sure, these are some powerful techniques which will help you for productive debugging.</p>
+</div>
+<div class="paragraph">
+<p>All these techniques just use the out-of-box functionalities provided by Eclipse and Oracle JVM.</p>
+</div>
+<div class="paragraph">
+<p>This article assumes that you are already aware of <em>“Java remote debugging“</em>. If not, I suggest you get familiar with <em>“Java remote debugging”</em> and to try it once. So that you will have the context set.</p>
+</div>
+<div class="paragraph">
+<p>Further, the intention of the article is just to give you an idea of the possible techniques so that you can explore more about that.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conditional_breakpoint">Conditional Breakpoint:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>While debugging, say you are interested to debug a particular only on certain critera. For ex, you are interested in only one element among n elements that you are iterating through. Or say you want to debug the behavior of a method when called with particular arguments(s).</p>
+</div>
+<div class="paragraph">
+<p>A simple option is having a debug point at a specific line and keep on waiting for iteration/method call to your value of interest. And the simplest way is <em>Conditional Breakpoint</em>.</p>
+</div>
+<div class="paragraph">
+<p>You can tell eclipse to halt at the breakpoint only when the specific condition is met. You can rightclick on a breakpoint, go the “Breakpoint properties“, check the conditional and check box and enter the condition that need to be met to halt at the breakpoint.</p>
+</div>
+<div class="paragraph">
+<p>image:images/java_debugging/conditional_breakpoint.png</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_catching_a_swallowed_up_exception">Catching a swallowed up Exception</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There might be times when exceptions are swallowed up unintentionally, without any log message. Or your application crashes without any clue, because of an <a href="https://docs.oracle.com/javase/7/docs/api/java/lang/Error.html">Error</a>. In both cases, you are left with no idea of what’s happening.</p>
+</div>
+<div class="paragraph">
+<p>An easy way to catch such issue is to keep a class break point in the class java.lang.Exception or on all its constructors.</p>
+</div>
+<div class="paragraph">
+<p>Or keep a class break point in the class <code>java.lang.Error</code> or on all its constructors.</p>
+</div>
+<div class="paragraph">
+<p>You will hit the breakpoint when the mysterious exception/error occurs.</p>
+</div>
+<div class="paragraph">
+<p>The rationale here is, JVM creates an instance of the <code>Error/Exception</code> when it occurs. We are taking it to our advantage, and catching it while the instance is being created.</p>
+</div>
+<div class="paragraph">
+<p>Please be aware that, in an enterprise application, especially when you are using many frameworks, there will hell lot Exception instantiation and catch occurs. So do some research on when and where to enable the breakpoint, before using this approach.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_halting_vm_until_the_debugger_is_attached">Halting VM until the Debugger is Attached</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Ever in a situation to debug a bootstrap module of an application? Or ever tried to race with the JVM execution to halt at a particular line of code before it gets executed.</p>
+</div>
+<div class="paragraph">
+<p>You can very well use the parameter <strong>suspend=y</strong> as part of your debug parameters. This tells the JVM not to start executing the main class of your method until a debugger is attached.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_execute_code_with_inspect">Execute code with “Inspect”</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Say you have given a big fix that involves code changes at multiple parts of the application and you have put breakpoints in some of those places and debugging it. While debugging you realize that you initialized a variable/attribute wrong.</p>
+</div>
+<div class="paragraph">
+<p>You don’t have to change your code and restart the process of debugging. Instead,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can just write the expression in IDE to assign the right value to the variable/attribute.</p>
+</li>
+<li>
+<p>Select the expression, right click and give inspect. DONE!!!</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>image:images/java_debugging/inspect_execute.png</p>
+</div>
+</div>
+</div>
+<h1 id="_note_the_typo_in_the_variable_thesql" class="sect0">Note the Typo in the variable theSQL.</h1>
+
+<h1 id="_note_the_expression_to_correct_the_typo_for_current_execution" class="sect0">Note the expression to correct the typo for current execution.</h1>
+<div class="paragraph">
+<p><strong>Please note that,</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You are not changing the actual code here, you are just asking JVM to execute an expression currently, which in turn alters the variable/attribute. The change will only exist until the scope of the variable is valid or until the value is altered by existing code.</p>
+</li>
+<li>
+<p>Not just changing the value, you can execute any other valid expression such as logging.</p>
+</li>
+<li>
+<p>The code that you select and inspect, might not make sense in the whole context, but that just have to be valid statement in the context of the execution. i.e., the expression that you select and execute can be in any part of the editor. You only have to make sure that you have selected part is valid.</p>
+</li>
+<li>
+<p>Against to conventional Java rules, using inspect, value of a final variable or even a private variable can be changed.</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_hot_code_swap">Hot Code Swap</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>How cool will it be when you can replace your code into a running JVM, without going through building, deployment and restart process. Of course it is possible with standard JVM from your eclipse.</p>
+</div>
+<div class="paragraph">
+<p>While debugging, you realize that the implementation of the method has to be changed. To get it corrected,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Make the modifications and save the file.</p>
+</li>
+<li>
+<p>(If your eclipse is configured to build automatically,) The modified class will be buit and replaced in the running JVM. How sophisticated 🙂</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_notes">Notes:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Not all the changes are hot-code swappable in standard JVM. The changes to method definitions, without changing the method/class signature can only be swapped.</p>
+</li>
+<li>
+<p>Once the code swap happens, the execution starts from the beginning of the method at which the execution was halted before the swap. So please note that, when the method executes again, duplicate executions are possible.</p>
+</li>
+<li>
+<p>The swapped changes persist only in the currently running JVM. When the app stops and starts again, the changes will be gone.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hope I have shared some of the useful debugging tips. Happy debugging!!!</p>
+</div>
+</div>
+</div>
+</div>
+
+    </mainarticle>
+</div>
+<hr>
+        
+<div>
+        <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
+            <p style="margin-top: 2%;">
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=https://kannangce.github.io/blog/uncommon-but-powerful-java-debugging-techniques.html&text=Uncommon But Powerful Java Debugging Techniques&via="><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=https://kannangce.github.io/blog/uncommon-but-powerful-java-debugging-techniques.html&t=Uncommon But Powerful Java Debugging Techniques"><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/facebook.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://kannangce.github.io/blog/uncommon-but-powerful-java-debugging-techniques.html&title=Uncommon But Powerful Java Debugging Techniques" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/linkedin.png"></a>
+            </p>
+</div>
+<hr>
+    <p><i>For any feedback or corrections, please write in to: </i><b> kannangce@rediffmail.com </b></p>
+        
+    </maincontent>
+
+  <!-- Analytics -->
+
+  </div>
+</body>
+
+</html>

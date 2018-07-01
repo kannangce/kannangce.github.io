@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>2^n = (1+2+4+…2^(n-1))+1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kannan Ramamoorthy">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="My Tech Buddy">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="https://kannangce.github.io/blog/theme/css/milligram.css" type="text/css" />
+  <link rel="stylesheet" href="https://kannangce.github.io/blog/theme/css/custom.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="https://kannangce.github.io/blog/2n-1242n-11.html">
+<meta name="twitter:title" content="My Tech Buddy ~ 2^n = (1+2+4+…2^(n-1))+1">
+<meta name="twitter:description" content="This is one thing that I noticed. Then tried proving it, the below is the proof. There is a proof that we can get through binary. Take the RHS and express it in binary, The binary of 1 is 1 2 is 10 4 is 100 . . In the same way …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="My Tech Buddy ~ 2^n = (1+2+4+…2^(n-1))+1" />
+<meta property="og:description" content="This is one thing that I noticed. Then tried proving it, the below is the proof. There is a proof that we can get through binary. Take the RHS and express it in binary, The binary of 1 is 1 2 is 10 4 is 100 . . In the same way …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <div class="container">
+
+    <!-- Navbar -->
+      <div class="navbar">
+        <ul>
+            <div>
+                <li>
+                    <a href="https://kannangce.github.io/blog"><h3>My Tech Buddy</h3></a>
+                </li>
+                <li>
+                </li>
+            </div>
+        </ul>
+      </div>
+
+  <!-- Sidebar -->
+    <sidebar>
+        <ul class="static-item">
+
+        </ul>        
+
+        <ul>
+                <div class="cat-border">
+                <li style="color: #F2F1EF; background-color: #6C7A89;">Categories</li>
+                    <li><a href="https://kannangce.github.io/blog/category/computer-science-algorithm.html">Computer Science, Algorithm</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/diy.html">DIY</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/docker.html">Docker</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/java-java-debugging.html">Java, Java Debugging</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/mathematics.html">Mathematics</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/software.html">Software</a></li>
+                </div>
+        </ul>
+
+   
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="https://kannangce.github.io/blog/theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="https://kannangce.github.io/blog/theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
+    </sidebar>
+    
+    <maincontent>
+<h2>
+    <a href="https://kannangce.github.io/blog/2n-1242n-11.html" rel="bookmark" title="Permalink to 2^n = (1+2+4+…2^(n-1))+1">2^n = (1+2+4+…2^(n-1))+1</a>
+</h2>
+
+<div>
+    <b>By: </b><a href="https://kannangce.github.io/blog/author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Tue 29 October 2013<br />
+    <b>In: </b><a href="https://kannangce.github.io/blog/category/mathematics.html" rel="bookmark" title="Permalink to Mathematics">Mathematics</a><br />
+    <em><b>Tags: </b>
+                <span><a href="https://kannangce.github.io/blog/tag/binary.html">#Binary </a></span>
+                <span><a href="https://kannangce.github.io/blog/tag/mathematics.html">#Mathematics </a></span>
+                <span><a href="https://kannangce.github.io/blog/tag/numbers.html">#Numbers </a></span>
+    </em>
+    <hr>
+</div>
+
+<div>
+    <mainarticle>
+    <div class="paragraph">
+<p>This is one thing that I noticed. Then tried proving it, the below is the proof.</p>
+</div>
+<div class="paragraph">
+<p>There is a proof that we can get through binary.</p>
+</div>
+<div class="paragraph">
+<p>Take the RHS and express it in binary,
+The binary of</p>
+</div>
+<div class="paragraph">
+<p><code>1</code> is <code>1</code>
+<code>2</code> is <code>10</code>
+<code>4</code> is <code>100</code>
+.
+.</p>
+</div>
+<div class="paragraph">
+<p>In the same way, <code>(2^n)-1</code> is <code>100..(n-1)0’s</code></p>
+</div>
+<div class="paragraph">
+<p>So when I express the sum <code>1+2+4+…2^(n-1)</code> as binary,
+I’ll get <code>1111&#8230;&#8203;</code> (n-1 1’s)</p>
+</div>
+<div class="paragraph">
+<p>Now consider the RHS,</p>
+</div>
+<div class="paragraph">
+<p><code>111&#8230;&#8203;</code>(n-1 1’s) + 1</p>
+</div>
+<div class="paragraph">
+<p>So adding 1 at the last will keeps giving a 1 carried to its preceding position.
+And at last you’ll get <code>100&#8230;&#8203;.</code>(n 0’s)</p>
+</div>
+<div class="paragraph">
+<p>Which when expressed in decimal is <code>2^n</code>
+That’s it..:-)</p>
+</div>
+
+    </mainarticle>
+</div>
+<hr>
+        
+<div>
+        <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
+            <p style="margin-top: 2%;">
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=https://kannangce.github.io/blog/2n-1242n-11.html&text=2^n = (1+2+4+…2^(n-1))+1&via="><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=https://kannangce.github.io/blog/2n-1242n-11.html&t=2^n = (1+2+4+…2^(n-1))+1"><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/facebook.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://kannangce.github.io/blog/2n-1242n-11.html&title=2^n = (1+2+4+…2^(n-1))+1" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/linkedin.png"></a>
+            </p>
+</div>
+<hr>
+    <p><i>For any feedback or corrections, please write in to: </i><b> kannangce@rediffmail.com </b></p>
+        
+    </maincontent>
+
+  <!-- Analytics -->
+
+  </div>
+</body>
+
+</html>

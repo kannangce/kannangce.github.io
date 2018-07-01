@@ -1,0 +1,77 @@
+= Docker Kickstarter
+
+:date: 2017-07-16
+:category: Docker
+:tags: Architecture, Computing, Virtualization, Docker
+
+_Docker_ is one of the buzzword, that we encounter commonly nowadays. Tried it out and realized a lot of advantage for myself. This article is intended to give a comfort start for anyone who starts with docker.
+
+This article doesn’t dive deep into the architecture of the Docker. But, helps you get a high-level idea and get started. Also, I tried to explain the docker jargons that you encounter commonly, so that you can skim through any other setup articles that you encounter.
+
+Before getting started,
+
+If you are already a bit familiar about Docker, but need a kickstart, this article is primarily for you.
+
+If you are already aware of the concept of Virtual Machines, Docker is a similar technology, but efficient and light weight because of its nature. This will help you.
+
+If you are never heard about such terms, Docker helps you to run (virtual) machines with different OS inside you *nix/Mac/Windows machines. Imagine if you are able to run a Centos, Ubuntu, and Fedora inside your machine as if you are running it on different machines. The major differences are you will be able to access it using only terminals. Read through https://en.wikipedia.org/wiki/Operating-system-level_virtualization[OS Virtualization] and https://en.wikipedia.org/wiki/Docker_(software)[Docker], before reading further.
+
+== Advantages:
+- You can have Dev/QA/Staging environments, that exactly mimics your production environment. So that you can avoid inconsistencies and issue that are not reproducible.
+
+- You can have the environment that is getting built from a plain text file (Dockerfile), so that just sharing that file helps you to share the environment setup and get it created in minutes.
+
+- Since the complete environment setup can happen from a plain text file, the environment can be easily reviewed and understood by anyone.
+
+- Since Docker is available for all the OS (have to mention that Windows docker is not so good), easy to have the environments up and running, so that you can focus on your task, rather than spending time in environment setup.
+
+- Can even be used in production along with additional support such as https://www.openshift.com/[Openshift]. Preferable for https://martinfowler.com/articles/microservices.html[Microservice architecture].
+
+- Sandboxed environments. Since docker provides a level of abstraction, you have multiple components in a single server, running side-by-side, without changing the conflicting parameters such as ports.
+
+- Very cheap. Hence you can create as many as you want and throw it away, without polluting your local machine. In my Mac, I have a bunch of Linux flavored docker containers (we will see what it means) for various applications.
+
+== Kickstart:
+
+We install https://www.docker.com/get-docker[Docker] in our host.
+
+A *host* is a machine on which you install the docker. This helps you to create as many *Docker containers* as you want.
+
+A *Docker container* is a running copy of a *Docker Image*. You can only directly use a *Docker container*.  You can create many independent containers from the same image. You create a *container* by running the *Docker image*.
+
+*Docker image* is the template of the environment that you wish to have. It can be any plain linux distro, or a customized one with additional applications such as Oracle DB or Tomcat. There are lot of *images* already available in the https://hub.docker.com/explore/[Docker hub].
+
+*Docker hub* is the hub containing tons of *Docker images*, that we commonly use. You can just *pull* any of the *images* and *run* it as a *container* and use it. Or you can write a *Dockerfile* that contains additional customization required for you.
+
+*Dockerfile* is a simple text file containing the docker commands that do the additional customization required for your *container*(via *image*). You *build* a *Dockerfile* that creates a *image* in your local, with the customization and you can run the containers from the *image* and use it. It is mandatory that the file name has to be *Dockerfile*.
+
+Apart from the above basics, you facilitate multi-container app using *Docker Compose* , you can *map ports* from _container_ to _host_.
+
+== Example – Having Tomcat server up and running:
+
+- Once you installed docker on your machine, you can pull the image with the below command,
+```
+docker pull tomcat
+```
+
+- Once the above command is completed you will have a tomcat image in your machine, which you can check with the command,
+```
+docker images
+```
+
+- Now that you have an *image* of a *tomcat docker* you can *run* and use it. The below command runs image in detached mode (*-d*), so that your terminal is not interrupted, with the *8888* port of your local maps to the *8080* port of the tomcat image.
+```
+docker run -d -p 8888:8080 tomcat_container
+```
+Now when you hit _http://localhost:8888_ , you will see tomcat available there.
+
+- On a sample basic *Dockerfile*, you can refer the usage of *Dockerfile* here. A *gotcha* with writing a sample *Dockerfile* is it has to execute a command that runs forever. Once that command stops the container stops. In the _draw.io_ docker *catalina.sh* is the ever running that keeps the container running.
+
+- On a *running container* you can enter, just as you *ssh* to a remote machine. And browse through it using the below command. With this you ask docker to _execute_ (`exec`) bash in interactive terminal(`-it`) for the container with given name.
+
+```
+docker exec -it tomcat_container bash
+```
+
+== Reference:
+Strongly recommend http://christianposta.com/slides/docker/generated/intro.html#/cover[this tutorial] for a deep dive into Docker and Kubernetes.

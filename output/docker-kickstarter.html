@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Docker Kickstarter</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kannan Ramamoorthy">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="My Tech Buddy">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="https://kannangce.github.io/blog/theme/css/milligram.css" type="text/css" />
+  <link rel="stylesheet" href="https://kannangce.github.io/blog/theme/css/custom.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="https://kannangce.github.io/blog/docker-kickstarter.html">
+<meta name="twitter:title" content="My Tech Buddy ~ Docker Kickstarter">
+<meta name="twitter:description" content="Docker is one of the buzzword, that we encounter commonly nowadays. Tried it out and realized a lot of advantage for myself. This article is intended to give a comfort start for anyone who starts with docker. This article doesn’t dive deep into the architecture of the Docker. But …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="My Tech Buddy ~ Docker Kickstarter" />
+<meta property="og:description" content="Docker is one of the buzzword, that we encounter commonly nowadays. Tried it out and realized a lot of advantage for myself. This article is intended to give a comfort start for anyone who starts with docker. This article doesn’t dive deep into the architecture of the Docker. But …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <div class="container">
+
+    <!-- Navbar -->
+      <div class="navbar">
+        <ul>
+            <div>
+                <li>
+                    <a href="https://kannangce.github.io/blog"><h3>My Tech Buddy</h3></a>
+                </li>
+                <li>
+                </li>
+            </div>
+        </ul>
+      </div>
+
+  <!-- Sidebar -->
+    <sidebar>
+        <ul class="static-item">
+
+        </ul>        
+
+        <ul>
+                <div class="cat-border">
+                <li style="color: #F2F1EF; background-color: #6C7A89;">Categories</li>
+                    <li><a href="https://kannangce.github.io/blog/category/computer-science-algorithm.html">Computer Science, Algorithm</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/diy.html">DIY</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/docker.html">Docker</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/java-java-debugging.html">Java, Java Debugging</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/mathematics.html">Mathematics</a></li>
+                    <li><a href="https://kannangce.github.io/blog/category/software.html">Software</a></li>
+                </div>
+        </ul>
+
+   
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="https://kannangce.github.io/blog/theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="https://kannangce.github.io/blog/theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
+    </sidebar>
+    
+    <maincontent>
+<h2>
+    <a href="https://kannangce.github.io/blog/docker-kickstarter.html" rel="bookmark" title="Permalink to Docker Kickstarter">Docker Kickstarter</a>
+</h2>
+
+<div>
+    <b>By: </b><a href="https://kannangce.github.io/blog/author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Sun 16 July 2017<br />
+    <b>In: </b><a href="https://kannangce.github.io/blog/category/docker.html" rel="bookmark" title="Permalink to Docker">Docker</a><br />
+    <em><b>Tags: </b>
+                <span><a href="https://kannangce.github.io/blog/tag/architecture.html">#Architecture </a></span>
+                <span><a href="https://kannangce.github.io/blog/tag/computing.html">#Computing </a></span>
+                <span><a href="https://kannangce.github.io/blog/tag/virtualization.html">#Virtualization </a></span>
+                <span><a href="https://kannangce.github.io/blog/tag/docker.html">#Docker </a></span>
+    </em>
+    <hr>
+</div>
+
+<div>
+    <mainarticle>
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>Docker</em> is one of the buzzword, that we encounter commonly nowadays. Tried it out and realized a lot of advantage for myself. This article is intended to give a comfort start for anyone who starts with docker.</p>
+</div>
+<div class="paragraph">
+<p>This article doesn’t dive deep into the architecture of the Docker. But, helps you get a high-level idea and get started. Also, I tried to explain the docker jargons that you encounter commonly, so that you can skim through any other setup articles that you encounter.</p>
+</div>
+<div class="paragraph">
+<p>Before getting started,</p>
+</div>
+<div class="paragraph">
+<p>If you are already a bit familiar about Docker, but need a kickstart, this article is primarily for you.</p>
+</div>
+<div class="paragraph">
+<p>If you are already aware of the concept of Virtual Machines, Docker is a similar technology, but efficient and light weight because of its nature. This will help you.</p>
+</div>
+<div class="paragraph">
+<p>If you are never heard about such terms, Docker helps you to run (virtual) machines with different OS inside you *nix/Mac/Windows machines. Imagine if you are able to run a Centos, Ubuntu, and Fedora inside your machine as if you are running it on different machines. The major differences are you will be able to access it using only terminals. Read through <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">OS Virtualization</a> and <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a>, before reading further.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_advantages">Advantages:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>You can have Dev/QA/Staging environments, that exactly mimics your production environment. So that you can avoid inconsistencies and issue that are not reproducible.</p>
+</li>
+<li>
+<p>You can have the environment that is getting built from a plain text file (Dockerfile), so that just sharing that file helps you to share the environment setup and get it created in minutes.</p>
+</li>
+<li>
+<p>Since the complete environment setup can happen from a plain text file, the environment can be easily reviewed and understood by anyone.</p>
+</li>
+<li>
+<p>Since Docker is available for all the OS (have to mention that Windows docker is not so good), easy to have the environments up and running, so that you can focus on your task, rather than spending time in environment setup.</p>
+</li>
+<li>
+<p>Can even be used in production along with additional support such as <a href="https://www.openshift.com/">Openshift</a>. Preferable for <a href="https://martinfowler.com/articles/microservices.html">Microservice architecture</a>.</p>
+</li>
+<li>
+<p>Sandboxed environments. Since docker provides a level of abstraction, you have multiple components in a single server, running side-by-side, without changing the conflicting parameters such as ports.</p>
+</li>
+<li>
+<p>Very cheap. Hence you can create as many as you want and throw it away, without polluting your local machine. In my Mac, I have a bunch of Linux flavored docker containers (we will see what it means) for various applications.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kickstart">Kickstart:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We install <a href="https://www.docker.com/get-docker">Docker</a> in our host.</p>
+</div>
+<div class="paragraph">
+<p>A <strong>host</strong> is a machine on which you install the docker. This helps you to create as many <strong>Docker containers</strong> as you want.</p>
+</div>
+<div class="paragraph">
+<p>A <strong>Docker container</strong> is a running copy of a <strong>Docker Image</strong>. You can only directly use a <strong>Docker container</strong>.  You can create many independent containers from the same image. You create a <strong>container</strong> by running the <strong>Docker image</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Docker image</strong> is the template of the environment that you wish to have. It can be any plain linux distro, or a customized one with additional applications such as Oracle DB or Tomcat. There are lot of <strong>images</strong> already available in the <a href="https://hub.docker.com/explore/">Docker hub</a>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Docker hub</strong> is the hub containing tons of <strong>Docker images</strong>, that we commonly use. You can just <strong>pull</strong> any of the <strong>images</strong> and <strong>run</strong> it as a <strong>container</strong> and use it. Or you can write a <strong>Dockerfile</strong> that contains additional customization required for you.</p>
+</div>
+<div class="paragraph">
+<p><strong>Dockerfile</strong> is a simple text file containing the docker commands that do the additional customization required for your <strong>container</strong>(via <strong>image</strong>). You <strong>build</strong> a <strong>Dockerfile</strong> that creates a <strong>image</strong> in your local, with the customization and you can run the containers from the <strong>image</strong> and use it. It is mandatory that the file name has to be <strong>Dockerfile</strong>.</p>
+</div>
+<div class="paragraph">
+<p>Apart from the above basics, you facilitate multi-container app using <strong>Docker Compose</strong> , you can <strong>map ports</strong> from <em>container</em> to <em>host</em>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example_having_tomcat_server_up_and_running">Example – Having Tomcat server up and running:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Once you installed docker on your machine, you can pull the image with the below command,</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>docker pull tomcat</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Once the above command is completed you will have a tomcat image in your machine, which you can check with the command,</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>docker images</code></pre>
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Now that you have an <strong>image</strong> of a <strong>tomcat docker</strong> you can <strong>run</strong> and use it. The below command runs image in detached mode (<strong>-d</strong>), so that your terminal is not interrupted, with the <strong>8888</strong> port of your local maps to the <strong>8080</strong> port of the tomcat image.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>docker run -d -p 8888:8080 tomcat_container</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Now when you hit <em><a href="http://localhost:8888" class="bare">http://localhost:8888</a></em> , you will see tomcat available there.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>On a sample basic <strong>Dockerfile</strong>, you can refer the usage of <strong>Dockerfile</strong> here. A <strong>gotcha</strong> with writing a sample <strong>Dockerfile</strong> is it has to execute a command that runs forever. Once that command stops the container stops. In the <em>draw.io</em> docker <strong>catalina.sh</strong> is the ever running that keeps the container running.</p>
+</li>
+<li>
+<p>On a <strong>running container</strong> you can enter, just as you <strong>ssh</strong> to a remote machine. And browse through it using the below command. With this you ask docker to <em>execute</em> (<code>exec</code>) bash in interactive terminal(<code>-it</code>) for the container with given name.</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>docker exec -it tomcat_container bash</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_reference">Reference:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Strongly recommend <a href="http://christianposta.com/slides/docker/generated/intro.html#/cover">this tutorial</a> for a deep dive into Docker and Kubernetes.</p>
+</div>
+</div>
+</div>
+
+    </mainarticle>
+</div>
+<hr>
+        
+<div>
+        <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
+            <p style="margin-top: 2%;">
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=https://kannangce.github.io/blog/docker-kickstarter.html&text=Docker Kickstarter&via="><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=https://kannangce.github.io/blog/docker-kickstarter.html&t=Docker Kickstarter"><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/facebook.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=https://kannangce.github.io/blog/docker-kickstarter.html&title=Docker Kickstarter" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="https://kannangce.github.io/blog/theme/images/icons/linkedin.png"></a>
+            </p>
+</div>
+<hr>
+    <p><i>For any feedback or corrections, please write in to: </i><b> kannangce@rediffmail.com </b></p>
+        
+    </maincontent>
+
+  <!-- Analytics -->
+
+  </div>
+</body>
+
+</html>
