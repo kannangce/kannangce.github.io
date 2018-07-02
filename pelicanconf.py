@@ -23,7 +23,9 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-THEME = "/Users/kannan.r/Desktop/Kannan/Personal/graymill"
+# THEME = "/Users/kannan.r/Desktop/Kannan/Personal/graymill"
+THEME = "/Users/kannan.r/Desktop/Kannan/Personal/experiment/graymill"
+
 
 # Blogroll
 LINKS = ()
@@ -48,4 +50,6 @@ PLUGINS = [
 ]
 
 # Uncomment following line if you want document-relative URLs when developing
-#RELATIVE_URLS = True
+RELATIVE_URLS = True
+
+DISQUS_SITENAME = "kannangce-in"
