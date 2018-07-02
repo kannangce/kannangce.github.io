@@ -6,7 +6,7 @@ import os
 AUTHOR = u'Kannan Ramamoorthy'
 AUTHOREMAIL = u'kannangce@rediffmail.com'
 SITENAME = u'My Tech Buddy'
-SITEURL = 'https://kannangce.github.io/blog/'
+SITEURL = 'http://kannangce.in'
 
 PATH = 'content'
 
