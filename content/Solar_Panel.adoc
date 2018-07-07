@@ -31,7 +31,7 @@ My main intention was to have a mobile charger. So I used a USB female, which ca
 When you keep the female USB in a way, that the metal connectors faces up, out of 4 metal connectors, the right extreme of the USB is Vcc and the left extreme is GND.  Where Vcc is expected to be `5V` wrt GND.
 
 
-image::images/Solar_Panel/usb-spec.png[]
+image::images/Solar_panel/usb-spec.png[]
 
 
 
@@ -46,7 +46,7 @@ Since everything was readily available, assembling them is the only actual work 
 
 And as I assembled all these, I am able to charge my mobile using a data-cable.
 
-image::images/Solar_Panel/circuit.jpg[width=500,height=500]
+image::images/Solar_panel/circuit.jpg[width=500,height=500]
 
 
 
