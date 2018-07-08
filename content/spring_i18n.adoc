@@ -1,0 +1,170 @@
+= I18n support for Spring boot APIs
+
+:date: 2018-07-08
+:category: Java Spring
+:tags: Spring Boot, Spring, I18n, L10n, Java
+
+# About:
+
+This document is intended for the developers who implement `i18n` in their `Spring/Spring boot` application.
+
+Since the available articles in the net are not quite helpful on why we have to do certain things, writing this documentation to help people start with the `i18n` for Spring-boot apps.
+
+# Introduction
+
+With `i18n` we'll make sure that our app is capable of responding the requests in the specific locales of the client.
+The scope of this document is not to address all the edge cases of the i18n support but to provide the technical help on facilitating the i18n support in Spring-boot applications, along with the answers for **why** of the technical part. Further, this focuses only the `i18n` support based on `accept-language` header.
+
+Also please note that this is not **the way**, it is one of a neat way possible in Spring-boot.
+
+# How?
+
+For `i18n`, typically you will not hardcode any string within your code, and have it defined as `property` files for each language you support, outside your code.
+
+## Steps
+
+### 1. Define the Messages class
+
+The below class will be the facade that returns the message in required locale for a given key.
+
+```
+@Component
+public class Messages
+{
+    @Autowired
+    private MessageSource messageSource;
+
+    private MessageSourceAccessor accessor;
+
+    // To let the messages accessed statically
+    private static Messages ownInstance;
+
+    // Default locale for your app.
+    // app.default.locale expected to be available in application.properties/yml
+    @Value("${app.default.locale}")
+    private String defaultLocale;
+
+    @PostConstruct
+    public void init()
+    {
+        Locale.setDefault(new Locale(defaultLocale));
+        accessor = new MessageSourceAccessor(messageSource);
+        ownInstance = this;
+    }
+
+    private String getString(String key)
+    {
+        try
+        {
+            return accessor.getMessage(key);
+        } catch (MissingResourceException e)
+        {
+            return '!' + key + '!';
+        }
+    }
+
+    /**
+     * Returns the Locale specific message from the configured
+     * {@link MessageSource}
+     * 
+     * @param theKey
+     *            The key for which the message will be returned.
+     * @return The message string associated with the given key.
+     */
+    public static String getMessage(String theKey)
+    {
+        return ownInstance.getString(theKey);
+    }
+}
+```
+
+### 2. Initialize MessageSource
+The `MessageSource` abstracts the source from which the value of a string is being fetched.
+
+In the `@configuration` class, you have to initialize a `MessageSource`. 
+
+Please note that the method name should be `messageSource` or else you have to explicitly define the id of the `@Bean` to be `messageSource`. The reason is Spring's convention.
+```
+    @Bean
+    public MessageSource messageSource()
+    {
+        ReloadableResourceBundleMessageSource aMessageSrc = new ReloadableResourceBundleMessageSource();
+        // all files under the classpath with prefix messages
+        aMessageSrc.setBasename("classpath:messages");
+        return aMessageSrc;
+    }
+```
+
+### 3. Initialize LocaleResolver
+The `LocaleResolver` takes the responsibility of resolves the Locale for each request. 
+```
+    @Bean
+    public LocaleResolver localeResolver()
+    {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        return slr;
+    }
+```
+
+### 4. Externalize strings
+Externalize the hardcoded strings that could be responses for API. And store in **message_<locale>.properties**, so that the values of the properties will be your actual message for a specific locale.
+
+> **Note:** Eclipse users can take the help from eclipse. To use it right click on src project open "Source">"Externalize Strings..."
+
+### 5. Refer the messages using keys
+In your actual code, use the below call to get the respective message.
+
+```
+Messages.getMessage("mesage_key");
+```
+
+### 6. I18n in Filter
+If you have filters(classes that extend `Filter`), you would be required to add the below line in the `doFilter` method.
+
+```
+LocaleContextHolder.setLocale(request.getLocale());
+```
+
+### 7 . I18n in Security Filters(untested)
+If you are using Spring Security filters, you will be required to add the below initialization in the configuration.
+
+The configuration class is expected to extend `WebMvcConfigurerAdapter` to make use of `addInterceptors`.
+```
+   @Bean
+   public LocaleChangeInterceptor localeChangeInterceptor() {
+       LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+       return lci;
+   }
+
+   @Override
+   public void addInterceptors(InterceptorRegistry registry) {
+       registry.addInterceptor(localeChangeInterceptor());
+   }
+```
+
+# Why part?
+
+## Why `ReloadableResourceBundleMessageSource`?
+
+The below is an excerpt from Javadoc of the class,
+ > This strategy is not only capable of reloading files based on timestamp changes, but also of loading properties files with a specific character encoding. It will detect XML property files as well.
+
+## Why `SessionLocaleResolver`?
+
+The `SessionLocaleResolver` supports the below support,
+- Support for default local, when `defaultLocale` set, that will be used.
+- If Locale not set, along with `LocaleChangeInterceptor` we can use **query param** to choose the locale.
+- Support to locale from from **'Accept-language'** header.
+- Support to control Locale through **cookie**.
+
+## Why to explicitly set locale for Filter?
+
+Adding `LocaleChangeInterceptor` intercepter didn't help, as the interceptor's `preHandle` method is running after the `doFilter`.
+
+## Why to add Interceptor and adding it to registry for Security filter?
+
+Responsibility of `LocaleChangeInterceptor` is to set the `Locale` for the request. Adding the `LocaleChangeInterceptor` config instantiates it.  To ensure that it is being invoked we are adding it to interceptor.
+
+# Sample:
+
+Checkout https://github.com/kannangce/spring-boot-demos/tree/master/i18n[this project] for a sample `i18n` implementation, using the simple values in `accept-language` in header.
