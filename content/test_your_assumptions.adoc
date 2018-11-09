@@ -1,0 +1,102 @@
+= Try testing your assumptions!
+
+:date: 2018-11-10 01:13
+:category: Mathematics
+:tags: Testing Assumptions, QA, Assumptions
+
+{empty} +
+While developing applications, we are being confronted with many choices. And while making choices, sometimes  we are being fooled by assumptions.
+
+Though *'choices being fooled by assumption'*  is a much bigger problem in a wide spectrum, I am limiting myself  to the context of software development. Because, it is much easier to test and verify your assumption/intuition  in software development.
+
+I am trying to explore the point of _"testing your assumptions"_ with one of our recent assignment as an example.
+
+== Background:
+
+Recently I had to work on fixing a utility that is being used to load test our application. Our application is primarily an authentication provider, so the load testing primarily involves registering random users and authenticating them. So we have to retain the users that we have registered, so that we can authenticate them.
+
+Since testing utility has to retain the registered users across multiple sessions of test, we have store it somewhere externally. Also the data that we have to store is very less(may be a maximum of *100K* users). Since we have to store data and since the amount of data is very less, we chose a lightweight DB, _SQLite_.
+
+== The problem:
+
+Since the load testing spins multiple threads to test the application, the utility which is supposed to test the application got hung.  Instead of hitting the limitation of the application, we hit the limitation of the tool which is supposed to test the limitation.
+
+Though we are running the test script from multiple machines using _"Jmeter distributed testing"_, we wanted to make sure that there are no performance issues in the script that does the performance testing.
+
+== Towards the solution:
+
+=== Questioning assumptions:
+
+
+After hitting the limits we questioned some of our basic assumptions and answered it ourself.
+
+*Q:* Do we need a DB?
+
+*A:* Yes we need to retain the data across executions.
+
+{empty} +
+
+
+*Q:* Do we need a 'DB'?
+
+*A:* Of course, we have to retain the data across test executions. And DB is meant for the purpose.
+
+{empty} +
+*Q:* Why can’t we have our data in-memory and store it to a file before shutting down and retrieve it in next run?
+
+*A:* Having *100K* user objects in-memory. That will make the system slower.
+
+{empty} +
+
+*Q:* Really? Having *100K* objects in-memory makes system slower? How we know that?
+
+*A:*  Just an intuition, it’s not 1 or 2 objects, it’s *100K* objects.
+
+=== Testing the assumptions:
+
+As we questioned the way we are storing the data, we see, we have a decision based on our intuition that *100k* objects is too large to have it in-memory. We wanted to test that assumption.
+
+The steps taken to test the assumption is enumerated as below,
+
+* We created a test script that *"Inserts random data"*, *"Updates a specific object"* and *"Read random data"* form *"any given data store"*.
+
+* We implemented an *‘In-memory data-store’* that stores all the objects in just a hash-map indexed using the primary key of the object.
+
+* The *‘In-memory data-store’* is implemented in such a way that the data of the map is serialized and stored in a file periodically(for our use case we 
+can afford some data loss). During initialization the content from the file will be loaded and deserialized to the map.
+
+Using the above implementation we tested SQLite and the custom in-memory datastore and compared the test result as below,
+
+[cols=7,options="header"]
+|============================================================
+|*Thread Count*
+3+| *In memory*
+3+| *SQLite*
+||*Read from Map for max item*| *Total Time* | *Total Memory* | *Read from Map for max item* | *Total Time* | *Total Memory*
+|1000|0ms|294ms|26 MB|21ms|8180ms|110 MB
+|10000|99ms|1921ms|22 MB|22ms|541520ms|714 MB
+|100000|98.5 ms|1491 ms|116 MB|3895 ms|2286362ms|35 MB
+|============================================================
+
+=== Notes:
+
+* Max(read time) is the maximum time taken to read an object, in the process of reading all the objects, one-by-one from the datastore.
+* The JVM memory is measured using `Runtime.getRuntime().totalMemory()`.
+
+== Inferences:
+
+* As we see the above metrics, for a data of around *100K* objects the magnitude of difference is around 23k, and that is phenomenal.
+* The memory it took for *100k* objects is 116MB, which is actually not much.
+* There is unexplainable decrease of memory in SQLite. We didn’t try exploring that, as it is seems trivial for the moment.
+
+So now, we can make a choice to use our custom _"In-memory datastore"_. And now, we have a test script that doesn’t have any known bottlenecks of its own and actually test the limitation of our application.
+
+== Summary:
+
+ - While making a choice, and if the choice is going to have an impact, make sure that the choice is backed-up with proper metrics.
+ - Sometimes a choice might seem trivial initially, and you might have built things on top of that choice. But the moment the choice seems matters, test your assumptions.
+ - Sometimes, we are not doing some meta-tasks, because we don’t consider it as _"actual work"_. So we don’t want to spend time on things that are not _"actual work"_. But a wrong choice might have a severe impact on your _"actual work"_.
+ - Sometimes, we assume that the time spent on proving a choice is not worth it. That holds true for a trivial choice, but for an impactful choice, the time spent on verifying and proving  the assumptions worth it. For ex, developing the test script and coming up with the above metrics might have taken maximum of a day. But that 1 day would have saved us several days of exploring and working around with SQLite.
+ - Sometimes, the steps for verifications doesn’t even take much time, for ex, the test script that we used to arrive at the metrics took less than 2hrs to develop.
+ - Sometimes, you don’t have to do the verification yourself. Any verification done from a reliable source can be taken as proof.
+ - The heading says _"*Try* testing"_, because it might not be possible to breakdown all the assumptions. So IMHO, it is better to start with those, which you identify as impactful to the best of your knowledge.
