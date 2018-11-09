@@ -9,6 +9,7 @@ File extension should be ``.asc``, ``.adoc``, or ``asciidoc``.
 
 from pelican.readers import BaseReader
 from pelican import signals
+from imp import reload
 import os
 import re
 import subprocess
@@ -29,7 +30,8 @@ def fix_unicode(val):
         val = unicode(val.decode("utf-8"))
     else:
         # This fixes an issue with character substitutions, e.g. 'ñ' to 'Ã±'.
-        val = str.encode(val, "latin-1").decode("utf-8")
+	# Below is the hack done by me to avoid 'UnicodeEncodeError: 'latin-1' codec can't encode character '\u2013' in position 15: ordinal not in range(256)'
+        pass # val = str.encode(val, "latin-1").decode("utf-8")
     return val
 
 ALLOWED_CMDS = ["asciidoc", "asciidoctor"]

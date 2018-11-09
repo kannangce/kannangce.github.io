@@ -24,7 +24,7 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # THEME = "/Users/kannan.r/Desktop/Kannan/Personal/graymill"
-THEME = "/Users/kannan.r/Desktop/Kannan/Personal/experiment/graymill"
+THEME = "../graymill"
 
 
 # Blogroll
@@ -53,3 +53,5 @@ PLUGINS = [
 RELATIVE_URLS = True
 
 DISQUS_SITENAME = "kannangce-in"
+
+GOOGLE_ANALYTICS = "UA-127824340-1"

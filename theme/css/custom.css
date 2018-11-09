@@ -116,6 +116,7 @@ mainarticle ul {
 mainarticle ul li p {
     padding-left: 3%;
     margin-top: -2%;
+    font-size: 1.5em;
 }
 
 mainarticle a {
@@ -212,7 +213,7 @@ ul {
 
   maincontent {
     width: 75%;
-    font-size: 12px;
+    font-size: 10px;
   }
 
   maincontent h2 {
@@ -263,7 +264,7 @@ ul {
 
   maincontent {
     width: 85%;
-    font-size: 12px;
+    font-size: 10px;
   }
 
   maincontent h2 {
