@@ -1,0 +1,79 @@
+= On Project Documentation
+
+:date: 2018-11-13  00:50
+:category: Documentation
+:tags: Documentation, Best Practices
+
+== Intro:
+
+**“Documentation”**, one of the most hated word among most of the developers. Sometimes, few people even think that __'Real developers don’t document'__. I really don’t understand the logic behind it.
+
+As developers, we are working __‘accomplishing some technical task’__.
+
+- If it is done as a part of job, the __'technical task'__ is meant as a cog in a big wheel of the business engine.
+- If the __'technical task'__ is done as an hobby, we might do in urge to get something done or as a part of some bigger task for us or others. In either cases, our work will most probably be useful for us or for others in the future.
+
+As a result of __'technical task'__ we create a __'knowledge product'__. In the cases discussed above, we might be required to make use of our work effectively. 
+
+To make an effective use of anything, especially a __'knowledge product'__, it is important to get the right mental model of it.
+
+To get the right mental model of a __'knowledge product'__, you get your hands dirty on it with conscious effort or get yourself educated on that thing.
+
+To get educated on a particular thing, you get it taught by someone or learn it from other recorded ways such as Videos, Document, etc.
+
+Out of the ways mentioned above, the cost-effective way to get the right mental-state is recorded way. And out of those, documents are the easiest to create, store and share effectively. With the above statements I conclude **'Written documents are an effective way to let you reuse the product created by a knowledge work.'** (You know where I’m heading to ;) )
+
+Though started with a general introduction, In this article I am limiting myself on the expectation of documentation for business projects.
+
+## Necessity:
+
+Having concluded that the technical work , which is knowledge work is a part of solving the business problem, and also arriving at the 'Documents helps to easily reuse your knowledge work', we need documents for yourself as well as for others to continue, extend, decide wheter to remove or keep things of your 'knowledge work'.
+
+
+## Various Documents:
+
+With my little experience, I realized the below documents are required for the purpose mentioned along with it.
+
+- **Requirement/Use Cases:** Helps you get the mental model of product owner/ and helps you realize the necessity of things to be done.
+- **Setup:** Helps you or anyone recreate the dev and start working on the project. A typical `README.adoc`.
+- **Design:** Helps you get the mental model of the developers who designed and developed the application.
+- **Test cases:** Helps you get the mental model of QA engineer, that lets you think of the ways you ensures the system is good.  
+- **FAQs:** Helps to answer the miscellaneous questions that anyone in the team would encounter. This would help answer the questions of a curious engineer who has gone through the other documents. This can also contains answers for 'Troubleshooting', 'Rationale for the design' or any miscellaneous question for that matter.
+
+## Structure of a document:
+
+- It is better to have one entry point for all the prespecives to know everything that you have to know about the whole project.
+- And independent documents for the perspectives mentioned above, so that you get the mental model on all the above mentioned prespectives.
+- Reusing the documents by linking the documents whenever possible(Same way you reuse your method definitions, so that you have to change a particular content only once.)
+- Try adding sufficient diagrams whenever possible, as it helps in creating a quick mental model.
+
+
+## Measures:
+
+- Anyone should be able to reproduce your local dev setup, just with the help of the document(Of course, the sensitive informations such as credentials will have to be taken care separately.)
+- Anyone should be able to get onboarded and get started without any human interactions.
+- Anyone should be able to use your API/method/class without your help.
+- Anyone should be able to make changes to your code confidently.
+- No one in the team ever solves the same problem twice.
+
+*'Anyone' refers to person who makes sincere efforts to go through the document and tries understanding it.
+
+It might seem ambitious for few, but it must be the part of our 'work'.
+
+## Excuses:
+
+**Q:** Developers don't like documentation?
+
+**A:** I don't find any rationale behind it. If you think that is the status quo, questio it.
+
+{empty} +
+**Q:** Documentation is a waste of time?
+
+**A:** Most of the times these are statements of laziness. Take sincere efforts to find it yourself on the time spent on something with and without documentation.
+
+
+## Summary:
+- On a general note, in my belief, leap in human race's growth is because, unlike other animals we can learn from people even if they are not with us. And the learning comes from the recorded means. All this happens, because people took time to document those in some means.
+
+- Above all, believe that it is completely possible to get a good insight, just by going through the document, and without having to break your head with the code and trial and errors.
+- As stated by one of my mentor(Srikumar K), _**'When you are writing a document imagine you are programming a human mind'**_, so try your best to have that program executed well on recreating the right mental state to whoever is reading it.
