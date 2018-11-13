@@ -64,7 +64,7 @@ It might seem ambitious for few, but it must be the part of our 'work'.
 
 **Q:** Developers don't like documentation?
 
-**A:** I don't find any rationale behind it. If you think that is the status quo, questio it.
+**A:** I don't find any rationale behind it. If you think that is the status quo, question it.
 
 {empty} +
 **Q:** Documentation is a waste of time?
@@ -73,7 +73,8 @@ It might seem ambitious for few, but it must be the part of our 'work'.
 
 
 ## Summary:
-- On a general note, in my belief, leap in human race's growth is because, unlike other animals we can learn from people even if they are not with us. And the learning comes from the recorded means. All this happens, because people took time to document those in some means.
+- On a general note, in my belief, unlike other animals, leap in human's growth is because, we can learn from people even if they are not with us. And the learning comes from the recorded means. All this happens, because people took time to document those in some means.
 
 - Above all, believe that it is completely possible to get a good insight, just by going through the document, and without having to break your head with the code and trial and errors.
+
 - As stated by one of my mentor(Srikumar K), _**'When you are writing a document imagine you are programming a human mind'**_, so try your best to have that program executed well on recreating the right mental state to whoever is reading it.
