@@ -39,13 +39,17 @@ With my little experience, I realized the below documents are required for the p
 - **Design:** Helps you get the mental model of the developers who designed and developed the application.
 - **Test cases:** Helps you get the mental model of QA engineer, that lets you think of the ways you ensures the system is good.  
 - **FAQs:** Helps to answer the miscellaneous questions that anyone in the team would encounter. This would help answer the questions of a curious engineer who has gone through the other documents. This can also contains answers for 'Troubleshooting', 'Rationale for the design' or any miscellaneous question for that matter.
+- **Task Trackers:** These are the issues/cards that we create for the each tasks that every project member work on. This helps anyone to get an insight of the actions done on a particular task. 
+- **Commit messages:** Having said that the 'knowledge work' that we do is 'code' and we track our code using version controls, the messages for the each commit is expected to give an insight of what that specific step is for. This helps anyone to know why a specific step is taken, also it can help someone to understand how things evolved. 
 
-## Structure of a document:
+## Structure of a documents:
 
 - It is better to have one entry point for all the prespecives to know everything that you have to know about the whole project.
 - And independent documents for the perspectives mentioned above, so that you get the mental model on all the above mentioned prespectives.
 - Reusing the documents by linking the documents whenever possible(Same way you reuse your method definitions, so that you have to change a particular content only once.)
 - Try adding sufficient diagrams whenever possible, as it helps in creating a quick mental model.
+- Since the 'commits' that we do are for a some specific tasks, commits linked to the 'Task Trackers' will be very helpful to get the better picture.
+
 
 
 ## Measures:
@@ -55,6 +59,9 @@ With my little experience, I realized the below documents are required for the p
 - Anyone should be able to use your API/method/class without your help.
 - Anyone should be able to make changes to your code confidently.
 - No one in the team ever solves the same problem twice.
+- When reviewing one of your task, the reviewer need not come to you to get the history, rationale for the design, testing that you have done to ensure the end goal.
+- When a QA goes through your task, they don't have to come to you to know about the expected functionality or to get the suggestions on testing.
+- When anyone going through a specific commit, they should be able to get an overview of what happened in the particular commit and should be able to trace back to 'why', 'how' and 'what' is done.
 
 *'Anyone' refers to person who makes sincere efforts to go through the document and tries understanding it.
 
