@@ -61,7 +61,7 @@ With my little experience, I realized the below documents are required for the p
 - No one in the team ever solves the same problem twice.
 - When reviewing one of your task, the reviewer need not come to you to get the history, rationale for the design, testing that you have done to ensure the end goal.
 - When a QA goes through your task, they don't have to come to you to know about the expected functionality or to get the suggestions on testing.
-- When anyone going through a specific commit, they should be able to get an overview of what happened in the particular commit and should be able to trace back to 'why', 'how' and 'what' is done.
+- Anyone going through a specific commit should be able to get an overview of what happened in the particular commit and should be able to trace back to 'why', 'how' and 'what' is done.
 
 *'Anyone' refers to person who makes sincere efforts to go through the document and tries understanding it.
 
