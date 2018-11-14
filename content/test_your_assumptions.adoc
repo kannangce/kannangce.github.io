@@ -69,10 +69,10 @@ Using the above implementation we tested SQLite and the custom in-memory datasto
 
 [cols=7,options="header"]
 |============================================================
-|*Thread Count*
+|*Object Count*
 3+| *In memory*
 3+| *SQLite*
-||*Read from Map for max item*| *Total Time* | *Total Memory* | *Read from Map for max item* | *Total Time* | *Total Memory*
+||*Max(read time)*| *Total Time* | *Total JVM Memory* | *Max(read time)* | *Total Time* | *Total JVM Memory*
 |1000|0ms|294ms|26 MB|21ms|8180ms|110 MB
 |10000|99ms|1921ms|22 MB|22ms|541520ms|714 MB
 |100000|98.5 ms|1491 ms|116 MB|3895 ms|2286362ms|35 MB
@@ -80,7 +80,7 @@ Using the above implementation we tested SQLite and the custom in-memory datasto
 
 === Notes:
 
-* Max(read time) is the maximum time taken to read an object, in the process of reading all the objects, one-by-one from the datastore.
+* `read time` is the time taken to read one object. `Max(read time)` is the maximum time taken to read an object, in the process of reading all the objects, one-by-one from the datastore.
 * The JVM memory is measured using `Runtime.getRuntime().totalMemory()`.
 
 == Inferences:

@@ -223,7 +223,7 @@ can afford some data loss). During initialization the content from the file will
 </colgroup>
 <thead>
 <tr>
-<th class="tableblock halign-left valign-top"><strong>Thread Count</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Object Count</strong></th>
 <th class="tableblock halign-left valign-top" colspan="3"><strong>In memory</strong></th>
 <th class="tableblock halign-left valign-top" colspan="3"><strong>SQLite</strong></th>
 </tr>
@@ -231,12 +231,12 @@ can afford some data loss). During initialization the content from the file will
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Read from Map for max item</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max(read time)</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total Time</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total Memory</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Read from Map for max item</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total JVM Memory</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max(read time)</strong></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total Time</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total Memory</strong></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total JVM Memory</strong></p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
@@ -273,7 +273,7 @@ can afford some data loss). During initialization the content from the file will
 <div class="ulist">
 <ul>
 <li>
-<p>Max(read time) is the maximum time taken to read an object, in the process of reading all the objects, one-by-one from the datastore.</p>
+<p><code>read time</code> is the time taken to read one object. <code>Max(read time)</code> is the maximum time taken to read an object, in the process of reading all the objects, one-by-one from the datastore.</p>
 </li>
 <li>
 <p>The JVM memory is measured using <code>Runtime.getRuntime().totalMemory()</code>.</p>
