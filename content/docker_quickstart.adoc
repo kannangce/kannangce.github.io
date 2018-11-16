@@ -52,7 +52,7 @@ If default `image` is not enough, you can write a *Dockerfile* that contains add
 
 *Dockerfile* is a simple text file containing the docker commands that do the additional customization required for your *container*(via *image*). You *build* a *Dockerfile* that creates a *image* in your local, with the customization and you can run the containers from the *image* and use it. It is mandatory that the file name has to be *Dockerfile*.
 
-Apart from the above basics, you can facilitate multi-container app using *Docker Compose* , you can *map ports* from _container_ to _host_.
+Apart from the above basics, you can facilitate multi-container app using *Docker Compose* , you can *map ports* from _container_ to _host_, and you can do lot more with Docker.
 
 == Example – Having Tomcat server up and running:
 
