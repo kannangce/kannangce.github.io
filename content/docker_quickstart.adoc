@@ -72,8 +72,6 @@ docker run -d -p 8888:8080 --name tomcat_container tomcat
 ```
 Now when you hit _http://localhost:8888_ , you will see tomcat available there.
 
-- On a sample basic *Dockerfile*, you can refer the usage of *Dockerfile* here. A *gotcha* with writing a sample *Dockerfile* is it has to execute a command that runs forever. Once that command stops the container stops.
-
 - Just similar to you `ssh` to a remote machine, on a *running container* you can enter and browse through it using the below command. With this you ask docker to _execute_ (`exec`) bash in interactive terminal(`-it`) for the container with given name.
 
 ```
