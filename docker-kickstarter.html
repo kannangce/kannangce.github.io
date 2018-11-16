@@ -173,19 +173,28 @@
 <p>A <strong>host</strong> is a machine on which you install the docker. This helps you to create as many <strong>Docker containers</strong> as you want.</p>
 </div>
 <div class="paragraph">
-<p>A <strong>Docker container</strong> is a running copy of a <strong>Docker Image</strong>. You can only directly use a <strong>Docker container</strong>.  You can create many independent containers from the same image. You create a <strong>container</strong> by running the <strong>Docker image</strong>.</p>
+<p><strong>Docker image</strong> is the template of the environment that you wish to have. It can be any plain linux distro, or a customized one with additional applications such as Oracle DB or Tomcat. There are lot of <strong>images</strong> already available in the <a href="https://hub.docker.com/explore/">Docker hub</a>(default registry).</p>
 </div>
 <div class="paragraph">
-<p><strong>Docker image</strong> is the template of the environment that you wish to have. It can be any plain linux distro, or a customized one with additional applications such as Oracle DB or Tomcat. There are lot of <strong>images</strong> already available in the <a href="https://hub.docker.com/explore/">Docker hub</a>.</p>
+<p><strong>Docker registry</strong> is the hub containing <strong>Docker images</strong> which can make use of.</p>
 </div>
 <div class="paragraph">
-<p><strong>Docker hub</strong> is the hub containing tons of <strong>Docker images</strong>, that we commonly use. You can just <strong>pull</strong> any of the <strong>images</strong> and <strong>run</strong> it as a <strong>container</strong> and use it. Or you can write a <strong>Dockerfile</strong> that contains additional customization required for you.</p>
+<p>You <code>pull</code> an <code>image</code> from <strong>Docker registery</strong>.</p>
+</div>
+<div class="paragraph">
+<p>You <code>run</code> a <strong>Docker Image</strong> to create a <strong>Docker container</strong>. You can only directly use a <strong>Docker container</strong> as if your are using a machine.  You can create many independent containers from the same image.</p>
+</div>
+<div class="paragraph">
+<p>Once a container is created you can <code>start</code> or <code>stop</code> it, the same way you switch on/off a machine.</p>
+</div>
+<div class="paragraph">
+<p>If default <code>image</code> is not enough, you can write a <strong>Dockerfile</strong> that contains additional customization required for you, on top of existing images.</p>
 </div>
 <div class="paragraph">
 <p><strong>Dockerfile</strong> is a simple text file containing the docker commands that do the additional customization required for your <strong>container</strong>(via <strong>image</strong>). You <strong>build</strong> a <strong>Dockerfile</strong> that creates a <strong>image</strong> in your local, with the customization and you can run the containers from the <strong>image</strong> and use it. It is mandatory that the file name has to be <strong>Dockerfile</strong>.</p>
 </div>
 <div class="paragraph">
-<p>Apart from the above basics, you facilitate multi-container app using <strong>Docker Compose</strong> , you can <strong>map ports</strong> from <em>container</em> to <em>host</em>.</p>
+<p>Apart from the above basics, you can facilitate multi-container app using <strong>Docker Compose</strong> , you can <strong>map ports</strong> from <em>container</em> to <em>host</em>.</p>
 </div>
 </div>
 </div>

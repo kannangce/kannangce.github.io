@@ -37,15 +37,22 @@ We install https://www.docker.com/get-docker[Docker] in our host.
 
 A *host* is a machine on which you install the docker. This helps you to create as many *Docker containers* as you want.
 
-A *Docker container* is a running copy of a *Docker Image*. You can only directly use a *Docker container*.  You can create many independent containers from the same image. You create a *container* by running the *Docker image*.
+*Docker image* is the template of the environment that you wish to have. It can be any plain linux distro, or a customized one with additional applications such as Oracle DB or Tomcat. There are lot of *images* already available in the https://hub.docker.com/explore/[Docker hub](default registry).
 
-*Docker image* is the template of the environment that you wish to have. It can be any plain linux distro, or a customized one with additional applications such as Oracle DB or Tomcat. There are lot of *images* already available in the https://hub.docker.com/explore/[Docker hub].
+*Docker registry* is the hub containing *Docker images* which can make use of.
 
-*Docker hub* is the hub containing tons of *Docker images*, that we commonly use. You can just *pull* any of the *images* and *run* it as a *container* and use it. Or you can write a *Dockerfile* that contains additional customization required for you.
+You `pull` an `image` from *Docker registery*.
+
+
+You `run` a *Docker Image* to create a *Docker container*. You can only directly use a *Docker container* as if your are using a machine.  You can create many independent containers from the same image.
+
+Once a container is created you can `start` or `stop` it, the same way you switch on/off a machine.
+
+If default `image` is not enough, you can write a *Dockerfile* that contains additional customization required for you, on top of existing images.
 
 *Dockerfile* is a simple text file containing the docker commands that do the additional customization required for your *container*(via *image*). You *build* a *Dockerfile* that creates a *image* in your local, with the customization and you can run the containers from the *image* and use it. It is mandatory that the file name has to be *Dockerfile*.
 
-Apart from the above basics, you facilitate multi-container app using *Docker Compose* , you can *map ports* from _container_ to _host_.
+Apart from the above basics, you can facilitate multi-container app using *Docker Compose* , you can *map ports* from _container_ to _host_.
 
 == Example – Having Tomcat server up and running:
 
