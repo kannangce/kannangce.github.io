@@ -151,13 +151,13 @@
 <p>Since Docker is available for all the OS (have to mention that Windows docker is not so good), easy to have the environments up and running, so that you can focus on your task, rather than spending time in environment setup.</p>
 </li>
 <li>
-<p>Can even be used in production along with additional support such as <a href="https://www.openshift.com/">Openshift</a>. Preferable for <a href="https://martinfowler.com/articles/microservices.html">Microservice architecture</a>.</p>
+<p>Can even be used in production along with additional support such as <a href="https://www.openshift.com/">Openshift</a>, preferable for <a href="https://martinfowler.com/articles/microservices.html">Microservice architecture</a>.</p>
 </li>
 <li>
 <p>Sandboxed environments. Since docker provides a level of abstraction, you have multiple components in a single server, running side-by-side, without changing the conflicting parameters such as ports.</p>
 </li>
 <li>
-<p>Very cheap. Hence you can create as many as you want and throw it away, without polluting your local machine. In my Mac, I have a bunch of Linux flavored docker containers (we will see what it means) for various applications.</p>
+<p>Relatively very cheap in terms of memory and CPU when compared to other VM technologies. Hence you can create as many as you want and throw it away, without polluting your local machine. In my Mac, I have a bunch of Linux flavored docker containers (we will see what it means) for various applications without affecting the my usability.</p>
 </li>
 </ul>
 </div>
@@ -176,7 +176,7 @@
 <p><strong>Docker image</strong> is the template of the environment that you wish to have. It can be any plain linux distro, or a customized one with additional applications such as Oracle DB or Tomcat. There are lot of <strong>images</strong> already available in the <a href="https://hub.docker.com/explore/">Docker hub</a>(default registry).</p>
 </div>
 <div class="paragraph">
-<p><strong>Docker registry</strong> is the hub containing <strong>Docker images</strong> which can make use of.</p>
+<p><strong>Docker registry</strong> is the hub containing <strong>Docker images</strong> which we can make use of.</p>
 </div>
 <div class="paragraph">
 <p>You <code>pull</code> an <code>image</code> from <strong>Docker registery</strong>.</p>
