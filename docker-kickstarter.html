@@ -126,7 +126,7 @@
 <p>If you are already a bit familiar about Docker, but need a kickstart, this article is primarily for you.</p>
 </div>
 <div class="paragraph">
-<p>If you are already aware of the concept of Virtual Machines, Docker is a similar technology, but efficient and light weight because of its nature. This will help you.</p>
+<p>If you are already aware of the concept of Virtual Machines, Docker is a similar technology, but efficient and light weight because of its design.</p>
 </div>
 <div class="paragraph">
 <p>If you are never heard about such terms, Docker helps you to run (virtual) machines with different OS inside you *nix/Mac/Windows machines. Imagine if you are able to run a Centos, Ubuntu, and Fedora inside your machine as if you are running it on different machines. The major differences are you will be able to access it using only terminals. Read through <a href="https://en.wikipedia.org/wiki/Operating-system-level_virtualization">OS Virtualization</a> and <a href="https://en.wikipedia.org/wiki/Docker_(software)">Docker</a>, before reading further.</p>
@@ -213,7 +213,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>docker images</code></pre>
+<pre class="highlight"><code>docker image ls</code></pre>
 </div>
 </div>
 <div class="ulist">
@@ -225,7 +225,7 @@
 </div>
 <div class="listingblock">
 <div class="content">
-<pre class="highlight"><code>docker run -d -p 8888:8080 tomcat_container</code></pre>
+<pre class="highlight"><code>docker run -d -p 8888:8080 --name tomcat_container tomcat</code></pre>
 </div>
 </div>
 <div class="paragraph">
@@ -234,10 +234,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>On a sample basic <strong>Dockerfile</strong>, you can refer the usage of <strong>Dockerfile</strong> here. A <strong>gotcha</strong> with writing a sample <strong>Dockerfile</strong> is it has to execute a command that runs forever. Once that command stops the container stops. In the <em>draw.io</em> docker <strong>catalina.sh</strong> is the ever running that keeps the container running.</p>
+<p>On a sample basic <strong>Dockerfile</strong>, you can refer the usage of <strong>Dockerfile</strong> here. A <strong>gotcha</strong> with writing a sample <strong>Dockerfile</strong> is it has to execute a command that runs forever. Once that command stops the container stops.</p>
 </li>
 <li>
-<p>On a <strong>running container</strong> you can enter, just as you <strong>ssh</strong> to a remote machine. And browse through it using the below command. With this you ask docker to <em>execute</em> (<code>exec</code>) bash in interactive terminal(<code>-it</code>) for the container with given name.</p>
+<p>Just similar to you <code>ssh</code> to a remote machine, on a <strong>running container</strong> you can enter and browse through it using the below command. With this you ask docker to <em>execute</em> (<code>exec</code>) bash in interactive terminal(<code>-it</code>) for the container with given name.</p>
 </li>
 </ul>
 </div>

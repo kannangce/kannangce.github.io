@@ -12,7 +12,7 @@ Before getting started,
 
 If you are already a bit familiar about Docker, but need a kickstart, this article is primarily for you.
 
-If you are already aware of the concept of Virtual Machines, Docker is a similar technology, but efficient and light weight because of its nature. This will help you.
+If you are already aware of the concept of Virtual Machines, Docker is a similar technology, but efficient and light weight because of its design.
 
 If you are never heard about such terms, Docker helps you to run (virtual) machines with different OS inside you *nix/Mac/Windows machines. Imagine if you are able to run a Centos, Ubuntu, and Fedora inside your machine as if you are running it on different machines. The major differences are you will be able to access it using only terminals. Read through https://en.wikipedia.org/wiki/Operating-system-level_virtualization[OS Virtualization] and https://en.wikipedia.org/wiki/Docker_(software)[Docker], before reading further.
 
@@ -56,18 +56,18 @@ docker pull tomcat
 
 - Once the above command is completed you will have a tomcat image in your machine, which you can check with the command,
 ```
-docker images
+docker image ls
 ```
 
 - Now that you have an *image* of a *tomcat docker* you can *run* and use it. The below command runs image in detached mode (*-d*), so that your terminal is not interrupted, with the *8888* port of your local maps to the *8080* port of the tomcat image.
 ```
-docker run -d -p 8888:8080 tomcat_container
+docker run -d -p 8888:8080 --name tomcat_container tomcat
 ```
 Now when you hit _http://localhost:8888_ , you will see tomcat available there.
 
-- On a sample basic *Dockerfile*, you can refer the usage of *Dockerfile* here. A *gotcha* with writing a sample *Dockerfile* is it has to execute a command that runs forever. Once that command stops the container stops. In the _draw.io_ docker *catalina.sh* is the ever running that keeps the container running.
+- On a sample basic *Dockerfile*, you can refer the usage of *Dockerfile* here. A *gotcha* with writing a sample *Dockerfile* is it has to execute a command that runs forever. Once that command stops the container stops.
 
-- On a *running container* you can enter, just as you *ssh* to a remote machine. And browse through it using the below command. With this you ask docker to _execute_ (`exec`) bash in interactive terminal(`-it`) for the container with given name.
+- Just similar to you `ssh` to a remote machine, on a *running container* you can enter and browse through it using the below command. With this you ask docker to _execute_ (`exec`) bash in interactive terminal(`-it`) for the container with given name.
 
 ```
 docker exec -it tomcat_container bash
