@@ -1,7 +1,7 @@
 = Try testing your assumptions!
 
 :date: 2018-11-10 01:13
-:category: Mathematics
+:category: QA
 :tags: Testing Assumptions, QA, Assumptions
 
 {empty} +
