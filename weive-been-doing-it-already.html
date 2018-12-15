@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <!-- Site Meta Data -->
-  <title>2^n = (1+2+4+…2^(n-1))+1</title>
+  <title>We(I)'ve been doing it already!</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Kannan Ramamoorthy">
@@ -27,13 +27,13 @@
   <meta name="twitter:image" content="">
 
 <meta name="twitter:creator" content="">
-<meta name="twitter:url" content="./2n-1242n-11.html">
-<meta name="twitter:title" content="My Tech Buddy ~ 2^n = (1+2+4+…2^(n-1))+1">
-<meta name="twitter:description" content="This is one thing that I noticed. Then tried proving it, the below is the proof. There is a proof that we can get through binary. Take the RHS and express it in binary, The binary of 1 is 1 2 is 10 4 is 100 . . In the same way …">
+<meta name="twitter:url" content="./weive-been-doing-it-already.html">
+<meta name="twitter:title" content="My Tech Buddy ~ We(I)'ve been doing it already!">
+<meta name="twitter:description" content="Sometimes back I was working on an implementation, for time being, without having thought through we made a design choice. Sometime later, we got a chance to assess through the possible design choices for the problem. After nearly a day of discussion involving 4 people, we concluded that the existing …">
 
 <!-- Facebook Meta Data -->
-<meta property="og:title" content="My Tech Buddy ~ 2^n = (1+2+4+…2^(n-1))+1" />
-<meta property="og:description" content="This is one thing that I noticed. Then tried proving it, the below is the proof. There is a proof that we can get through binary. Take the RHS and express it in binary, The binary of 1 is 1 2 is 10 4 is 100 . . In the same way …" />
+<meta property="og:title" content="My Tech Buddy ~ We(I)'ve been doing it already!" />
+<meta property="og:description" content="Sometimes back I was working on an implementation, for time being, without having thought through we made a design choice. Sometime later, we got a chance to assess through the possible design choices for the problem. After nearly a day of discussion involving 4 people, we concluded that the existing …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -97,16 +97,16 @@
     
     <maincontent>
 <h2>
-    <a href="./2n-1242n-11.html" rel="bookmark" title="Permalink to 2^n = (1+2+4+…2^(n-1))+1">2^n = (1+2+4+…2^(n-1))+1</a>
+    <a href="./weive-been-doing-it-already.html" rel="bookmark" title="Permalink to We(I)'ve been doing it already!">We(I)'ve been doing it already!</a>
 </h2>
 
 <div>
-    <b>By: </b><a href="./author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Tue 29 October 2013<br />
-    <b>In: </b><a href="./category/mathematics.html" rel="bookmark" title="Permalink to Mathematics">Mathematics</a><br />
+    <b>By: </b><a href="./author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Sat 15 December 2018<br />
+    <b>In: </b><a href="./category/misc-thoughts.html" rel="bookmark" title="Permalink to Misc Thoughts">Misc Thoughts</a><br />
     <em><b>Tags: </b>
-                <span><a href="./tag/binary.html">#Binary </a></span>
-                <span><a href="./tag/mathematics.html">#Mathematics </a></span>
-                <span><a href="./tag/numbers.html">#Numbers </a></span>
+                <span><a href="./tag/misc-thoughts.html">#Misc Thoughts </a></span>
+                <span><a href="./tag/assuring-choice.html">#Assuring choice </a></span>
+                <span><a href="./tag/introspection.html">#Introspection </a></span>
     </em>
     <hr>
 </div>
@@ -114,42 +114,16 @@
 <div>
     <mainarticle>
     <div class="paragraph">
-<p>This is one thing that I noticed. Then tried proving it, the below is the proof.</p>
+<p>Sometimes back I was working on an implementation, for time being, without having thought through we made a design choice. Sometime later, we got a chance to assess through the possible design choices for the problem. After nearly a day of discussion involving 4 people, we concluded that the existing design was the best of available choices.</p>
 </div>
 <div class="paragraph">
-<p>There is a proof that we can get through binary.</p>
+<p>There were a couple of comments in the team of having the whole day <em>“wasted”</em> and they told that <em>“we’ve been doing it already”</em>.</p>
 </div>
 <div class="paragraph">
-<p>Take the RHS and express it in binary,
-The binary of</p>
+<p>Even though <em>“what we were doing”</em> after that day was same, the understanding with which we were doing it was different. After assessing the pros and cons of various design, we were confident that the design that we had was the best possible choice. For a knowledge-work, it is not just about the work, the understanding with which we are doing it also matters.</p>
 </div>
 <div class="paragraph">
-<p><code>1</code> is <code>1</code>
-<code>2</code> is <code>10</code>
-<code>4</code> is <code>100</code>
-.
-.</p>
-</div>
-<div class="paragraph">
-<p>In the same way, <code>(2^n)-1</code> is <code>100..(n-1)0’s</code></p>
-</div>
-<div class="paragraph">
-<p>So when I express the sum <code>1+2+4+…2^(n-1)</code> as binary,
-I’ll get <code>1111&#8230;&#8203;</code> (n-1 1’s)</p>
-</div>
-<div class="paragraph">
-<p>Now consider the RHS,</p>
-</div>
-<div class="paragraph">
-<p><code>111&#8230;&#8203;</code>(n-1 1’s) + 1</p>
-</div>
-<div class="paragraph">
-<p>So adding 1 at the last will keeps giving a 1 carried to its preceding position.
-And at last you’ll get <code>100&#8230;&#8203;.</code>(n 0’s)</p>
-</div>
-<div class="paragraph">
-<p>Which when expressed in decimal is <code>2^n</code>
-That’s it..:-)</p>
+<p>To summarize, sometimes we take efforts on non-trivial things to make things better and if ended up just with the assurance that the existing thing is better, it doesn’t mean that we effort was wasted. The assurance that we have after effort matters. Sometimes “(I/We)’ve been doing it already!” doesn’t make much sense.</p>
 </div>
 
     </mainarticle>
@@ -159,10 +133,10 @@ That’s it..:-)</p>
 <div>
         <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
             <p style="margin-top: 2%;">
-                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./2n-1242n-11.html&text=2^n = (1+2+4+…2^(n-1))+1&via="><img class="social-icons-a" src="./theme/images/icons/twitter.png"></a></span>
-                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./2n-1242n-11.html&t=2^n = (1+2+4+…2^(n-1))+1"><img class="social-icons-a" src="./theme/images/icons/facebook.png"></a></span>
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./weive-been-doing-it-already.html&text=We(I)'ve been doing it already!&via="><img class="social-icons-a" src="./theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./weive-been-doing-it-already.html&t=We(I)'ve been doing it already!"><img class="social-icons-a" src="./theme/images/icons/facebook.png"></a></span>
 
-                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./2n-1242n-11.html&title=2^n = (1+2+4+…2^(n-1))+1" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="./theme/images/icons/linkedin.png"></a>
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./weive-been-doing-it-already.html&title=We(I)'ve been doing it already!" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="./theme/images/icons/linkedin.png"></a>
             </p>
 </div>
 <hr>
