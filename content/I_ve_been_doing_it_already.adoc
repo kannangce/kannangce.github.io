@@ -10,4 +10,4 @@ There were a couple of comments in the team of having the whole day _“wasted�
 
 Even though _“what we were doing”_ after that day was same, the understanding with which we were doing it was different. After assessing the pros and cons of various design, we were confident that the design that we had was the best possible choice. For a knowledge-work, it is not just about the work, the understanding with which we are doing it also matters.
 
-To summarize, sometimes we take efforts on non-trivial things to make things better and if ended up just with the assurance that the existing thing is better, it doesn’t mean that we effort was wasted. The assurance that we have after effort matters. Sometimes “(I/We)’ve been doing it already!” doesn’t make much sense.
+To summarize, sometimes we take efforts on non-trivial things to make things better and if ended up just with the assurance that the existing thing is better, it doesn’t mean that we effort was wasted. The assurance that we have after effort matters. Sometimes _“(I/We)’ve been doing it already!”_ doesn’t make much sense.
