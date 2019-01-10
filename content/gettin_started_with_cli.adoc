@@ -46,7 +46,7 @@ I believe these are fair enough use-cases that let you start with command-line. 
 - In terminal execute the command `pbpaste|base64|pbcopy`.
 - Paste the base64 encoded string to the intended location.
 
-> Note: `pbpaste` pastes the content from the clipboard, `pbcopy` copies the content to the clipboard.
+> Note: `pbpaste` pastes the content from the clipboard, `pbcopy` copies the content to the clipboard. If you are a non-mac user, try finding the equivalent of it.
 
 == Benchmarking:
 
