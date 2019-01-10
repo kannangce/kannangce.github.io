@@ -8,13 +8,13 @@
 
 In my opinion, using terminal makes you more productive and lets you get your mundane tasks done quickly. For ex, I spend no more than few seconds for the tasks like,
 
- - Encoding/Decoding a string to and from base64.
- - Formatting/Validating a JSON.
- - Formatting/Validating an XML.
- - Searching files containing a particular string.
- - Find and replace a particular pattern.
- - Sort/de-duplicate a text content.
- - And similar tasks that I do regularly.
+- Encoding/Decoding a string to and from base64.
+- Formatting/Validating a JSON.
+- Formatting/Validating an XML.
+- Searching files containing a particular string.
+- Find and replace a particular pattern.
+- Sort/de-duplicate a text content.
+- And similar tasks that I do regularly.
 
 But it was a bit difficult for me to convey these things to the people around me and pass on the comfort that I have so that they will also get more productive on similar tasks.
 
@@ -23,11 +23,11 @@ This is an effort to try to convience someone to start using CLI.
 == Step-by-step:
 Typically, the general alternatives for the tasks mentioned above are some websites that offer encoding, decoding, formatting, and validation.  The steps to achieve what they intended to do is,
 
- - Copy the text that they need to encode/decode/validate/format.
- - Paste it to the site that performs expected action.
- - Click on encode/decode/validate/format.
- - Copy the output.
- - Paste it back to the intended place.
+- Copy the text that they need to encode/decode/validate/format.
+- Paste it to the site that performs expected action.
+- Click on encode/decode/validate/format.
+- Copy the output.
+- Paste it back to the intended place.
 
 == Example:
 I believe these are fair enough use-cases that let you start with command-line. I am trying to compare the step-by-step breakdown of CLI and non-CLI way of achieving a base64 encoding.
@@ -42,9 +42,9 @@ I believe these are fair enough use-cases that let you start with command-line. 
 
 ### While doing the same thing with CLI,
 
- - Copy the string that needs to be encoded.
- - In terminal execute the command `pbpaste|base64|pbcopy`.
- - Paste the base64 encoded string to the intended location.
+- Copy the string that needs to be encoded.
+- In terminal execute the command `pbpaste|base64|pbcopy`.
+- Paste the base64 encoded string to the intended location.
 
 > Note: `pbpaste` pastes the content from the clipboard, `pbcopy` copies the content to the clipboard.
 
