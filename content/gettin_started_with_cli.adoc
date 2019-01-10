@@ -7,6 +7,7 @@
 == Intro:
 
 In my opinion, using terminal makes you more productive and lets you get your mundane tasks done quickly. For ex, I spend no more than few seconds for the tasks like,
+
  - Encoding/Decoding a string to and from base64.
  - Formatting/Validating a JSON.
  - Formatting/Validating an XML.
@@ -20,6 +21,7 @@ This is an effor to try to convience someone to start using CLI.
 
 == Step-by-step:
 Typically, the general alternatives for the tasks mentioned above are some websites that offer encoding, decoding, formatting, and validation.  The steps to achieve what they intended to do is,
+
  - Copy the text that they need to encode/decode/validate/format.
  - Paste it to the site that performs expected action.
  - Click on encode/decode/validate/format.
@@ -29,7 +31,8 @@ Typically, the general alternatives for the tasks mentioned above are some websi
 == Example:
 I believe these are fair enough use-cases that let you start with command-line. I am trying to compare the step-by-step breakdown of CLI and non-CLI way of achieving a base64 encoding.
 
-### Without using CLI, 
+### Without using CLI,
+
 - Copy the string that needs to be encoded.
 - Open some website like www.base64encode.org and paste your string there.
 - Click on encode.
@@ -37,11 +40,12 @@ I believe these are fair enough use-cases that let you start with command-line. 
 - Paste it in your intended location.
 
 ### While doing the same thing with CLI,
+
  - Copy the string that needs to be encoded.
  - In terminal execute the command `pbpaste|base64|pbcopy`.
  - Paste the base64 encoded string to the intended location.
 
->Note: `pbpaste` pastes the content from the clipboard, `pbcopy` copies the content to the clipboard.
+> Note: `pbpaste` pastes the content from the clipboard, `pbcopy` copies the content to the clipboard.
 
 == Benchmarking:
 
