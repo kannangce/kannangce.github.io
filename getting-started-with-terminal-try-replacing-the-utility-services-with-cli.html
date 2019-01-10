@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Getting started with terminal - Try replacing the Utility Services with CLI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kannan Ramamoorthy">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="My Tech Buddy">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="./theme/css/milligram.css" type="text/css" />
+  <link rel="stylesheet" href="./theme/css/custom.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="./getting-started-with-terminal-try-replacing-the-utility-services-with-cli.html">
+<meta name="twitter:title" content="My Tech Buddy ~ Getting started with terminal - Try replacing the Utility Services with CLI">
+<meta name="twitter:description" content="Intro: In my opinion, using terminal makes you more productive and lets you get your mundane tasks done quickly. For ex, I spend no more than few seconds for the tasks like, Encoding/Decoding a string to and from base64. Formatting/Validating a JSON. Formatting/Validating an XML. Searching files …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="My Tech Buddy ~ Getting started with terminal - Try replacing the Utility Services with CLI" />
+<meta property="og:description" content="Intro: In my opinion, using terminal makes you more productive and lets you get your mundane tasks done quickly. For ex, I spend no more than few seconds for the tasks like, Encoding/Decoding a string to and from base64. Formatting/Validating a JSON. Formatting/Validating an XML. Searching files …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <div class="container">
+
+    <!-- Navbar -->
+      <div class="navbar">
+        <ul>
+            <div>
+                <li>
+                    <a href="."><h3>My Tech Buddy</h3></a>
+                </li>
+                <li>
+                </li>
+            </div>
+        </ul>
+      </div>
+
+  <!-- Sidebar -->
+    <sidebar>
+        <ul class="static-item">
+
+        </ul>        
+
+        <ul>
+                <div class="cat-border">
+                <li style="color: #F2F1EF; background-color: #6C7A89;">Categories</li>
+                    <li><a href="./category/command-line.html">Command-Line</a></li>
+                    <li><a href="./category/computer-science-algorithm.html">Computer Science, Algorithm</a></li>
+                    <li><a href="./category/diy.html">DIY</a></li>
+                    <li><a href="./category/docker.html">Docker</a></li>
+                    <li><a href="./category/documentation.html">Documentation</a></li>
+                    <li><a href="./category/introspection.html">Introspection</a></li>
+                    <li><a href="./category/java-java-debugging.html">Java, Java Debugging</a></li>
+                    <li><a href="./category/java-spring.html">Java Spring</a></li>
+                    <li><a href="./category/mathematics.html">Mathematics</a></li>
+                    <li><a href="./category/misc-thoughts.html">Misc Thoughts</a></li>
+                    <li><a href="./category/qa.html">QA</a></li>
+                    <li><a href="./category/software.html">Software</a></li>
+                </div>
+        </ul>
+
+   
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
+    </sidebar>
+    
+    <maincontent>
+<h2>
+    <a href="./getting-started-with-terminal-try-replacing-the-utility-services-with-cli.html" rel="bookmark" title="Permalink to Getting started with terminal - Try replacing the Utility Services with CLI">Getting started with terminal - Try replacing the Utility Services with CLI</a>
+</h2>
+
+<div>
+    <b>By: </b><a href="./author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Thu 10 January 2019<br />
+    <b>In: </b><a href="./category/command-line.html" rel="bookmark" title="Permalink to Command-Line">Command-Line</a><br />
+    <em><b>Tags: </b>
+                <span><a href="./tag/command-line.html">#Command-Line </a></span>
+                <span><a href="./tag/productivity.html">#Productivity </a></span>
+    </em>
+    <hr>
+</div>
+
+<div>
+    <mainarticle>
+    <div class="sect1">
+<h2 id="_intro">Intro:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In my opinion, using terminal makes you more productive and lets you get your mundane tasks done quickly. For ex, I spend no more than few seconds for the tasks like,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Encoding/Decoding a string to and from base64.</p>
+</li>
+<li>
+<p>Formatting/Validating a JSON.</p>
+</li>
+<li>
+<p>Formatting/Validating an XML.</p>
+</li>
+<li>
+<p>Searching files containing a particular string.</p>
+</li>
+<li>
+<p>Find and replace a particular pattern.</p>
+</li>
+<li>
+<p>Sort/de-duplicate a text content.</p>
+</li>
+<li>
+<p>And similar tasks that I do regularly.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>But it was a bit difficult for me to convey these things to the people around me and pass on the comfort that I have so that they will also get more productive on similar tasks.</p>
+</div>
+<div class="paragraph">
+<p>This is an effort to try to convience someone to start using CLI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_step_by_step">Step-by-step:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Typically, the general alternatives for the tasks mentioned above are some websites that offer encoding, decoding, formatting, and validation.  The steps to achieve what they intended to do is,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Copy the text that they need to encode/decode/validate/format.</p>
+</li>
+<li>
+<p>Paste it to the site that performs expected action.</p>
+</li>
+<li>
+<p>Click on encode/decode/validate/format.</p>
+</li>
+<li>
+<p>Copy the output.</p>
+</li>
+<li>
+<p>Paste it back to the intended place.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example">Example:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I believe these are fair enough use-cases that let you start with command-line. I am trying to compare the step-by-step breakdown of CLI and non-CLI way of achieving a base64 encoding.</p>
+</div>
+<div class="sect2">
+<h3 id="_without_using_cli">Without using CLI,</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Copy the string that needs to be encoded.</p>
+</li>
+<li>
+<p>Open some website like www.base64encode.org and paste your string there.</p>
+</li>
+<li>
+<p>Click on encode.</p>
+</li>
+<li>
+<p>Copy the output text.</p>
+</li>
+<li>
+<p>Paste it in your intended location.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_while_doing_the_same_thing_with_cli">While doing the same thing with CLI,</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Copy the string that needs to be encoded.</p>
+</li>
+<li>
+<p>In terminal execute the command <code>pbpaste|base64|pbcopy</code>.</p>
+</li>
+<li>
+<p>Paste the base64 encoded string to the intended location.</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Note: <code>pbpaste</code> pastes the content from the clipboard, <code>pbcopy</code> copies the content to the clipboard. If you are a non-mac user, try finding the equivalent of it.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_benchmarking">Benchmarking:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As verified, I took <code>28.62s</code> in the way of not using CLI and took <code>17.50s</code> when I executed in CLI.</p>
+</div>
+<div class="paragraph">
+<p>To be fair, I assumed that I already have knowledge of <a href="http://www.base64encode.org">the site</a> and the knowledge of the commands and typed in those by hand.</p>
+</div>
+<div class="paragraph">
+<p>The time taken when you using non-cli is nearly 63% more than the time it was taken in CLI. Further, you can save more time if you have the CLI version defined as an alias.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary">Summary:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Apart from the time that you save, CLI&#8217;s are more native to your system that provides you more power which is not available otherwise. For ex, you can format the content of a json file and save it to another file using the one-liner, <code>cat "ip_file" | jq . &gt; "op_file"</code>. In a non-cli way, you will be required to take care of file operations(reading/saving the file) yourself manually.</p>
+</li>
+<li>
+<p>You will also be able to combine multiple commands to achieve something new, that might not be possible when you are using separate services for each use cases. I’ll try to prove more on that in the upcoming articles.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In general, I strongly believe that commands let you do more without spending much time in fiddling on different services.</p>
+</div>
+</div>
+</div>
+
+    </mainarticle>
+</div>
+<hr>
+
+<div>
+        <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
+            <p style="margin-top: 2%;">
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./getting-started-with-terminal-try-replacing-the-utility-services-with-cli.html&text=Getting started with terminal - Try replacing the Utility Services with CLI&via="><img class="social-icons-a" src="./theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./getting-started-with-terminal-try-replacing-the-utility-services-with-cli.html&t=Getting started with terminal - Try replacing the Utility Services with CLI"><img class="social-icons-a" src="./theme/images/icons/facebook.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./getting-started-with-terminal-try-replacing-the-utility-services-with-cli.html&title=Getting started with terminal - Try replacing the Utility Services with CLI" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="./theme/images/icons/linkedin.png"></a>
+            </p>
+</div>
+<hr>
+    <p><i>For any feedback or corrections, please write in to: </i><b> kannangce@rediffmail.com </b></p>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "kannangce-in"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </maincontent>
+
+  <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-127824340-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </div>
+</body>
+
+</html>
