@@ -13,11 +13,12 @@ In my opinion, using terminal makes you more productive and lets you get your mu
  - Formatting/Validating an XML.
  - Searching files containing a particular string.
  - Find and replace a particular pattern.
+ - Sort/de-duplicate a text content.
  - And similar tasks that I do regularly.
 
 But it was a bit difficult for me to convey these things to the people around me and pass on the comfort that I have so that they will also get more productive on similar tasks.
 
-This is an effor to try to convience someone to start using CLI.
+This is an effort to try to convience someone to start using CLI.
 
 == Step-by-step:
 Typically, the general alternatives for the tasks mentioned above are some websites that offer encoding, decoding, formatting, and validation.  The steps to achieve what they intended to do is,
@@ -51,13 +52,13 @@ I believe these are fair enough use-cases that let you start with command-line. 
 
 As verified, I took `28.62s` in the way of not using CLI and took `17.50s` when I executed in CLI.
 
-To be fair, I assumed that I already have knowledge of http://www.base64.org[the site] and the knowledge of the commands and typed in those by hand.
+To be fair, I assumed that I already have knowledge of http://www.base64encode.org[the site] and the knowledge of the commands and typed in those by hand.
 
 The time taken when you using non-cli is nearly 63% more than the time it was taken in CLI. Further, you can save more time if you have the CLI version defined as an alias.
 
 == Summary:
 
-- Apart from the time that you save, CLI's are more native to your system that provides you more power which is not available otherwise. For ex, you can format the content of a json file and save it back using a single command, `cat "fileName" | jq . > "fileName"`. In a non-cli way you will be required to take care of file operations(reading/saving the file) yourself manually.
-- You will also be able to combine multiple commands to achieve something new, that might not be possible when you are using separate services for each use cases.I'll try prove more on that in the upcoming articles.
+- Apart from the time that you save, CLI's are more native to your system that provides you more power which is not available otherwise. For ex, you can format the content of a json file and save it to another file using the one-liner, `cat "ip_file" | jq . > "op_file"`. In a non-cli way, you will be required to take care of file operations(reading/saving the file) yourself manually.
+- You will also be able to combine multiple commands to achieve something new, that might not be possible when you are using separate services for each use cases. I’ll try to prove more on that in the upcoming articles.
 
-In general I strongly believe that commands lets you do more without spending much time in fiddling on different services.
+In general, I strongly believe that commands let you do more without spending much time in fiddling on different services.
