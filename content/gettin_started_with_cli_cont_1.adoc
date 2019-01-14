@@ -1,0 +1,97 @@
+= Some commonly used CLIs
+
+:date: 2019-01-14
+:category: Command-Line
+:tags: Command-Line, Productivity
+
+== Intro:
+
+This is a follow-up article for http://kannangce.in/getting-started-with-terminal-try-replacing-utility-services-with-cli.html[CLI Intro]. I have tried to capture few commands that is being used as a developer. This might help someone to get started with CLI, if they are facing these tasks and not using CLI so far.
+
+== Pre-requisute:
+
+- The one-liners here extensively uses `pbcopy` and `pbpaste`. If you using `*nix` you might be required to have some https://coderwall.com/p/kdoqkq/pbcopy-and-pbpaste-on-linux[workaround] to use the one-liners as is. I strongly suggest to have `pbcopy` and `pbpaste`, it lets you compose the one-liners with your normal activities through clipboards.
+
+- There might be few commands such as `jq` that are not available out-of-the-box, if you get some error saying "Command not found", please take time to get it installed. I assure that the time you spend on these CLI will worth the efforts in long run.
+
+== Common commands:
+
+=== Pretty Print/Validate xml
+
+```
+pbpaste|xmllint --format - | pbcopy
+```
+
+=== Pretty Print/Validate Json
+
+```
+pbpaste|jq . | pbcopy
+```
+
+=== Encode a string to base64
+
+```
+pbpaste| base64 | pbcopy
+```
+
+=== Decode a string from base64
+
+```
+pbpaste| base64 --decode| pbcopy
+```
+
+=== Resumable Copy
+
+The below comand was helpful when I had to copy a huge set of files from my hard-disk to laptop. I was unable to do it in a single day, so I used the below command to have a resumable copy across multiple days.
+
+```
+rsync --progress -r ‘<source folder>’ ‘<destination folder>’
+```
+
+=== Copy the current directory to clipboard
+
+```
+pwd|pbcopy
+```
+
+=== Check if a port is open in an host
+
+```
+telnet <host> <port>
+```
+
+=== Find the files containing particular content
+
+```
+grep -r "<the content to find>" "<partent location from which the search happens recursively>"
+```
+
+=== Find content for a specific set of files
+
+```
+grep -r "<the content to find>" --include "<comma separated list of file patterns. ex: '*.java, *js'>" "<partent location from which the search happens recursively>"
+```
+
+=== Stop all the dockers
+
+```
+docker ps|awk '{print $1}' | tail -n +2 | xargs docker stop
+```
+
+=== Sort
+
+```
+pbpaste | sort | pbcopy
+```
+
+=== Sort and De-deplicate
+
+```
+pbpaste | sort -u | pbcopy
+```
+
+== Summary:
+
+- Apart from the above commands it will be good to get comfortable with commands like `curl`, `sed`, `awk` and whatever you think might your tasks.
+- Leaving it to the reader to get the details of the commands.
+- Apart from that it's good to have a mindset that tries to spend some extra time for the first time and automate the mundane tasks. CLI accompolish that automation to certain extent.
