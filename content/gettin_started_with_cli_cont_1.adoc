@@ -1,4 +1,4 @@
-= Some commonly used CLIs
+= Some commonly used CLI utilities
 
 :date: 2019-01-14
 :category: Command-Line
