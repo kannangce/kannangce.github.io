@@ -60,5 +60,6 @@ The time taken when you using non-cli is nearly 63% more than the time it was ta
 
 - Apart from the time that you save, CLI's are more native to your system that provides you more power which is not available otherwise. For ex, you can format the content of a json file and save it to another file using the one-liner, `cat "ip_file" | jq . > "op_file"`. In a non-cli way, you will be required to take care of file operations(reading/saving the file) yourself manually.
 - You will also be able to combine multiple commands to achieve something new, that might not be possible when you are using separate services for each use cases. I’ll try to prove more on that in the upcoming articles.
+- Once you start using the terminal, you understand that commands provide so many options that it is difficult to have a UI with all possible functionalities that a terminal can provide.
 
-In general, I strongly believe that commands let you do more without spending much time in fiddling on different services.
+In general, I strongly believe that commands let you do more without spending much time in fiddling on different services. Compiled some of my commonly used commands http://kannangce.in/some-commonly-used-cli-utilities.html[here], might be helpful for you if you have already faced the use-cases mentioned there.

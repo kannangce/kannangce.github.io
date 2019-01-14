@@ -1,4 +1,4 @@
-= Some commonly used CLI utilities:
+= Some commonly used CLI utilities
 
 :date: 2019-01-14
 :category: Command-Line
@@ -6,9 +6,9 @@
 
 == Intro:
 
-This is a follow-up article for http://kannangce.in/getting-started-with-terminal-try-replacing-utility-services-with-cli.html[CLI Intro]. I have tried to capture few commands that is being used as a developer. This might help someone to get started with CLI, if they are facing these tasks and not using CLI so far.
+This is a follow-up article for http://kannangce.in/getting-started-with-terminal-try-replacing-utility-services-with-cli.html[CLI Intro]. I have tried to capture a few commands that is being by me used as a developer. This might help someone to get started with CLI if they are facing these tasks and not using CLI so far.
 
-== Pre-requisute:
+== Pre-requisites:
 
 - The one-liners here extensively uses `pbcopy` and `pbpaste`. If you using `*nix` you might be required to have some https://coderwall.com/p/kdoqkq/pbcopy-and-pbpaste-on-linux[workaround] to use the one-liners as is. I strongly suggest to have `pbcopy` and `pbpaste`, it lets you compose the one-liners with your normal activities through clipboards.
 
@@ -42,7 +42,7 @@ pbpaste| base64 --decode| pbcopy
 
 === Resumable Copy:
 
-The below comand was helpful when I had to copy a huge set of files from my hard-disk to laptop. I was unable to do it in a single day, so I used the below command to have a resumable copy across multiple days.
+The below command was helpful when I had to copy a huge set of files from my hard-disk to the laptop. I was unable to do it in a single day, so I used the below command to have a resumable copy across multiple days.
 
 ```
 rsync --progress -r ‘<source folder>’ ‘<destination folder>’
@@ -54,7 +54,7 @@ rsync --progress -r ‘<source folder>’ ‘<destination folder>’
 pwd|pbcopy
 ```
 
-=== Check if a port is open in an host:
+=== Check if a port is open in a host:
 
 ```
 telnet <host> <port>
@@ -92,6 +92,6 @@ pbpaste | sort -u | pbcopy
 
 == Summary:
 
-- Apart from the above commands it will be good to get comfortable with commands like `curl`, `sed`, `awk` and whatever you think might your tasks.
+- Apart from the above commands, it will be good to get comfortable with commands like `curl`, `sed`, `awk` and whatever you think might be needed for your tasks.
 - Leaving it to the reader to get the details of the commands.
-- Apart from that it's good to have a mindset that tries to spend some extra time for the first time and automate the mundane tasks. CLI accompolish that automation to certain extent.
+- Apart from that, it's good to have a mindset that tries to spend some extra time for the first time and automate the mundane tasks. CLI accomplish that automation to certain extent.
