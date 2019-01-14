@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./possible-accidental-complexity-in-nexmo-voice-api.html">
 <meta name="twitter:title" content="My Tech Buddy ~ Possible Accidental Complexity in Nexmo Voice API">
-<meta name="twitter:description" content="Intro: Accidental and Essential complexity are the terms that were mentioned in the book The mythical man month. In my own words, the definitions are as below, Accidental Complexity is a complexity that a software has, which could have been avoided with a careful though process. For example, ArrayList offers …">
+<meta name="twitter:description" content="Intro: Accidental and Essential complexity are the terms that were mentioned in the book The mythical man month. In my own words, the definitions are, Accidental Complexity is a complexity that software has by accident and could be avoided with a careful thought process. For example, ArrayList offers indefinite element …">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Tech Buddy ~ Possible Accidental Complexity in Nexmo Voice API" />
-<meta property="og:description" content="Intro: Accidental and Essential complexity are the terms that were mentioned in the book The mythical man month. In my own words, the definitions are as below, Accidental Complexity is a complexity that a software has, which could have been avoided with a careful though process. For example, ArrayList offers …" />
+<meta property="og:description" content="Intro: Accidental and Essential complexity are the terms that were mentioned in the book The mythical man month. In my own words, the definitions are, Accidental Complexity is a complexity that software has by accident and could be avoided with a careful thought process. For example, ArrayList offers indefinite element …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -121,20 +121,20 @@
 <p><strong>Accidental</strong> and <strong>Essential</strong> complexity are the terms that were mentioned in the book <a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">The mythical man month</a>.</p>
 </div>
 <div class="paragraph">
-<p>In my own words, the definitions are as below,</p>
+<p>In my own words, the definitions are,</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Accidental Complexity</strong> is a complexity that a software has, which could have been avoided with a careful though process. For example, ArrayList offers indefinite element addition. If you ask the user resize of internal array before adding each element that would be insane. Because that can be internally taken care without the knowledge of the user.</p>
+<p><strong>Accidental Complexity</strong> is a complexity that software has by accident and could be avoided with a careful thought process. For example, ArrayList offers indefinite element addition. If you ask the user resize the internal array before adding each element, that would be insane. Because that can be internally taken care without the knowledge of the user.</p>
 </li>
 <li>
-<p><strong>Essential Complexity</strong> is a complexity in the software that occurs by the nature of the problem. For ex, to communicate a server with  self-signed certificate, user must take the responsibility of providing the truststore or necessary configuration to ignore SSL check. Because it is not possible for the JVM to make a choice. This type of complexity is inevitable.</p>
+<p><strong>Essential Complexity</strong> is a complexity in the software that occurs by the nature of the problem. For eg, to communicate a server with a self-signed certificate, the user must take the responsibility of providing the truststore or necessary configuration to ignore SSL check. Because it is not possible for the JVM to make a choice. This type of complexity is inevitable.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>In an ideal system, there must be no <em>"Accidental Complexity"</em>. Extreme care and a review by third-eye is required to avoid this type of complexities.</p>
+<p>In an ideal system, there must be no <em>"Accidental Complexity"</em>. Extreme care and a review by third-eye are required to avoid this type of complexities.</p>
 </div>
 </div>
 </div>
@@ -144,10 +144,10 @@
 <div class="sect2">
 <h3 id="_problem">Problem:</h3>
 <div class="paragraph">
-<p>Recently, I was playing around with <a href="https://developer.nexmo.com/voice/voice-api/overview">Nexmo Voice API</a>. Basically, the Nexmo Voice is to connect a call to a given number and to talk a given <a href="https://en.wikipedia.org/wiki/Speech_Synthesis_Markup_Language">SSML</a> or stream an audio.</p>
+<p>Recently, I was playing around with <a href="https://developer.nexmo.com/voice/voice-api/overview">Nexmo Voice API</a>. Basically, the Nexmo Voice is to connect a call to a given number and to talk a given <a href="https://en.wikipedia.org/wiki/Speech_Synthesis_Markup_Language">SSML</a> or stream audio.</p>
 </div>
 <div class="paragraph">
-<p>There are lot of APIs for Nexmo Voice. But lets consider couple of APIs to discuss the concept,</p>
+<p>There are a lot of APIs for Nexmo Voice. But let&#8217;s consider a couple of APIs to discuss the concept,</p>
 </div>
 <div class="ulist">
 <ul>
@@ -174,7 +174,7 @@ client.stopTalk("&lt;call Id&gt;"); #4</code></pre>
 <p>But it won&#8217;t work that way.</p>
 </div>
 <div class="paragraph">
-<p>The Nexmo server will respond to your call sychronusly.</p>
+<p>The Nexmo server will respond to your call synchronously.</p>
 </div>
 <div class="paragraph">
 <p>Hence,</p>
@@ -185,7 +185,7 @@ client.stopTalk("&lt;call Id&gt;"); #4</code></pre>
 <p>Message in <code>#1</code> will be spoken for <code>2s</code>, whether the 'message #1' is completed or not 'message#2' will be spoken in parallel.</p>
 </li>
 <li>
-<p>Immediately after that, whether the "messages" or completed or not, <code>stopTalk</code> will stop the messages being spoekn abdruptly.</p>
+<p>Immediately after that, whether the "messages" or completed or not, <code>stopTalk</code> will abruptly stop the messages being spoken.</p>
 </li>
 </ul>
 </div>
@@ -237,14 +237,14 @@ client.stopTalk("&lt;call Id&gt;"); #4</code></pre>
 <p>As I used Nexmo, the APIs that we are talking about has nothing to do with what the other user talks, so it can be exected as <strong>fire-and-forgot</strong>.</p>
 </li>
 <li>
-<p>If you still think, you need the status for the each invocation before making the next call, the Nexmo can provide the libraries that let us write the Nexmo instructions conditionaly or platform that supports DSLs with conditional instructions for Nexmo, but never adding the complexities to the users as mentioned above.</p>
+<p>If you still think, you need the status for each invocation before making the next call, the Nexmo can provide the libraries that let us write the Nexmo instructions conditionally or platform that supports DSLs with conditional instructions for Nexmo, but never adding the complexities to the users as mentioned above.</p>
 </li>
 </ul>
 </div>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>Note: Nexmo is one of the widely used server for Voice. I believe there might be some points on the design considerations that I miss. In that case, this
+<p>Note: Nexmo is one of the widely used servers for Voice. I believe there might be some points on the design considerations that I miss. In that case, this
 article will open up the discussion on that front.</p>
 </div>
 </blockquote>

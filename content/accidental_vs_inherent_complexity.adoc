@@ -8,21 +8,21 @@
 
 *Accidental* and *Essential* complexity are the terms that were mentioned in the book https://en.wikipedia.org/wiki/The_Mythical_Man-Month[The mythical man month].
 
-In my own words, the definitions are as below,
+In my own words, the definitions are,
 
-- *Accidental Complexity* is a complexity that a software has, which could have been avoided with a careful though process. For example, ArrayList offers indefinite element addition. If you ask the user resize of internal array before adding each element that would be insane. Because that can be internally taken care without the knowledge of the user.
+- *Accidental Complexity* is a complexity that software has by accident and could be avoided with a careful thought process. For example, ArrayList offers indefinite element addition. If you ask the user resize the internal array before adding each element, that would be insane. Because that can be internally taken care without the knowledge of the user.
 
-- *Essential Complexity* is a complexity in the software that occurs by the nature of the problem. For ex, to communicate a server with  self-signed certificate, user must take the responsibility of providing the truststore or necessary configuration to ignore SSL check. Because it is not possible for the JVM to make a choice. This type of complexity is inevitable.
+- *Essential Complexity* is a complexity in the software that occurs by the nature of the problem. For eg, to communicate a server with a self-signed certificate, the user must take the responsibility of providing the truststore or necessary configuration to ignore SSL check. Because it is not possible for the JVM to make a choice. This type of complexity is inevitable.
 
-In an ideal system, there must be no _"Accidental Complexity"_. Extreme care and a review by third-eye is required to avoid this type of complexities.
+In an ideal system, there must be no _"Accidental Complexity"_. Extreme care and a review by third-eye are required to avoid this type of complexities.
 
 == Recent experience with Accidental Complexity:
 
 === Problem:
 
-Recently, I was playing around with https://developer.nexmo.com/voice/voice-api/overview[Nexmo Voice API]. Basically, the Nexmo Voice is to connect a call to a given number and to talk a given https://en.wikipedia.org/wiki/Speech_Synthesis_Markup_Language[SSML] or stream an audio.
+Recently, I was playing around with https://developer.nexmo.com/voice/voice-api/overview[Nexmo Voice API]. Basically, the Nexmo Voice is to connect a call to a given number and to talk a given https://en.wikipedia.org/wiki/Speech_Synthesis_Markup_Language[SSML] or stream audio.
 
-There are lot of APIs for Nexmo Voice. But lets consider couple of APIs to discuss the concept,
+There are a lot of APIs for Nexmo Voice. But let's consider a couple of APIs to discuss the concept,
 
 - We have a `startTalk` to talk a given message in the call identified by the given id.
 - A `stopTalk` to stop speaking in the call identified by the given call id.
@@ -38,12 +38,12 @@ client.stopTalk("<call Id>"); #4
 
 But it won't work that way.
 
-The Nexmo server will respond to your call sychronusly.
+The Nexmo server will respond to your call synchronously.
 
 Hence,
 
 - Message in `#1` will be spoken for `2s`, whether the 'message #1' is completed or not 'message#2' will be spoken in parallel.
-- Immediately after that, whether the "messages" or completed or not, `stopTalk` will stop the messages being spoekn abdruptly.
+- Immediately after that, whether the "messages" or completed or not, `stopTalk` will abruptly stop the messages being spoken.
 
 Hence to have it work in the expected way, you have to code in the below way,
 
@@ -76,7 +76,7 @@ client.stopTalk("<call Id>"); #4
 
 - In case, if we need a facility to preempt, there can be additional calls such as `preemptTalk`, `preemptStop` which _pre-empts_ the calls that has been made already.
 - As I used Nexmo, the APIs that we are talking about has nothing to do with what the other user talks, so it can be exected as *fire-and-forgot*.
-- If you still think, you need the status for the each invocation before making the next call, the Nexmo can provide the libraries that let us write the Nexmo instructions conditionaly or platform that supports DSLs with conditional instructions for Nexmo, but never adding the complexities to the users as mentioned above.
+- If you still think, you need the status for each invocation before making the next call, the Nexmo can provide the libraries that let us write the Nexmo instructions conditionally or platform that supports DSLs with conditional instructions for Nexmo, but never adding the complexities to the users as mentioned above.
 
-> Note: Nexmo is one of the widely used server for Voice. I believe there might be some points on the design considerations that I miss. In that case, this
+> Note: Nexmo is one of the widely used servers for Voice. I believe there might be some points on the design considerations that I miss. In that case, this
 > article will open up the discussion on that front.
