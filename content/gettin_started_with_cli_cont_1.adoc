@@ -1,4 +1,4 @@
-= Some commonly used CLI utilities
+= Some commonly used CLI utilities:
 
 :date: 2019-01-14
 :category: Command-Line
@@ -16,31 +16,31 @@ This is a follow-up article for http://kannangce.in/getting-started-with-termina
 
 == Common commands:
 
-=== Pretty Print/Validate xml
+=== Pretty Print/Validate xml:
 
 ```
 pbpaste|xmllint --format - | pbcopy
 ```
 
-=== Pretty Print/Validate Json
+=== Pretty Print/Validate Json:
 
 ```
 pbpaste|jq . | pbcopy
 ```
 
-=== Encode a string to base64
+=== Encode a string to base64:
 
 ```
 pbpaste| base64 | pbcopy
 ```
 
-=== Decode a string from base64
+=== Decode a string from base64:
 
 ```
 pbpaste| base64 --decode| pbcopy
 ```
 
-=== Resumable Copy
+=== Resumable Copy:
 
 The below comand was helpful when I had to copy a huge set of files from my hard-disk to laptop. I was unable to do it in a single day, so I used the below command to have a resumable copy across multiple days.
 
@@ -48,43 +48,43 @@ The below comand was helpful when I had to copy a huge set of files from my hard
 rsync --progress -r ‘<source folder>’ ‘<destination folder>’
 ```
 
-=== Copy the current directory to clipboard
+=== Copy the current directory to clipboard:
 
 ```
 pwd|pbcopy
 ```
 
-=== Check if a port is open in an host
+=== Check if a port is open in an host:
 
 ```
 telnet <host> <port>
 ```
 
-=== Find the files containing particular content
+=== Find the files containing particular content:
 
 ```
 grep -r "<the content to find>" "<partent location from which the search happens recursively>"
 ```
 
-=== Find content for a specific set of files
+=== Find content for a specific set of files:
 
 ```
 grep -r "<the content to find>" --include "<comma separated list of file patterns. ex: '*.java, *js'>" "<partent location from which the search happens recursively>"
 ```
 
-=== Stop all the dockers
+=== Stop all the dockers:
 
 ```
 docker ps|awk '{print $1}' | tail -n +2 | xargs docker stop
 ```
 
-=== Sort
+=== Sort:
 
 ```
 pbpaste | sort | pbcopy
 ```
 
-=== Sort and De-deplicate
+=== Sort and De-deplicate:
 
 ```
 pbpaste | sort -u | pbcopy
