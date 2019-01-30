@@ -174,7 +174,7 @@ client.stopTalk("&lt;call Id&gt;"); #4</code></pre>
 <p>But it won&#8217;t work that way.</p>
 </div>
 <div class="paragraph">
-<p>The Nexmo server will respond to your call synchronously.</p>
+<p>The Nexmo server will respond to your call asynchronously.</p>
 </div>
 <div class="paragraph">
 <p>Hence,</p>
@@ -182,10 +182,10 @@ client.stopTalk("&lt;call Id&gt;"); #4</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>Message in <code>#1</code> will be spoken for <code>2s</code>, whether the 'message #1' is completed or not 'message#2' will be spoken in parallel.</p>
+<p>Message in <code>#1</code> will be spoken for <code>2s</code>, whether the 'message #1' is completed or not, Nexmo will start talking 'message#2'. Hence if 'message#1' is not completed, you will hear those 2 messages spoken in parallel.</p>
 </li>
 <li>
-<p>Immediately after that, whether the "messages" or completed or not, <code>stopTalk</code> will abruptly stop the messages being spoken.</p>
+<p>Immediately after that, whether the "messages" are completed or not, <code>stopTalk</code> will abruptly stop the messages being spoken.</p>
 </li>
 </ul>
 </div>
