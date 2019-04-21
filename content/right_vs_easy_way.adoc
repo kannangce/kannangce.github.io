@@ -1,6 +1,6 @@
 = Easy vs Right choice
 
-:date: 2018-04-22
+:date: 2019-04-22
 :category: Introspection
 :tags: Introspection
 
