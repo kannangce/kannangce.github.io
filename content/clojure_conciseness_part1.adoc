@@ -1,0 +1,53 @@
+= Source of Clojure's conciseness - Part 1
+
+:date: 2019-05-25
+:category: Clojure
+:tags: Clojure, JavaVsClojure
+
+## About:
+
+Had seen many instances, in which there are unbelievably concise Clojure code solves a problem, advocating for _"Functional Thinking"_. Being a java developer, I have seen and wondered at it. But didn't get into much into it.
+
+Recently was reading about https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life[Conway's game of life].
+
+To give a glimpse, we will have a initial 2D grid in which we will have cells. Each cell can be live/dead. The cells can continue in its state or
+toggle to live/dead based on the state of the cells around it. The state of whole grid evolves to next state, as all cells in it evolve. This automata 
+need to be programmed. Not a complicated problem, but takes a  while to write it as a program.
+
+Really got shocked when I see http://clj-me.cgrand.net/2011/08/19/conways-game-of-life/[this 7 line solution] in Clojure. I had to write nearly a https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLife.java[100 line of code] in Java to do the same.
+
+Took this chance to analyze where _"exactly"_ this conciseness comes from. _Is it in the way the problem was solved?_, _Is it in the constructs that 
+language provides?_, or _Is it some magic of functional programming?_.
+
+This article is not to summarize on conciseness of Clojure, but to explore it on a particular problem. So this will just talk about conciseness in a small context.
+
+## Analysis:
+
+So I tried to solve it in https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLife.java[Java] in the way a typical Java programmer(at least me) solves it. Leaving the comments and empty new lines, the actual code is around 100 lines. Nearly 15 times as long as the Clojure's code.
+
+Then compared my code against the clojrue version and came up with https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLifeV2.java[version2] with a bit of logical optimization. That hardly reduced 10 lines of code.
+
+Then tried implementing the logic in the same way it is implemented in above-mentioned Clojure version and came up with https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLifeV3.java[version 3].
+
+Since it could be too much to explain the solution in detail for each and every version in contrast with the Clojure version, I am leaving it upto the reader to understand and I'm jumping to the result that summarizes the core differences.
+
+## Result:
+
+### Way of thinking:
+
+- *Representing the grid:* In my https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLife.java[Java v1] and https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLifeV2.java[v2], I used a boolean matrix to represent the cellular grid and the live status is represented by boolean. Whereas, in the Clojure version they maintained a only the coordinates of the live cells. That's a concise way of representing a grid where each element in the grid can take only 2 states.
+
+- *Calculating the next state:* In my https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLife.java[Java v1], I literally translated the logic that is being asked for. But Clojure version minimized the calculation happens.
+
+### Language constructs:
+
+- *Representation of coordinates:* In all Java versions, I wrote a separate class that represents a coordinate. Of course I could have used a simple array to do this but that's not the way how I think as a Java developer. But in Java v3, I had to write a class for coordinate, overriding the `hashcode` and `equals`. So that I can leverage on the `HashSet`, to have the coordinates de-duplicated. In the case of Clojure, the representation of any collection is so concise. Further, we have an out-of-box equality check for collections that does it by comparing each element in it.
+
+- *List Comprehension:* List comprehension is a nice feature offered by languages like Clojure, Python, etc.., which provides a concise way of iterating  through multiple collections and returning another collection as a result. To do the same in Java you must use a loop or nested loops. For ex, in this context, the method `getNeighbours` in the java versions had to have a nested `for-loop` along with object creation and other stuff, whereas in Clojure its just a list comprehension in the method `neighbors`.
+
+- *Utility functions:* In this problem context, Clojure has pre-existing functions like `repeat`, `frequencies` and `mapcat`, which seems to be so rudimentary, but in Java we have to implement it on our own.
+
+
+## Summary:
+
+The conciseness arises from _'way of thinking'_ and the _'language constructs'_. As I read, try and understand will continue to explore more on this front.

@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Source of Clojure's conciseness - Part 1</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kannan Ramamoorthy">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="My Tech Buddy">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="./theme/css/milligram.css" type="text/css" />
+  <link rel="stylesheet" href="./theme/css/custom.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="./source-of-clojures-conciseness-part-1.html">
+<meta name="twitter:title" content="My Tech Buddy ~ Source of Clojure's conciseness - Part 1">
+<meta name="twitter:description" content="About: Had seen many instances, in which there are unbelievably concise Clojure code solves a problem, advocating for &#34;Functional Thinking&#34;. Being a java developer, I have seen and wondered at it. But didn’t get into much into it. Recently was reading about Conway’s game of life. To give …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="My Tech Buddy ~ Source of Clojure's conciseness - Part 1" />
+<meta property="og:description" content="About: Had seen many instances, in which there are unbelievably concise Clojure code solves a problem, advocating for &#34;Functional Thinking&#34;. Being a java developer, I have seen and wondered at it. But didn’t get into much into it. Recently was reading about Conway’s game of life. To give …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <div class="container">
+
+    <!-- Navbar -->
+      <div class="navbar">
+        <ul>
+            <div>
+                <li>
+                    <a href="."><h3>My Tech Buddy</h3></a>
+                </li>
+                <li>
+                </li>
+            </div>
+        </ul>
+      </div>
+
+  <!-- Sidebar -->
+    <sidebar>
+        <ul class="static-item">
+
+        </ul>        
+
+        <ul>
+                <div class="cat-border">
+                <li style="color: #F2F1EF; background-color: #6C7A89;">Categories</li>
+                    <li><a href="./category/clojure.html">Clojure</a></li>
+                    <li><a href="./category/command-line.html">Command-Line</a></li>
+                    <li><a href="./category/computer-science-algorithm.html">Computer Science, Algorithm</a></li>
+                    <li><a href="./category/diy.html">DIY</a></li>
+                    <li><a href="./category/docker.html">Docker</a></li>
+                    <li><a href="./category/documentation.html">Documentation</a></li>
+                    <li><a href="./category/introspection.html">Introspection</a></li>
+                    <li><a href="./category/java-java-debugging.html">Java, Java Debugging</a></li>
+                    <li><a href="./category/java-spring.html">Java Spring</a></li>
+                    <li><a href="./category/mathematics.html">Mathematics</a></li>
+                    <li><a href="./category/misc-thoughts.html">Misc Thoughts</a></li>
+                    <li><a href="./category/qa.html">QA</a></li>
+                    <li><a href="./category/software.html">Software</a></li>
+                    <li><a href="./category/software-design.html">Software Design</a></li>
+                </div>
+        </ul>
+
+   
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
+    </sidebar>
+    
+    <maincontent>
+<h2>
+    <a href="./source-of-clojures-conciseness-part-1.html" rel="bookmark" title="Permalink to Source of Clojure's conciseness - Part 1">Source of Clojure's conciseness - Part 1</a>
+</h2>
+
+<div>
+    <b>By: </b><a href="./author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Sat 25 May 2019<br />
+    <b>In: </b><a href="./category/clojure.html" rel="bookmark" title="Permalink to Clojure">Clojure</a><br />
+    <em><b>Tags: </b>
+                <span><a href="./tag/clojure.html">#Clojure </a></span>
+                <span><a href="./tag/javavsclojure.html">#JavaVsClojure </a></span>
+    </em>
+    <hr>
+</div>
+
+<div>
+    <mainarticle>
+    <div class="sect1">
+<h2 id="_about">About:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Had seen many instances, in which there are unbelievably concise Clojure code solves a problem, advocating for <em>"Functional Thinking"</em>. Being a java developer, I have seen and wondered at it. But didn&#8217;t get into much into it.</p>
+</div>
+<div class="paragraph">
+<p>Recently was reading about <a href="https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life">Conway&#8217;s game of life</a>.</p>
+</div>
+<div class="paragraph">
+<p>To give a glimpse, we will have a initial 2D grid in which we will have cells. Each cell can be live/dead. The cells can continue in its state or
+toggle to live/dead based on the state of the cells around it. The state of whole grid evolves to next state, as all cells in it evolve. This automata
+need to be programmed. Not a complicated problem, but takes a  while to write it as a program.</p>
+</div>
+<div class="paragraph">
+<p>Really got shocked when I see <a href="http://clj-me.cgrand.net/2011/08/19/conways-game-of-life/">this 7 line solution</a> in Clojure. I had to write nearly a <a href="https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLife.java">100 line of code</a> in Java to do the same.</p>
+</div>
+<div class="paragraph">
+<p>Took this chance to analyze where <em>"exactly"</em> this conciseness comes from. <em>Is it in the way the problem was solved?</em>, <em>Is it in the constructs that
+language provides?</em>, or <em>Is it some magic of functional programming?</em>.</p>
+</div>
+<div class="paragraph">
+<p>This article is not to summarize on conciseness of Clojure, but to explore it on a particular problem. So this will just talk about conciseness in a small context.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_analysis">Analysis:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>So I tried to solve it in <a href="https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLife.java">Java</a> in the way a typical Java programmer(at least me) solves it. Leaving the comments and empty new lines, the actual code is around 100 lines. Nearly 15 times as long as the Clojure&#8217;s code.</p>
+</div>
+<div class="paragraph">
+<p>Then compared my code against the clojrue version and came up with <a href="https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLifeV2.java">version2</a> with a bit of logical optimization. That hardly reduced 10 lines of code.</p>
+</div>
+<div class="paragraph">
+<p>Then tried implementing the logic in the same way it is implemented in above-mentioned Clojure version and came up with <a href="https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLifeV3.java">version 3</a>.</p>
+</div>
+<div class="paragraph">
+<p>Since it could be too much to explain the solution in detail for each and every version in contrast with the Clojure version, I am leaving it upto the reader to understand and I&#8217;m jumping to the result that summarizes the core differences.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_result">Result:</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_way_of_thinking">Way of thinking:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Representing the grid:</strong> In my <a href="https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLife.java">Java v1</a> and <a href="https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLifeV2.java">v2</a>, I used a boolean matrix to represent the cellular grid and the live status is represented by boolean. Whereas, in the Clojure version they maintained a only the coordinates of the live cells. That&#8217;s a concise way of representing a grid where each element in the grid can take only 2 states.</p>
+</li>
+<li>
+<p><strong>Calculating the next state:</strong> In my <a href="https://github.com/kannangce/GameOfLife/blob/master/src/main/java/Game/of/life/GameOfLife.java">Java v1</a>, I literally translated the logic that is being asked for. But Clojure version minimized the calculation happens.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_language_constructs">Language constructs:</h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Representation of coordinates:</strong> In all Java versions, I wrote a separate class that represents a coordinate. Of course I could have used a simple array to do this but that&#8217;s not the way how I think as a Java developer. But in Java v3, I had to write a class for coordinate, overriding the <code>hashcode</code> and <code>equals</code>. So that I can leverage on the <code>HashSet</code>, to have the coordinates de-duplicated. In the case of Clojure, the representation of any collection is so concise. Further, we have an out-of-box equality check for collections that does it by comparing each element in it.</p>
+</li>
+<li>
+<p><strong>List Comprehension:</strong> List comprehension is a nice feature offered by languages like Clojure, Python, etc.., which provides a concise way of iterating  through multiple collections and returning another collection as a result. To do the same in Java you must use a loop or nested loops. For ex, in this context, the method <code>getNeighbours</code> in the java versions had to have a nested <code>for-loop</code> along with object creation and other stuff, whereas in Clojure its just a list comprehension in the method <code>neighbors</code>.</p>
+</li>
+<li>
+<p><strong>Utility functions:</strong> In this problem context, Clojure has pre-existing functions like <code>repeat</code>, <code>frequencies</code> and <code>mapcat</code>, which seems to be so rudimentary, but in Java we have to implement it on our own.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary">Summary:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The conciseness arises from <em>'way of thinking'</em> and the <em>'language constructs'</em>. As I read, try and understand will continue to explore more on this front.</p>
+</div>
+</div>
+</div>
+
+    </mainarticle>
+</div>
+<hr>
+
+<div>
+        <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
+            <p style="margin-top: 2%;">
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./source-of-clojures-conciseness-part-1.html&text=Source of Clojure's conciseness - Part 1&via="><img class="social-icons-a" src="./theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./source-of-clojures-conciseness-part-1.html&t=Source of Clojure's conciseness - Part 1"><img class="social-icons-a" src="./theme/images/icons/facebook.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./source-of-clojures-conciseness-part-1.html&title=Source of Clojure's conciseness - Part 1" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="./theme/images/icons/linkedin.png"></a>
+            </p>
+</div>
+<hr>
+    <p><i>For any feedback or corrections, please write in to: </i><b> kannangce@rediffmail.com </b></p>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "kannangce-in"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </maincontent>
+
+  <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-127824340-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </div>
+</body>
+
+</html>
