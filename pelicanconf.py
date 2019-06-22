@@ -5,7 +5,8 @@ import os
 
 AUTHOR = u'Kannan Ramamoorthy'
 AUTHOREMAIL = u'kannangce@rediffmail.com'
-SITENAME = u'My Tech Buddy'
+SITENAME = u'My Thought Buddy'
+SITEDESCRIPTION = u'(->> thoughts \n (filter #(curious? %)) \n post-here)'
 #SITEURL = 'http://kannangce.in'
 #SITEURL = 'http://localhost:8000'
 SITEURL = 'https://kannangce.github.io'
@@ -32,6 +33,8 @@ LINKS = ()
 
 # Social widget
 SOCIAL = (('github', 'https://github.com/kannangce'),
+          ('so', 'https://stackexchange.com/users/2333642/kannan?tab=accounts'),
+          ('linked-in', 'https://www.linkedin.com/in/kannan-ramamoorthy-54793145/'),
           ('twitter', 'https://twitter.com/kannangce'),
           )
 
