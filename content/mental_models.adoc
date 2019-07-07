@@ -1,0 +1,77 @@
+= Some mental models
+
+:date: 2019-07-07
+:category: Introspection
+:tags: Introspection, Mental Models
+
+This is a dump of some of the mental-models that I have.
+
+== Humans:
+
+A seemingly intelligent species in the planet, which (seems to) dominate the planet, as per its wish.
+
+== Purpose:
+
+With my current knowledge, the only things that I can surely say is, man is animal with bit more intelligence, and that intelligence, operates on lot more complex abstract things, that decides the actions of humans. Considering the fact that human is similar to any animal, the purpose is survival, food and replication. 
+And provided the fact that human has intelligence, when the human’s basic needs are satisfied, there are lot of other things around which the human life revolve around, more than just survival. And almost all the things are linked with  inner satisfaction*. 
+
+== Inner Satisfaction:
+
+A feel of content, that makes you feel light about any other things. A feel that makes you feel that you don’t need anything else for the moment. And “inner satisfaction” is very much subjective, 
+ 
+ - For few, it is associated with materialistic things like money, things. 
+ - For few, it is about when it feels other fellow animals are satisfied(humans or any other animals).
+ - For few, it is when they have done something, which they have assigned some values to.
+ - For few, it is a feel of pride, which in turn is a result of multiple action-result.
+
+== Subjective Good and Bad:
+
+In the context of activity, a subjective good activity is something which we don’t regret doing. And subjective bad is something, which possibly you will regret doing.
+In simple words, you need more of the “subjective good ” and less of the “subjective bad”. Counter-intuitively, the “subjective good/bad” might not have quantitative favourable/adverse effects. It is more psychological.
+
+== Contextual Good and Bad:
+
+In the context of attribute/characteristic, good characteristic is something which results in favour of most of fellow animals(usually), in some cases, provides an optimal overall result, considering all the animals and things around us. Bad is something which adversely affect the animals/things in overall. And it is good( recursive ;-) ) to consider this on a sustainable and long term rather than immediate and short living.
+
+== Regret:
+
+A feel of sorry, for something that you have (or haven't) done in the past. You try to do/not to do it again, after you regret.
+
+
+
+== Pride:
+
+A feel, that makes you feel good, when you hear/think of/see something related to you or someone or something or a group (the subject). Where you feel associated with the subject at some level. The feel is typically about some event. Usually you have the feel, when you think that ‘that subject’
+
+== Truth(as you know):
+
+Facts as is in your mind.
+
+== Facts:
+
+An activity as happened or an attribute as is. This might not include the subjective attributes such as  ‘feeling‘/’judgement’, unless contextually mentioned.
+
+== Honesty:
+
+On the acts involving parties more than you ^[1]^, the act of doing things, as agreed by the other parties ^[2]^. 
+
+- When no agreement is made or when you realize the other party is not capable enough on what to expect, the agreement can be made by yourself on behalf of other parties.
+
+[1] you is subtle thing, can be your consciousness/subconscious mind. Because honesty can exists between you and your body.
+
+[2] parties need not be an living organism. Even a non-living things can have a way of being.
+
+== Defining Something:
+
+Defining something is a process of trying to create a mental model by describing it in words/symbols. (And this is an attempt to define a definition(Maybe a strangeloop) :) ).
+
+You can create a better mental model of something,
+
+- By explaining the characteristics/behaviour of itself.
+- By explaining the characteristics/behaviour of the surrounding in its presence.
+- By explaining the characteristics/behaviour of the surrounding in its absence.
+- By  contrasting/comparing the characteristics/behaviour with something already known.
+
+== Motivation:
+
+Feel of an immense urge to get something done, probably for/against something.
