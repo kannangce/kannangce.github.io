@@ -217,17 +217,25 @@ ul {
   }
 
   maincontent h2 {
-    font-size: 2rem;
+    font-size: 4.0rem;
   }
 
   maincontent h3 {
-    font-size: 1.7rem;
+    font-size: 3.4rem;
   }
 
-  maincontent h5 {
-    font-size: 1.4rem;
+  maincontent h4 {
+    font-size: 2.8rem;
   }
-    
+ 
+  maincontent h5 {
+    font-size: 2.2rem;
+  }
+
+  maincontent h6 {
+    font-size: 1.6rem;
+  }
+
   mainarticle ul li p {
     padding-left: 5%;
     margin-top: -6%;
@@ -269,18 +277,6 @@ ul {
   maincontent {
     width: 85%;
     font-size: 12px;
-  }
-
-  maincontent h2 {
-    font-size: 2rem;
-  }
-
-  maincontent h3 {
-    font-size: 1.7rem;
-  }
-
-  maincontent h5 {
-    font-size: 1.4rem;
   }
 
   mainarticle ul li p {

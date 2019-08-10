@@ -1,0 +1,483 @@
+= Clojure - Amusing and Hard parts for a Java developer
+  
+:date: 2019-08-10
+:category: Clojure
+:tags: Clojure, FP, Programming
+
+## Intro:
+
+I’ve been experimenting with Clojure for recent months. As I was learning, there were moments of amusement
+ and difficulties. This is intended to share those moments to any fellow Java developers.
+
+*This is not a Clojure tutorial.* 
+
+The _‘Amusing parts’_ is intended to give you a glimpse of what Clojure can do even if you don’t have prior
+experience in Clojure.
+
+The _‘Hard parts’_ is intended to give a heads-up if you are starting with Clojure. Since the reader is
+ assumed to be new to Clojure, this section might help the user know what it takes to get comfortable with 
+ Clojure and not to give up soon.
+
+_Please do let me know if the above mentioned sections doesn't met what it claims._
+
+To quickly try out the snippets in this document you can use https://repl.it/languages/clojure[repl.it].
+
+## Disclaimer:
+
+Over the course of this article, there would be lots of comparison between Clojure and Java.
+The comparison is in no way to demean Java. Java is ubiquitous and IMHO it will continue to be so for a few 
+more decades. 
+
+I’m comparing with Java because it is the only language which I’m well versed with currently. I'm still 
+working in Java and think most of the solutions in Java.
+
+## Clojure Primer:
+
+To get a feel of what I realized, the reader might need a quick intro to Clojure. I’ll try to get some 
+basics set here.
+
+The _‘Clojure Primer’_ part is meant just to give a quick mental model on Clojure. That section is 
+oversimplified and I might have used some non-standard terms to solve the purpose. Hence, this is not meant 
+s a reference in anyways.
+
+To define, Clojure is a dynamically typed, functional programming language in Lisp dialect and runs on JVM.
+
+### (Oversimplified) Syntax:
+
+Any Clojure expressions that you write follows the syntax,
+
+```
+ (operator <argument1> <argument2> ..) 
+```
+
+> Where `operator` is a term that I gave here for a ‘function/macro/special forms’, and not a standard term 
+sed in the Clojure world. You will get to know about it shortly.
+
+For ex, 
+
+To add 3 numbers you would say
+
+```
+(+ 1 2 3) 
+
+```
+*Meaning:*
+
+`+` is the _'operator'_,  1, 2 and 3 are parameters
+
+To print the biggest of 2 numbers, you would say, 
+
+```
+(if (> 2 1) (print 2) (print 1))
+```
+
+*Meaning:*
+
+`if` is 'operator',  `(> 2 1)`, `(print 2)` , `(print 1)` are its parameters. Where the first parameter is 
+he condition, the second parameter is the path when the condition succeeds, the third if it fails.
+
+Again, within each of them `>`  and `print` are 'operators' along with their respective parameters.
+
+* And thats all about the syntax of the language. Rest of the things that you need to know is different 
+'operators' that you might need and how it work*
+
+## Amusing Parts:
+
+### Simple Syntax:
+
+As mentioned in the primer, the syntax is so simple and standard.
+
+Some examples,
+
+[options="header"]
+|=====================================================================
+| Expression 					| Meaning
+| (`+` 1 2)  					| 'Add' 1 and 2.
+| (`=` v1 v2)					| 'Equality check' for values of 'v1' and 'v2'.
+| (`ns`  new-name-space)		| 'Switches namespace' to “new-name-space”. (Namespace is equivalent to Java's collection)
+| (`println` “Test String”)		| 'Prints' the given string.
+| (`def` v 1)					| 'Define' a variable ‘v’ with value 1 (in the current namespace)
+| (`defn` prn [x] (prinln x))	| 'Define' a function named 'prn' that accepts a parameter and prints it.
+|=====================================================================
+
+### Less Special Constructs:
+
+In a language “Special constructs“ can be defined as something that you are not sure how it is 
+happening until you dig deep. Usually, there will be a set of limited constructs on top of which 
+the whole language is built.
+
+For example, take the below Java excerpt of a factorial implementation,
+
+```
+// This logic is not perfect. But it is intended to prove the point.
+public static int fact(int a)
+{
+	if ((a == 1) || (a == 0) ) 
+	{
+		return 1;
+	}
+	else
+	{
+		return a * fact(--a);
+	}
+}
+```
+
+It says if `a` is '1' or '0' then return 1 or multiply `a` with the `fact(a -1)`. 
+
+As a typical Java developer on the meanings (implementation/definition) of the constructs 
+like `public`, `static`, `int`  `if .. else ..`, `||` , `return` , `*` , and `--` you have to take it as is 
+or dig deep into the JVM/JDK to know how it is implemented. You’re not sure how it is implemented 
+and you cannot implement something like that on your own.
+
+In the case of Clojure, the equivalent of the above snippet can be,
+
+```
+(defn fact [a]
+(if (or (= a 1) (= a 0))
+ 1 
+(* a 
+  (fact (dec a)))))
+```
+
+In the above snippet, except `if` everything else is a function/macro. Which means you can (re)define it yourself.
+For now, don’t worry about what function/macro means. You will get to know about it shortly.
+
+> The special constructs in Clojure are so less and the rest of things are just build on top
+> of those special constructs. Which means most of the Clojure code can be seen or even
+> developed by yourself(if you wish).
+
+### Infinite/lazy sequence as normal sequence:
+
+As a Java developer, we might have not heard about infinite sequence before Java 8 streams(eg,`Stream.iterate`). 
+Even after Java 8 not sure if we have this on top of mind to have it ready to use. 
+The primary reason is that the infinite/lazy sequence is offered by Streams. 
+Though Streams and Collections are part of Java, they are kept apart by hierarchy and are not interchangeable.
+
+
+In case of Clojure, look at the below expressions,
+
+```
+(print (take 2 (list 0 1 2 3 4)))
+; prints (0 1)
+
+(print (take 2 (range)))
+; Prints (1 2)
+
+(print (take 10 (range)))
+; Prints (0 1 2 3 4 5 6 7 8 9)
+```
+
+It is apparent that `take n` takes the first n elements in the given sequence. 
+2 main inferences in the above examples are,
+
+.`range` virtually returns an infinite sequence which you can take (lazily) as you need.
+. The normal list and lazy sequence are treated in the same way and can be used interchangeably
+(in most of the cases).
+Thus providing you an opportunity to do a lazy evaluation whenever you normally use a sequence.
+
+> Lazy sequence (mostly) behaves the same way as normal sequence. 
+> So you can defer the evaluation whenever possible.
+
+### Program as Data:
+
+Before getting into detail, I would like to introduce you 2 constructs,
+
+#### list:
+
+List as in any other languages is a sequential data structure.
+As seen in the above examples, you can create a list like,
+
+```
+(list 1 2 3)
+```
+
+In short form you can also write it as,
+
+‘(1 2 3)
+
+#### quote:
+
+If you imagine 'Clojure evaluator' as something that evaluates the expression that you give.
+You can ask it not to evaluate some expressions by quoting it.
+
+For ex,
+
+```
+(quote (+ 1 2))
+; Returns (+ 1 2)
+```
+
+In short you can also write it as,
+
+‘(+ 1 2)
+
+Does the above 2 rings a bell? No?
+
+If you noted any of the above Clojure snippets, doesn’t it resemble the list definition
+ without a quote? Yeah. All your Clojure program is just a nested-list (i.e., tree) that is 
+evaluated by the Clojure evaluator. If you want to have just a list datastore without being 
+evaluated then you just quote it.
+
+Let it be!
+
+Why should we care if the program is a list/not-a-list? 
+
+Expressing your program with simple syntax matters when you do meta-programming such as macros,
+ which we’ll see in a moment.
+
+> Your Clojure program is nothing but a nested Clojure list.
+
+### Macros:
+
+As stated in one of the sections about, imagine we have a 'Clojure evaluator' that evaluates each
+ expression in our program and do accordingly. You can imagine macro as an optional layer between
+ your program and the evaluator.
+
+In programs, macros look the same as a function but they can take any input that doesn’t even 
+need to be a Clojure and returns a Clojure code to the evaluator. 
+
+This lets you create syntactic abstraction. i.e., you can write macros that take any snippet that 
+doesn’t look like Clojure but returns a Clojure expression to the evaluator. 
+Some of the common logical operators in other languages such as and, or are macros in Clojure. 
+Other cool examples are list-iteration https://clojuredocs.org/clojure.core/for[(`for`)], 
+thread-first macro https://clojuredocs.org/clojure.core/-%3E[(`->`)], 
+thread-last macro https://clojuredocs.org/clojure.core/-%3E%3E[(`->>`)] and a lot more.
+
+For example, while learning about macro, I tried implementing the 
+https://github.com/kannangce/brave-clojure/blob/master/src/brave_clojure/8-exec-2.clj#L1[`or`] 
+(Java equivalent `||`) operator.
+
+> Macros let you have syntactic abstraction and do meta-programming. 
+> You can have any custom syntax without having to wait for Clojure language to support a cool syntax.
+
+### Memoization:
+
+Think that you have a function and when you call it with some parameters, the function will 
+be evaluated and the result will be returned. And if you call the function with the same parameters, 
+it won’t do the evaluation but just returns the result that we had earlier.
+
+What's so special about it? We do this in Java most of the times, you maintain a cache that 
+stores the result of an evaluation. On consecutive calls, we just return it. Yeah, we do that.
+
+But I was amused that we don’t have to deal with the caching ourself and memoization works 
+can be used with almost all the functions(if needed) in Clojure because of referential transparency, 
+a property of pure functions.
+
+
+> Lets you wrap your function so that the wrapper takes care of caching the results 
+> for a given set of parameters, without you having to deal with caching.
+
+### core.async:
+
+`core.async` library provides CSP style programming that involves threads communicating to each other 
+using channels. This is not much different from using threads and blocking queues that we have in Java.
+
+One thing that I found fascinating is `alts!` function, which lets you wait on multiple channels at 
+once and gets the result from whichever comes first.
+
+For example, this program searches a keyword in 2 search engines and prints from which we had the fastest
+ result.
+
+### core.logic:
+
+Not many of us would have heard about Constraint Logic Programming(CLP) in mainstream programming.
+We’ll see it what it is with an example using Clojure's `core.logic`.
+
+Remember Sudoku?
+
+To reiterate, you will have a 9X9 grid, which itself is subdivided into 9 3X3 sub-grids.
+
+- You have to place numbers from 1 to 9 in each column, row and the sub-grid.
+- So that the numbers must be unique in each of the row, column, and sub-grid.
+- Incidentally, you have to place all the 9 numbers in each row, column, and sub-grid.
+
+Solving Sudoku means, filling up all the numbers in the row/column/sub-grid, 
+also satisfying the above mentioned _"Constraints"_. 
+
+Think, if you can have a (generic)program that takes all constraints(of any such problems) and spits out
+ the solution.  `core.logic` is one such module in Clojure that lets you do ‘Constraint Logic Programming’.
+
+Below is an excerpt from a 
+https://github.com/kannangce/Misc-Clojure/blob/master/core_logic_test/src/logic_test/sudoku.clj[sudoku solver] 
+in Clojure using core.logic,
+
+```
+   (run 1 [q]
+ ;; Solve for the lvar q
+     (== q vars) ;; q should unify with the sequence of the lvars
+     (everyg #(fd/in % (fd/domain 1 2 3 4 5 6 7 8 9)) vars) ;; For every entry in vars the range must be in 1 to 9
+     (init vars hints) ;; Creates the goals to match the vars with the known hints.
+     (everyg fd/distinct rows) ;; Every entry in rows must be unique.
+     (everyg fd/distinct cols) ;; Every entry in cols must be unique.
+     (everyg fd/distinct sqs)) ;; Every entry in sqs must be unique.
+```
+
+Problems like “Time-table creation”, “n-queens” are some basic candidates for core.logic.
+CLP is a whole new area to explore as a mainstream programmer. It is good that you can do it with 
+Clojure using `core.logic`.
+
+> `core.logic` lets you do prologue style CLP.
+
+### Isomorphic counterpart - Clojurescript:
+
+Similar to Isomorphic Javascripts, which can run on both browser and server, 
+Clojure has an isomorphic counterpart, Clojurescript. Wherein you can write Clojure code that gets compiled to Javascript.
+
+With a glimpse, its cool to know that the goodness of Clojure will be available to be 
+compiled as Javascript to be executed in the browser.
+
+### Conciseness:
+
+One thing that primarily amuses other programmers is conciseness of Clojure. 
+Just to give a feel of it, I’m adding some of the examples. Clojure has a lot of such constructs, 
+but I’m just mentioning a few here. If you’re interested also take a look into a 
+http://kannangce.in/source-of-clojures-conciseness-part-1.html[detailed analysis] 
+on conciseness of Clojure using a particular example.
+
+#### List iteration:
+
+List iterator is familiar for Python-dev, but surely it is something new for a Java developer.
+It is a constructor that lets you parallelly iterate through multiple sequences and produce a 
+single result from it.
+
+For example to do a cartesian product of 2 lists the below 1-liner would do,
+
+`(for [x '(1 2 3) y '(1 2 3)] [x y])`
+
+#### slurp:
+
+`slurp` is a Clojure function to read files. 
+And the nice thing about this function is that you can use this to read a file from 
+local disc, HTTP(s), FTP.
+
+For example, you can use slurp as below,
+
+```
+(slurp "/Users/me/sample.txt")
+(slurp "https://google.com")
+(slurp "ftp://localhost:2121/sample.txt")
+```
+
+#### Fibonacci solution that you can tweet:
+
+The below snippet gives you the Fibonacci series up to any number that you want, just using built-in 
+functions/macros. To understand you need some hands-on. But this snippet sure won’t fail to amuse you.
+
+```
+(def fib
+  (lazy-cat [0 1] (map + (rest fib) fib)))
+(take 10 fib)
+```
+
+### Java Interop:
+
+Along with all other goodness of Clojure, Clojure works well with Java. You can use the ocean of 
+libraries from Java in Clojure.
+
+Example,
+
+``` 
+(println (System/currentTimeMillis))
+; prints Current time in milliseconds. Equivalent of calling System.currentTimeMillis()
+
+(doto (new java.util.HashMap) (.put "one" 1) (.put "two" 2))
+; Creates a new hashmap
+; Calls put(“one”, 1) and put(“two”,2) on the map.
+```
+
+### Further amusements:
+
+There are lot more amusements that I didn’t include, as to realize the importance of those some basic 
+hands-on is needed. While starting, it is worth to have a look at Tail-recursion, 
+Software Transaction Management(STM), Transducers, multi-methods, protocols and a lot more.
+
+## Hard Parts:
+
+### Usage of parentheses:
+
+I’m fine with too many parentheses. But initially, I was not clear about the usage of parentheses.
+Like in Java, you cannot use arbitrary number of parentheses. Everything that you put into parentheses 
+is evaluated assuming the first element within parentheses is an `operator`.
+
+Hence (+ 1 2 3) works whereas, (+ 1 (2 3)) won’t work.
+Because after `(` there must be an `operator`, where 2 is not one.
+
+### Shift to s-expression:
+
+With https://en.wikipedia.org/wiki/S-expression[S-expression] (the expression syntax of Clojure and other 
+Lisp), we need a switch from Java style of expression, especially the logical/arithmetic expressions.
+
+For example, `1 + 2 + 3` will be written as `(+ 1 2 3)`. 
+But it was a bit hard to convert logical operations such as `(2 > 1)` in Java to `(> 2 1)` in Clojure.
+Because the operator's nose is pointing to `2` gives an impression that check means if 2 is smaller.
+
+But it got easy after reading documentation of `>`, which says it will check if the given numbers are 
+in ‘decreasing order’. i.e., you can also check if `(> 2 1 0)` is `true`.
+
+### Immutable Datastructures:
+
+Almost all the Clojure's core data-structures are immutable. 
+For example, when you add, remove an element in a list, the operation will result in a new list 
+but won’t change the source list. This was a deliberate decision to keep concurrency in place.
+
+In Java, having used to adding/removal/changing the Collections element so commonly, 
+this was initially *'very'* difficult. Had to practice a lot to get over. 
+In Clojure, we typically use recursion for most of the problems that typically requires modification 
+in the data.
+
+### Dynamic programming:
+
+With dynamic programming, you divide your problem into much smaller problems, and use the solutions 
+of the already solved ones, to make the problem solving faster.
+
+One problem that I stuck for a long time was https://projecteuler.net/problem=15[Level-15] of Project Euler. 
+I tried an initial solution which worked well for small numbers, but even for number asked in the question 
+(which is not so large), my program didn’t finish even after a whole day.
+Because this required dynamic-programming approach and Clojure doesn’t support mutability for basic 
+data structures. 
+
+It took nearly 2-weeks for me to know and try `memoization` and came with a 
+https://github.com/kannangce/project-euler/blob/master/src/project_euler/15-no-of-paths-optimized-1.clj[solution] 
+using the dynamic programming approach which took only a few seconds to solve the problem.
+
+### Lazy sequence:
+
+The lazy sequence was both amusing and hard to imagine. When I tried, it took a couple of hours to 
+understand before I come up with a 
+https://github.com/kannangce/Misc-Clojure/blob/master/van-eck-generator.clj[solution] on my own for 
+van-eck generator with a lazy sequence.
+
+
+## FAQs:
+
+*Q:* You say core data structures are not mutable. So how a very basic use case of addition or deletion of 
+the element from a data structure is addressed?
+
+Clojure does support those operations. But it doesn’t change the original data structure.
+For ex,
+
+```
+(def a [1 2]) ; Define a vector with 1,2
+
+(println (conj a 3)) ; Append 3 to it
+;; Prints [1 2 3]
+
+(println a)
+;; Prints [1 2]
+```
+
+*Q:* What?! Do you create a new collection for each change that we do? Aren’t you filling up the 
+memory unnecessarily?
+
+Nope. Clojure uses a mechanism called https://en.wikipedia.org/wiki/Persistent_data_structure[Persistent Data structure], 
+which doesn’t actually create a new object but reuses the existing one and still having the variables immutable.
+
+*Q:* It is nice that the programs are concise. But anyhow it has to execute so many lines behind 
+the scenes right? What is so nice about conciseness?
+
+Programming with less code could probably mean more productivity. But surely means less testing, if you are 
+building on top of existing and pre-tested code. In that way conciseness matters.
+
+
+> This is expected to be an ongoing article. Will update here as get to see more amusing or hard things.
