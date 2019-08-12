@@ -150,7 +150,7 @@ experience in Clojure.</p>
  Clojure and not to give up soon.</p>
 </div>
 <div class="paragraph">
-<p><em>Please do let me know if the above mentioned sections doesn&#8217;t met what it claims.</em></p>
+<p><em>Please do let me know if the above-mentioned sections don&#8217;t meet what it claims.</em></p>
 </div>
 <div class="paragraph">
 <p>To quickly try out the snippets in this document you can use <a href="https://repl.it/languages/clojure">repl.it</a>.</p>
@@ -161,7 +161,7 @@ experience in Clojure.</p>
 <h2 id="_disclaimer">Disclaimer:</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>Over the course of this article, there would be lots of comparison between Clojure and Java.
+<p>Throughout this article, there would be lots of comparison between Clojure and Java.
 The comparison is in no way to demean Java. Java is ubiquitous and IMHO it will continue to be so for a few
 more decades.</p>
 </div>
@@ -199,8 +199,8 @@ s a reference in anyways.</p>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>Where <code>operator</code> is a term that I gave here for a ‘function/macro/special forms’, and not a standard term
-sed in the Clojure world. You will get to know about it shortly.</p>
+<p>Where &#8216;operator&#8217; is a term that I gave here for a ‘function/macro/special forms’, and not a standard term
+used in the Clojure world. You will get to know about it shortly.</p>
 </div>
 </blockquote>
 </div>
@@ -234,7 +234,7 @@ sed in the Clojure world. You will get to know about it shortly.</p>
 </div>
 <div class="paragraph">
 <p><code>if</code> is 'operator',  <code>(&gt; 2 1)</code>, <code>(print 2)</code> , <code>(print 1)</code> are its parameters. Where the first parameter is
-he condition, the second parameter is the path when the condition succeeds, the third if it fails.</p>
+the condition, the second parameter is the path when the condition succeeds, the third if it fails.</p>
 </div>
 <div class="paragraph">
 <p>Again, within each of them <code>&gt;</code>  and <code>print</code> are 'operators' along with their respective parameters.</p>
@@ -242,7 +242,7 @@ he condition, the second parameter is the path when the condition succeeds, the 
 <div class="ulist">
 <ul>
 <li>
-<p>And thats all about the syntax of the language. Rest of the things that you need to know is different
+<p>And that&#8217;s all about the syntax of the language. Rest of the things that you need to know is different
 'operators' that you might need and how it work*</p>
 </li>
 </ul>
@@ -362,9 +362,9 @@ developed by yourself(if you wish).</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="_infinitelazy_sequence_as_normal_sequence">Infinite/lazy sequence as normal sequence:</h3>
+<h3 id="_infinitelazy_sequence_as_a_normal_sequence">Infinite/lazy sequence as a normal sequence:</h3>
 <div class="paragraph">
-<p>As a Java developer, we might have not heard about infinite sequence before Java 8 streams(eg,<code>Stream.iterate</code>).
+<p>As a Java developer, we might have not heard about infinite sequence before Java 8 streams(eg, <code>Stream.iterate</code>).
 Even after Java 8 not sure if we have this on top of mind to have it ready to use.
 The primary reason is that the infinite/lazy sequence is offered by Streams.
 Though Streams and Collections are part of Java, they are kept apart by hierarchy and are not interchangeable.</p>
@@ -393,7 +393,7 @@ Though Streams and Collections are part of Java, they are kept apart by hierarch
 <ol class="arabic">
 <li>
 <p>The normal list and lazy sequence are treated in the same way and can be used interchangeably
-(in most of the cases).
+(in most of cases).
 Thus providing you an opportunity to do a lazy evaluation whenever you normally use a sequence.</p>
 </li>
 </ol>
@@ -401,7 +401,7 @@ Thus providing you an opportunity to do a lazy evaluation whenever you normally 
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>Lazy sequence (mostly) behaves the same way as normal sequence.
+<p>Lazy sequence (mostly) behaves the same way as a normal sequence.
 So you can defer the evaluation whenever possible.</p>
 </div>
 </blockquote>
@@ -424,7 +424,7 @@ As seen in the above examples, you can create a list like,</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In short form you can also write it as,</p>
+<p>In short form, you can also write it as,</p>
 </div>
 <div class="paragraph">
 <p>‘(1 2 3)</p>
@@ -668,7 +668,7 @@ local disc, HTTP(s), FTP.</p>
 </div>
 </div>
 <div class="sect3">
-<h4 id="_fibonacci_solution_that_you_can_tweet">Fibonacci solution that you can tweet:</h4>
+<h4 id="_a_fibonacci_solution_that_you_can_tweet">A Fibonacci solution that you can tweet:</h4>
 <div class="paragraph">
 <p>The below snippet gives you the Fibonacci series up to any number that you want, just using built-in
 functions/macros. To understand you need some hands-on. But this snippet sure won’t fail to amuse you.</p>
@@ -739,7 +739,7 @@ But it was a bit hard to convert logical operations such as <code>(2 &gt; 1)</co
 Because the operator&#8217;s nose is pointing to <code>2</code> gives an impression that check means if 2 is smaller.</p>
 </div>
 <div class="paragraph">
-<p>But it got easy after reading documentation of <code>&gt;</code>, which says it will check if the given numbers are
+<p>But it got easy after reading the documentation of <code>&gt;</code>, which says it will check if the given numbers are
 in ‘decreasing order’. i.e., you can also check if <code>(&gt; 2 1 0)</code> is <code>true</code>.</p>
 </div>
 </div>
@@ -753,14 +753,14 @@ but won’t change the source list. This was a deliberate decision to keep concu
 <div class="paragraph">
 <p>In Java, having used to adding/removal/changing the Collections element so commonly,
 this was initially <strong>'very'</strong> difficult. Had to practice a lot to get over.
-In Clojure, we typically use recursion for most of the problems that typically requires modification
+In Clojure, we typically use recursion for most of the problems that typically require modification
 in the data.</p>
 </div>
 </div>
 <div class="sect2">
 <h3 id="_dynamic_programming">Dynamic programming:</h3>
 <div class="paragraph">
-<p>With dynamic programming, you divide your problem into much smaller problems, and use the solutions
+<p>With dynamic programming, you divide your problem into much smaller problems and use the solutions
 of the already solved ones, to make the problem solving faster.</p>
 </div>
 <div class="paragraph">
@@ -823,7 +823,7 @@ the scenes right? What is so nice about conciseness?</p>
 </div>
 <div class="paragraph">
 <p>Programming with less code could probably mean more productivity. But surely means less testing, if you are
-building on top of existing and pre-tested code. In that way conciseness matters.</p>
+building on top of existing and pre-tested code. In that way, conciseness matters.</p>
 </div>
 <div class="quoteblock">
 <blockquote>

@@ -18,13 +18,13 @@ The _‘Hard parts’_ is intended to give a heads-up if you are starting with C
  assumed to be new to Clojure, this section might help the user know what it takes to get comfortable with 
  Clojure and not to give up soon.
 
-_Please do let me know if the above mentioned sections doesn't met what it claims._
+_Please do let me know if the above-mentioned sections don't meet what it claims._
 
 To quickly try out the snippets in this document you can use https://repl.it/languages/clojure[repl.it].
 
 ## Disclaimer:
 
-Over the course of this article, there would be lots of comparison between Clojure and Java.
+Throughout this article, there would be lots of comparison between Clojure and Java.
 The comparison is in no way to demean Java. Java is ubiquitous and IMHO it will continue to be so for a few 
 more decades. 
 
@@ -50,8 +50,8 @@ Any Clojure expressions that you write follows the syntax,
  (operator <argument1> <argument2> ..) 
 ```
 
-> Where `operator` is a term that I gave here for a ‘function/macro/special forms’, and not a standard term 
-sed in the Clojure world. You will get to know about it shortly.
+> Where '`operator`' is a term that I gave here for a ‘function/macro/special forms’, and not a standard term 
+used in the Clojure world. You will get to know about it shortly.
 
 For ex, 
 
@@ -74,11 +74,11 @@ To print the biggest of 2 numbers, you would say,
 *Meaning:*
 
 `if` is 'operator',  `(> 2 1)`, `(print 2)` , `(print 1)` are its parameters. Where the first parameter is 
-he condition, the second parameter is the path when the condition succeeds, the third if it fails.
+the condition, the second parameter is the path when the condition succeeds, the third if it fails.
 
 Again, within each of them `>`  and `print` are 'operators' along with their respective parameters.
 
-* And thats all about the syntax of the language. Rest of the things that you need to know is different 
+* And that's all about the syntax of the language. Rest of the things that you need to know is different 
 'operators' that you might need and how it work*
 
 ## Amusing Parts:
@@ -147,9 +147,9 @@ For now, don’t worry about what function/macro means. You will get to know abo
 > of those special constructs. Which means most of the Clojure code can be seen or even
 > developed by yourself(if you wish).
 
-### Infinite/lazy sequence as normal sequence:
+### Infinite/lazy sequence as a normal sequence:
 
-As a Java developer, we might have not heard about infinite sequence before Java 8 streams(eg,`Stream.iterate`). 
+As a Java developer, we might have not heard about infinite sequence before Java 8 streams(eg, `Stream.iterate`). 
 Even after Java 8 not sure if we have this on top of mind to have it ready to use. 
 The primary reason is that the infinite/lazy sequence is offered by Streams. 
 Though Streams and Collections are part of Java, they are kept apart by hierarchy and are not interchangeable.
@@ -173,10 +173,10 @@ It is apparent that `take n` takes the first n elements in the given sequence.
 
 .`range` virtually returns an infinite sequence which you can take (lazily) as you need.
 . The normal list and lazy sequence are treated in the same way and can be used interchangeably
-(in most of the cases).
+(in most of cases).
 Thus providing you an opportunity to do a lazy evaluation whenever you normally use a sequence.
 
-> Lazy sequence (mostly) behaves the same way as normal sequence. 
+> Lazy sequence (mostly) behaves the same way as a normal sequence. 
 > So you can defer the evaluation whenever possible.
 
 ### Program as Data:
@@ -192,7 +192,7 @@ As seen in the above examples, you can create a list like,
 (list 1 2 3)
 ```
 
-In short form you can also write it as,
+In short form, you can also write it as,
 
 ‘(1 2 3)
 
@@ -359,7 +359,7 @@ For example, you can use slurp as below,
 (slurp "ftp://localhost:2121/sample.txt")
 ```
 
-#### Fibonacci solution that you can tweet:
+#### A Fibonacci solution that you can tweet:
 
 The below snippet gives you the Fibonacci series up to any number that you want, just using built-in 
 functions/macros. To understand you need some hands-on. But this snippet sure won’t fail to amuse you.
@@ -412,7 +412,7 @@ For example, `1 + 2 + 3` will be written as `(+ 1 2 3)`.
 But it was a bit hard to convert logical operations such as `(2 > 1)` in Java to `(> 2 1)` in Clojure.
 Because the operator's nose is pointing to `2` gives an impression that check means if 2 is smaller.
 
-But it got easy after reading documentation of `>`, which says it will check if the given numbers are 
+But it got easy after reading the documentation of `>`, which says it will check if the given numbers are 
 in ‘decreasing order’. i.e., you can also check if `(> 2 1 0)` is `true`.
 
 ### Immutable Datastructures:
@@ -423,12 +423,12 @@ but won’t change the source list. This was a deliberate decision to keep concu
 
 In Java, having used to adding/removal/changing the Collections element so commonly, 
 this was initially *'very'* difficult. Had to practice a lot to get over. 
-In Clojure, we typically use recursion for most of the problems that typically requires modification 
+In Clojure, we typically use recursion for most of the problems that typically require modification 
 in the data.
 
 ### Dynamic programming:
 
-With dynamic programming, you divide your problem into much smaller problems, and use the solutions 
+With dynamic programming, you divide your problem into much smaller problems and use the solutions 
 of the already solved ones, to make the problem solving faster.
 
 One problem that I stuck for a long time was https://projecteuler.net/problem=15[Level-15] of Project Euler. 
@@ -477,7 +477,7 @@ which doesn’t actually create a new object but reuses the existing one and sti
 the scenes right? What is so nice about conciseness?
 
 Programming with less code could probably mean more productivity. But surely means less testing, if you are 
-building on top of existing and pre-tested code. In that way conciseness matters.
+building on top of existing and pre-tested code. In that way, conciseness matters.
 
 
 > This is expected to be an ongoing article. Will update here as get to see more amusing or hard things.
