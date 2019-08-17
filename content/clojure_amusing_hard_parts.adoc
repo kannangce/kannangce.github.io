@@ -223,8 +223,7 @@ Let it be!
 
 Why should we care if the program is a list/not-a-list? 
 
-Expressing your program with simple syntax matters when you do meta-programming such as macros,
- which we’ll see in a moment.
+This property of a programming language is called https://en.wikipedia.org/wiki/Homoiconicity[homoiconicity]. One main advantage of this property is it lets do meta-programming such as macros, which we’ll see in a moment.
 
 > Your Clojure program is nothing but a nested Clojure list.
 
@@ -248,8 +247,8 @@ For example, while learning about macro, I tried implementing the
 https://github.com/kannangce/brave-clojure/blob/master/src/brave_clojure/8-exec-2.clj#L1[`or`] 
 (Java equivalent `||`) operator.
 
-> Macros let you have syntactic abstraction and do meta-programming. 
-> You can have any custom syntax without having to wait for Clojure language to support a cool syntax.
+> Macros let you have syntactic abstraction and do meta-programming.
+> In other words, Macro is a program that writes(returns) a program.
 
 ### Memoization:
 
@@ -276,8 +275,9 @@ using channels. This is not much different from using threads and blocking queue
 One thing that I found fascinating is `alts!` function, which lets you wait on multiple channels at 
 once and gets the result from whichever comes first.
 
-For example, this program searches a keyword in 2 search engines and prints from which we had the fastest
- result.
+For example, https://github.com/kannangce/Misc-Clojure/blob/master/fastest-search.clj[this] program searches a keyword in 2 search engines and prints from which we had the fastest result.
+
+> core.async lets you write clean inter-communicating threads.
 
 ### core.logic:
 
@@ -326,6 +326,57 @@ Clojure has an isomorphic counterpart, Clojurescript. Wherein you can write Cloj
 
 With a glimpse, its cool to know that the goodness of Clojure will be available to be 
 compiled as Javascript to be executed in the browser.
+
+> With CLJS, you may run your code on server as well as in browser.
+
+### core.match :
+
+`core.match` library of Clojure lets you write a concise conditional statement, which you might need nested and complicated `if..else`.
+
+For example, with `core.match` you can write like,
+
+```
+  (match [x y z]
+    [_ 1 2] 1
+    [1 2 _ ] 2
+    [_ _ 1] 3
+    [_ _ 2] 4
+    :else 5)
+```
+
+Which you might write in Java as,
+
+```
+if (y == 1 && z ==2)
+{
+  reutrn 1;
+}
+else if(x == 1 && y == 2)
+{
+  return 2;
+}
+else if( z == 1)
+{
+  return 3;
+}
+else if(z == 2)
+{
+  return 4;
+}
+else
+{
+  return 5;
+}
+```
+
+Not just for simple variables. 
+
+- `core.match` works for data structures like vector, map, etc.
+- There are other sophisticated features like wildcard match, additional functional application, etc.
+- Backed by https://www.cs.tufts.edu/~nr/cs257/archive/luc-maranget/jun08.pdf[this paper], the matches are optimized.
+
+> `core.match` lets you write concise conditional statements with sophistications such as wildcard, function application, etc.
+
 
 ### Conciseness:
 
@@ -479,5 +530,9 @@ the scenes right? What is so nice about conciseness?
 Programming with less code could probably mean more productivity. But surely means less testing, if you are 
 building on top of existing and pre-tested code. In that way, conciseness matters.
 
+
+## Edits:
+
+- 17-Aug-2019 - Added description on `core.match`.
 
 > This is expected to be an ongoing article. Will update here as get to see more amusing or hard things.
