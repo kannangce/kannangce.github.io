@@ -181,13 +181,13 @@ basics set here.</p>
 <div class="paragraph">
 <p>The <em>‘Clojure Primer’</em> part is meant just to give a quick mental model on Clojure. That section is
 oversimplified and I might have used some non-standard terms to solve the purpose. Hence, this is not meant
-s a reference in anyways.</p>
+as a reference in anyways.</p>
 </div>
 <div class="paragraph">
 <p>To define, Clojure is a dynamically typed, functional programming language in Lisp dialect and runs on JVM.</p>
 </div>
 <div class="sect2">
-<h3 id="_oversimplified_syntax">(Oversimplified) Syntax:</h3>
+<h3 id="_oversimplified_syntax">(Over)simplified Syntax:</h3>
 <div class="paragraph">
 <p>Any Clojure expressions that you write follows the syntax,</p>
 </div>
@@ -237,7 +237,7 @@ used in the Clojure world. You will get to know about it shortly.</p>
 the condition, the second parameter is the path when the condition succeeds, the third if it fails.</p>
 </div>
 <div class="paragraph">
-<p>Again, within each of them <code>&gt;</code>  and <code>print</code> are 'operators' along with their respective parameters.</p>
+<p>Again, within each of them, <code>&gt;</code>  and <code>print</code> are 'operators' along with their respective parameters.</p>
 </div>
 <div class="ulist">
 <ul>
@@ -246,6 +246,21 @@ the condition, the second parameter is the path when the condition succeeds, the
 'operators' that you might need and how it work*</p>
 </li>
 </ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_function">Function:</h3>
+<div class="paragraph">
+<p>A function is the same as a method in Java. It accepts 0 or more parameters does something any might return a result.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_macro">Macro:</h3>
+<div class="paragraph">
+<p>In programs, macros look the same as a function. 'But', instead of getting executed it accepts a parameter and returns a Clojure code to be executed.</p>
+</div>
+<div class="paragraph">
+<p>This allows you to plugin a transformation logic, which transform the parameter of a Macro into some other code.</p>
 </div>
 </div>
 </div>
@@ -304,7 +319,7 @@ the condition, the second parameter is the path when the condition succeeds, the
 <h3 id="_less_special_constructs">Less Special Constructs:</h3>
 <div class="paragraph">
 <p>In a language “Special constructs“ can be defined as something that you are not sure how it is
-happening until you dig deep. Usually, there will be a set of limited constructs on top of which
+happening until you dig deep. Usually, there will be a set of limited constructs on which
 the whole language is built.</p>
 </div>
 <div class="paragraph">
@@ -331,7 +346,7 @@ public static int fact(int a)
 </div>
 <div class="paragraph">
 <p>As a typical Java developer on the meanings (implementation/definition) of the constructs
-like <code>public</code>, <code>static</code>, <code>int</code>  <code>if .. else ..</code>, <code>||</code> , <code>return</code> , <code>*</code> , and <code>--</code> you have to take it as is
+like <code>public</code>, <code>static</code>, <code>int</code>,  <code>if .. else ..</code>, <code>||</code> , <code>return</code> , <code>*</code> , and <code>--</code> you have to take it as is
 or dig deep into the JVM/JDK to know how it is implemented. You’re not sure how it is implemented
 and you cannot implement something like that on your own.</p>
 </div>
@@ -364,13 +379,14 @@ developed by yourself(if you wish).</p>
 <div class="sect2">
 <h3 id="_infinitelazy_sequence_as_a_normal_sequence">Infinite/lazy sequence as a normal sequence:</h3>
 <div class="paragraph">
-<p>As a Java developer, we might have not heard about infinite sequence before Java 8 streams(eg, <code>Stream.iterate</code>).
-Even after Java 8 not sure if we have this on top of mind to have it ready to use.
-The primary reason is that the infinite/lazy sequence is offered by Streams.
-Though Streams and Collections are part of Java, they are kept apart by hierarchy and are not interchangeable.</p>
+<p>As a Java developer, we hardly heard about infinite sequence before Java 8 streams(eg, <code>Stream.iterate</code>).
+Even after Java 8, we don&#8217;t use it often.  The primary reason is that the infinite/lazy sequence is offered by Streams. Where Streams and Collections are kept apart by hierarchy and are not interchangeable.</p>
 </div>
 <div class="paragraph">
-<p>In case of Clojure, look at the below expressions,</p>
+<p>In the case of Clojure, the lazy/infinite sequence is so commonly used. Primarily because there is not much difference in the way 'lazy' and 'normal' sequence is handled.</p>
+</div>
+<div class="paragraph">
+<p>For ex, look at the below expressions,</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -393,7 +409,7 @@ Though Streams and Collections are part of Java, they are kept apart by hierarch
 <ol class="arabic">
 <li>
 <p>The normal list and lazy sequence are treated in the same way and can be used interchangeably
-(in most of cases).
+(in most cases).
 Thus providing you an opportunity to do a lazy evaluation whenever you normally use a sequence.</p>
 </li>
 </ol>
@@ -446,7 +462,7 @@ You can ask it not to evaluate some expressions by quoting it.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>In short you can also write it as,</p>
+<p>In short, you can also write it as,</p>
 </div>
 <div class="paragraph">
 <p>‘(+ 1 2)</p>
@@ -481,18 +497,13 @@ evaluated then you just quote it.</p>
 <div class="sect2">
 <h3 id="_macros">Macros:</h3>
 <div class="paragraph">
-<p>As stated in one of the sections about, imagine we have a 'Clojure evaluator' that evaluates each
- expression in our program and do accordingly. You can imagine macro as an optional layer between
- your program and the evaluator.</p>
+<p>We had an intro about macro in the primer section.</p>
 </div>
 <div class="paragraph">
-<p>In programs, macros look the same as a function but they can take any input that doesn’t even
-need to be a Clojure and returns a Clojure code to the evaluator.</p>
+<p>To elaborate, a macro lets you create syntactic abstraction. i.e., you can write macros that take anything that doesn’t even look like Clojure but returns a Clojure code for evaluation.</p>
 </div>
 <div class="paragraph">
-<p>This lets you create syntactic abstraction. i.e., you can write macros that take any snippet that
-doesn’t look like Clojure but returns a Clojure expression to the evaluator.
-Some of the common logical operators in other languages such as and, or are macros in Clojure.
+<p>Some of the common logical operators in other languages such as and, or are macros in Clojure.
 Other cool examples are list-iteration <a href="https://clojuredocs.org/clojure.core/for">(<code>for</code>)</a>,
 thread-first macro <a href="https://clojuredocs.org/clojure.core/-%3E">(<code>&#8594;</code>)</a>,
 thread-last macro <a href="https://clojuredocs.org/clojure.core/-%3E%3E">(<code>&#8594;&gt;</code>)</a> and a lot more.</p>
@@ -633,7 +644,7 @@ compiled as Javascript to be executed in the browser.</p>
 <div class="quoteblock">
 <blockquote>
 <div class="paragraph">
-<p>With CLJS, you may run your code on server as well as in browser.</p>
+<p>With CLJS, you may run your code on the server as well as in the browser.</p>
 </div>
 </blockquote>
 </div>
@@ -800,7 +811,7 @@ Software Transaction Management(STM), Transducers, multi-methods, protocols and 
 <h3 id="_usage_of_parentheses">Usage of parentheses:</h3>
 <div class="paragraph">
 <p>I’m fine with too many parentheses. But initially, I was not clear about the usage of parentheses.
-Like in Java, you cannot use arbitrary number of parentheses. Everything that you put into parentheses
+Like in Java, you cannot use an arbitrary number of parentheses. Everything that you put into parentheses
 is evaluated assuming the first element within parentheses is an <code>operator</code>.</p>
 </div>
 <div class="paragraph">
@@ -863,7 +874,7 @@ using the dynamic programming approach which took only a few seconds to solve th
 <p>The lazy sequence was both amusing and hard to imagine. When I tried, it took a couple of hours to
 understand before I come up with a
 <a href="https://github.com/kannangce/Misc-Clojure/blob/master/van-eck-generator.clj">solution</a> on my own for
-van-eck generator with a lazy sequence.</p>
+'van-eck generator' with a lazy sequence.</p>
 </div>
 </div>
 </div>

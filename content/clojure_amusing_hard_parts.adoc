@@ -38,11 +38,11 @@ basics set here.
 
 The _‘Clojure Primer’_ part is meant just to give a quick mental model on Clojure. That section is 
 oversimplified and I might have used some non-standard terms to solve the purpose. Hence, this is not meant 
-s a reference in anyways.
+as a reference in anyways.
 
 To define, Clojure is a dynamically typed, functional programming language in Lisp dialect and runs on JVM.
 
-### (Oversimplified) Syntax:
+### (Over)simplified Syntax:
 
 Any Clojure expressions that you write follows the syntax,
 
@@ -76,10 +76,21 @@ To print the biggest of 2 numbers, you would say,
 `if` is 'operator',  `(> 2 1)`, `(print 2)` , `(print 1)` are its parameters. Where the first parameter is 
 the condition, the second parameter is the path when the condition succeeds, the third if it fails.
 
-Again, within each of them `>`  and `print` are 'operators' along with their respective parameters.
+Again, within each of them, `>`  and `print` are 'operators' along with their respective parameters.
 
 * And that's all about the syntax of the language. Rest of the things that you need to know is different 
 'operators' that you might need and how it work*
+
+### Function:
+
+A function is the same as a method in Java. It accepts 0 or more parameters does something any might return a result.
+
+### Macro:
+
+In programs, macros look the same as a function. 'But', instead of getting executed it accepts a parameter and returns a Clojure code to be executed.
+
+This allows you to plugin a transformation logic, which transform the parameter of a Macro into some other code.
+
 
 ## Amusing Parts:
 
@@ -103,7 +114,7 @@ Some examples,
 ### Less Special Constructs:
 
 In a language “Special constructs“ can be defined as something that you are not sure how it is 
-happening until you dig deep. Usually, there will be a set of limited constructs on top of which 
+happening until you dig deep. Usually, there will be a set of limited constructs on which 
 the whole language is built.
 
 For example, take the below Java excerpt of a factorial implementation,
@@ -126,7 +137,7 @@ public static int fact(int a)
 It says if `a` is '1' or '0' then return 1 or multiply `a` with the `fact(a -1)`. 
 
 As a typical Java developer on the meanings (implementation/definition) of the constructs 
-like `public`, `static`, `int`  `if .. else ..`, `||` , `return` , `*` , and `--` you have to take it as is 
+like `public`, `static`, `int`,  `if .. else ..`, `||` , `return` , `*` , and `--` you have to take it as is 
 or dig deep into the JVM/JDK to know how it is implemented. You’re not sure how it is implemented 
 and you cannot implement something like that on your own.
 
@@ -149,13 +160,13 @@ For now, don’t worry about what function/macro means. You will get to know abo
 
 ### Infinite/lazy sequence as a normal sequence:
 
-As a Java developer, we might have not heard about infinite sequence before Java 8 streams(eg, `Stream.iterate`). 
-Even after Java 8 not sure if we have this on top of mind to have it ready to use. 
-The primary reason is that the infinite/lazy sequence is offered by Streams. 
-Though Streams and Collections are part of Java, they are kept apart by hierarchy and are not interchangeable.
+As a Java developer, we hardly heard about infinite sequence before Java 8 streams(eg, `Stream.iterate`). 
+Even after Java 8, we don't use it often.  The primary reason is that the infinite/lazy sequence is offered by Streams. Where Streams and Collections are kept apart by hierarchy and are not interchangeable.
 
 
-In case of Clojure, look at the below expressions,
+In the case of Clojure, the lazy/infinite sequence is so commonly used. Primarily because there is not much difference in the way 'lazy' and 'normal' sequence is handled.
+
+For ex, look at the below expressions,
 
 ```
 (print (take 2 (list 0 1 2 3 4)))
@@ -173,7 +184,7 @@ It is apparent that `take n` takes the first n elements in the given sequence.
 
 .`range` virtually returns an infinite sequence which you can take (lazily) as you need.
 . The normal list and lazy sequence are treated in the same way and can be used interchangeably
-(in most of cases).
+(in most cases).
 Thus providing you an opportunity to do a lazy evaluation whenever you normally use a sequence.
 
 > Lazy sequence (mostly) behaves the same way as a normal sequence. 
@@ -208,7 +219,7 @@ For ex,
 ; Returns (+ 1 2)
 ```
 
-In short you can also write it as,
+In short, you can also write it as,
 
 ‘(+ 1 2)
 
@@ -229,15 +240,10 @@ This property of a programming language is called https://en.wikipedia.org/wiki/
 
 ### Macros:
 
-As stated in one of the sections about, imagine we have a 'Clojure evaluator' that evaluates each
- expression in our program and do accordingly. You can imagine macro as an optional layer between
- your program and the evaluator.
+We had an intro about macro in the primer section.
 
-In programs, macros look the same as a function but they can take any input that doesn’t even 
-need to be a Clojure and returns a Clojure code to the evaluator. 
+To elaborate, a macro lets you create syntactic abstraction. i.e., you can write macros that take anything that doesn’t even look like Clojure but returns a Clojure code for evaluation. 
 
-This lets you create syntactic abstraction. i.e., you can write macros that take any snippet that 
-doesn’t look like Clojure but returns a Clojure expression to the evaluator. 
 Some of the common logical operators in other languages such as and, or are macros in Clojure. 
 Other cool examples are list-iteration https://clojuredocs.org/clojure.core/for[(`for`)], 
 thread-first macro https://clojuredocs.org/clojure.core/-%3E[(`->`)], 
@@ -327,7 +333,7 @@ Clojure has an isomorphic counterpart, Clojurescript. Wherein you can write Cloj
 With a glimpse, its cool to know that the goodness of Clojure will be available to be 
 compiled as Javascript to be executed in the browser.
 
-> With CLJS, you may run your code on server as well as in browser.
+> With CLJS, you may run your code on the server as well as in the browser.
 
 ### core.match :
 
@@ -448,7 +454,7 @@ Software Transaction Management(STM), Transducers, multi-methods, protocols and 
 ### Usage of parentheses:
 
 I’m fine with too many parentheses. But initially, I was not clear about the usage of parentheses.
-Like in Java, you cannot use arbitrary number of parentheses. Everything that you put into parentheses 
+Like in Java, you cannot use an arbitrary number of parentheses. Everything that you put into parentheses 
 is evaluated assuming the first element within parentheses is an `operator`.
 
 Hence (+ 1 2 3) works whereas, (+ 1 (2 3)) won’t work.
@@ -497,7 +503,7 @@ using the dynamic programming approach which took only a few seconds to solve th
 The lazy sequence was both amusing and hard to imagine. When I tried, it took a couple of hours to 
 understand before I come up with a 
 https://github.com/kannangce/Misc-Clojure/blob/master/van-eck-generator.clj[solution] on my own for 
-van-eck generator with a lazy sequence.
+'van-eck generator' with a lazy sequence.
 
 
 ## FAQs:
