@@ -1,0 +1,64 @@
+= #100DaysOfCode - A retrospect
+
+:date: 2019-09-04
+:category: Practice
+:tags: 100DaysOfCode, Clojure
+
+## About:
+
+This is more of a retrospect on the `#100DaysOfCode` challenge that I took. A challenge in which, I have committed publicly to practice, read or write about Clojure.
+
+This is not a technical post. But more of a note of my own experience on the challenge.
+
+## Motivation:
+
+One or more or all of the below might be the motivation to take up the challenge,
+
+- I'm known to myself as a person good at doing focussed work for short span but a person who is not consistent over a prolonged period to do anything on my own. I wanted to change that self-perception and wanted to improve my consistency.
+
+- Most of the professionals (especially sports, martial artists) have a 'practice time' to perfect their profession. And a 'performance time' in which they showcase/use what they have practiced. But I'm having a feeling that I'm not spending enough time to improve my craftsmanship.
+
+- Having heard from one of my mentor spoken about the people who have the persistence to sit with a problem for months or years. (ex, Einstien sat with the problem of "The general theory of relativity" for 10 years).
+
+- About a year back I got introduced to Clojure by one of my colleague and my mentor. Bought a Clojure book and made almost no progress. Somehow wanted to gain good exposure to Clojure.
+
+- Having read https://www.amazon.in/Practicing-Mind-Developing-Discipline-Challenge/dp/1608680908[The Practicing Mind] which emphasis on focusing the 'Process rather than Product'.
+
+- Having known about https://www.100daysofcode.com[100DaysOfCode] at the right moment as a trigger.
+
+> In no way, I'm comparing to some of the greatness mentioned above. 
+> Those are just motivations. I realize that I have a long way to go!
+
+## Start:
+
+After being thought about starting it for a while, at first the thought seemed like a 'huuuge' commitment. So initially, I just started reading and tweeting about Clojure for 3 days without giving a committing (Yeah! its 103 days in total). It went easy and started with it.
+
+## Some tricks:
+
+- I focussed only on spending an hour honestly, without keeping any hard commitments. Because when starting with something new, it is possible to judge something as easy and get frustrated with not solving an easy problem.
+
+- I had 2 ways of learning,
+* Active Mode - Practice, Read or Write about Clojure
+* Passive Mode - Watching Clojure talks
+
+- At times my personal work demanded more time and energy, I switched to 'Passive Mode' so that all I have to do grasp the talk and take notes for my future reference.
+
+- Started with and followed a https://www.braveclojure.com/foreword/[proper material] so that the initial path is well defined.
+
+- While watching the talks or reading, for the things that I'm not clear, made a note under '*What?*'/'*How?*'/'*Why?*' with a hope that I'll get to know it as I progress in my learning.
+
+- Apparently, had to sacrifice the entertainment time and greatly reduced the time that I spend to help my wife.
+
+## Outcome?
+
+Below are some of the visible outcomes,
+
+- Written a couple of http://kannangce.in/category/clojure.html[articles] on Clojure.
+- Done some minor contributions to https://github.com/borkdude/jet/issues/41[borkdude/jet], https://github.com/boot-clj/boot-new/graphs/contributors[boot-clj/boot-new], https://github.com/borkdude/sci/graphs/contributors[borkdude/sci], and http://clojuredocs.org/u/kannangce[Clojure docs].
+- Got exposed to new paradigms such as FP, CLP.
+- And one more tool to my toolbox.
+- It changed my thought process in a numerous way, which I'll explore and express in upcoming days.
+
+## Thanks:
+
+Thanks for all the people who served as Signboards and motivations. Above all to my beloved wife who accommodated my commitment as part of our schedule. \_/\_
