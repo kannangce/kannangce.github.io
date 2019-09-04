@@ -8,7 +8,7 @@
 
 This is more of a retrospect on the `#100DaysOfCode` challenge that I took. A challenge in which, I have committed publicly to practice, read or write about Clojure.
 
-This is not a technical post. But more of a note of my own experience on the challenge.
+This is not a technical post. But more a note of my own experience on the challenge.
 
 ## Motivation:
 
