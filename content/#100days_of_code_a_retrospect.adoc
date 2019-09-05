@@ -41,7 +41,7 @@ After being thought about starting it for a while, at first the thought seemed l
 * Active Mode - Practice, Read or Write about Clojure
 * Passive Mode - Watching Clojure talks
 
-- At times my personal work demanded more time and energy, I switched to 'Passive Mode' so that all I have to do grasp the talk and take notes for my future reference.
+- At times my personal work demanded more time and energy, I switched to 'Passive Mode' so that all I have to do grasp the talk and take notes for my later readings.
 
 - Started with and followed a https://www.braveclojure.com/foreword/[proper material] so that the initial path is well defined.
 
