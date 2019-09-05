@@ -83,7 +83,7 @@ Again, within each of them, `>`  and `print` are 'operators' along with their re
 
 ### Function:
 
-A function is the same as a method in Java. It accepts 0 or more parameters does something any might return a result.
+A function is the same as a method in Java. It accepts 0 or more parameters does something and might return a result.
 
 ### Macro:
 
@@ -105,7 +105,7 @@ Some examples,
 | Expression 					| Meaning
 | (`+` 1 2)  					| 'Add' 1 and 2.
 | (`=` v1 v2)					| 'Equality check' for values of 'v1' and 'v2'.
-| (`ns`  new-name-space)		| 'Switches namespace' to “new-name-space”. (Namespace is equivalent to Java's collection)
+| (`ns`  new-name-space)		| 'Switches namespace' to “new-name-space”. (Namespace is equivalent to Java's package)
 | (`println` “Test String”)		| 'Prints' the given string.
 | (`def` v 1)					| 'Define' a variable ‘v’ with value 1 (in the current namespace)
 | (`defn` prn [x] (prinln x))	| 'Define' a function named 'prn' that accepts a parameter and prints it.

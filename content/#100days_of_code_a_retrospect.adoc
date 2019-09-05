@@ -37,7 +37,7 @@ After being thought about starting it for a while, at first the thought seemed l
 
 - I focussed only on spending an hour honestly, without keeping any hard commitments. Because when starting with something new, it is possible to judge something as easy and get frustrated with not solving an easy problem.
 
-- I had 2 ways of learning,
+- I had 2 modes of learning,
 * Active Mode - Practice, Read or Write about Clojure
 * Passive Mode - Watching Clojure talks
 
@@ -56,8 +56,8 @@ Below are some of the visible outcomes,
 - Written a couple of http://kannangce.in/category/clojure.html[articles] on Clojure.
 - Done some minor contributions to https://github.com/borkdude/jet/issues/41[borkdude/jet], https://github.com/boot-clj/boot-new/graphs/contributors[boot-clj/boot-new], https://github.com/borkdude/sci/graphs/contributors[borkdude/sci], and http://clojuredocs.org/u/kannangce[Clojure docs].
 - Got exposed to new paradigms such as FP, CLP.
+- It changed my thought process in a numerous way, which I'll explore more and express in upcoming days.
 - And one more tool to my toolbox.
-- It changed my thought process in a numerous way, which I'll explore and express in upcoming days.
 
 ## Thanks:
 
