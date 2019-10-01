@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <!-- Site Meta Data -->
-  <title>DIY Solar Panel powered charger</title>
+  <title>Playing around terminal pipe and Java</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="">
   <meta name="author" content="Kannan Ramamoorthy">
@@ -27,13 +27,13 @@
   <meta name="twitter:image" content="">
 
 <meta name="twitter:creator" content="">
-<meta name="twitter:url" content="./diy-solar-panel-powered-charger.html">
-<meta name="twitter:title" content="My Thought Buddy ~ DIY Solar Panel powered charger">
-<meta name="twitter:description" content="About This is a novice guide to build a Solar panel based mobile charger. Recently I built(assembled) a Solar panel based mobile charger, which is pretty decent in performance and gives an output of 5V and 750mA. All I did is, spent some time on understanding the basics of …">
+<meta name="twitter:url" content="./playing-around-terminal-pipe-and-java.html">
+<meta name="twitter:title" content="My Thought Buddy ~ Playing around terminal pipe and Java">
+<meta name="twitter:description" content="About: This article is just to showcase the SignalHandler in Java with an example of showing a Java program that prints some content infinite times and how to use it along with head, which just takes the given lines and expect to stop the execution. Context: Assume that you have …">
 
 <!-- Facebook Meta Data -->
-<meta property="og:title" content="My Thought Buddy ~ DIY Solar Panel powered charger" />
-<meta property="og:description" content="About This is a novice guide to build a Solar panel based mobile charger. Recently I built(assembled) a Solar panel based mobile charger, which is pretty decent in performance and gives an output of 5V and 750mA. All I did is, spent some time on understanding the basics of …" />
+<meta property="og:title" content="My Thought Buddy ~ Playing around terminal pipe and Java" />
+<meta property="og:description" content="About: This article is just to showcase the SignalHandler in Java with an example of showing a Java program that prints some content infinite times and how to use it along with head, which just takes the given lines and expect to stop the execution. Context: Assume that you have …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -116,15 +116,16 @@
     
     <maincontent>
 <h2>
-    <a href="./diy-solar-panel-powered-charger.html" rel="bookmark" title="Permalink to DIY Solar Panel powered charger">DIY Solar Panel powered charger</a>
+    <a href="./playing-around-terminal-pipe-and-java.html" rel="bookmark" title="Permalink to Playing around terminal pipe and Java">Playing around terminal pipe and Java</a>
 </h2>
 
 <div>
-    <b>By: </b><a href="./author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Mon 13 March 2017<br />
-    <b>In: </b><a href="./category/diy.html" rel="bookmark" title="Permalink to DIY">DIY</a><br />
+    <b>By: </b><a href="./author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Wed 02 October 2019<br />
+    <b>In: </b><a href="./category/java.html" rel="bookmark" title="Permalink to Java">Java</a><br />
     <em><b>Tags: </b>
-                <span><a href="./tag/diy-charger.html">#DIY Charger </a></span>
-                <span><a href="./tag/solar-mobile-charger.html">#Solar Mobile Charger </a></span>
+                <span><a href="./tag/java.html">#Java </a></span>
+                <span><a href="./tag/sig_pipe.html">#Sig_Pipe </a></span>
+                <span><a href="./tag/command-line.html">#Command-line </a></span>
     </em>
     <hr>
 </div>
@@ -132,86 +133,58 @@
 <div>
     <mainarticle>
     <div class="sect1">
-<h2 id="_about">About</h2>
+<h2 id="_about">About:</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>This is a novice guide to build a Solar panel based mobile charger. Recently I built(assembled) a Solar panel based mobile charger, which is pretty decent in performance and gives an output of 5V and 750mA.</p>
-</div>
-<div class="paragraph">
-<p>All I did is, spent some time on understanding the basics of how to do it, bought each individual components and soldered/assembled it.</p>
+<p>This article is just to showcase the SignalHandler in Java with an example of showing a Java program that prints some content infinite times and how to use it along with head, which just takes the given lines and expect to stop the execution.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_components_used">Components Used</h2>
+<h2 id="_context">Context:</h2>
 <div class="sectionbody">
-<div class="sect2">
-<h3 id="_power_source">Power Source</h3>
 <div class="paragraph">
-<p>Obviously the solar panel. A 5W Solar panel available in most of the local electronic shop for less than <code>₹500</code>, was enough for a decent charging. The size is ~ <code>30 X 20 cm</code>. Almost a size of a laptop, but it is fine for me, after all, an experimental project for my own use. When kept in the morning sunshine, the output is nearly <code>4.4W</code>(<code>10V</code> X <code>440mA</code>).</p>
+<p>Assume that you have a file of around 100M rows of data, if you would like to <code>cat</code> the content of the file, it might take a couple of minutes for the operation to get completed. But assume that if you have to execute the below line,</p>
 </div>
-</div>
-<div class="sect2">
-<h3 id="_a_converter">A Converter</h3>
 <div class="paragraph">
-<p>Whatever the output that comes from the solar panel cannot be used to charge the mobile directly. There are 2 options that are available here,</p>
+<p><code>cat my_big_file.txt|head -10</code></p>
 </div>
+<div class="paragraph">
+<p>It would get completed instantaneously. What happens here is that, <code>cat</code> start printing out the content of the file, head takes as much as it needs and says <em>“I’m done”</em>. <code>cat</code> is able to hear that and stops reading the file and the whole execution completes.</p>
+</div>
+<div class="paragraph">
+<p>Instead of <code>cat</code>, assume that you have some java program that returns an infinite stream of data. And how to make it work the same way as the <code>cat</code> above? How would we make the Java program hear when the <code>head</code> says <em>“I’m done”</em>?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_on_sigpipe">On SIGPIPE:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The solution might not be apparent until you have a bit of understanding about <code>SIGPIPE</code>. Signals are communications to the process from OS. In this context head saying <em>“I’m done”</em> is via <code>SIGPIPE</code>. I.e., <code>head</code> takes the first 10 lines from the pipe and gets completed. And since there is no process to read from the pipe, the process that is writing to the pipe (<code>cat</code>) receives a <code>SIGPIPE</code> signal, on which it has a choice to act on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_implementation">Implementation:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given enough context about <code>SIGPIPE</code>, we have to explicitly write the code to handle the <code>SIGPIPE</code> within a Java program. This <a href="https://gist.github.com/kannangce/f6c0a9d43c1632be8e72b55e45044e7a">example</a> would showcase usage.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_caveats">Caveats:</h2>
+<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p>A <a href="https://en.wikipedia.org/wiki/Buck_converter">Buck Converter</a>, is to DC as a transformer is to AC. It helps to convert a DC voltage to a desire DC voltage, by increasing/reducing the current, thus maintaining the energy.(When the voltage is stepped up the current will be stepped down and vice-versa)</p>
+<p>The Signal/SignalHandler are part of sun.misc package so not guaranteed to stay always. Which is why you get warnings while compiling the example program.</p>
 </li>
 <li>
-<p>A <a href="https://en.wikipedia.org/wiki/78xx">78XX Voltage</a> regulator, just reduces the input voltage to XX but maintains the same input current, and the excessive energy will be dissipated as heat.</p>
+<p>You might be thinking <em>“Why on earth anyone would use a Java program along with pipe?”</em>. I got to know about this when I was playing around with a Graalvm compiled, <a href="https://github.com/borkdude/babashka">CLI utility</a> in Clojure. That utility achieves the lazy series feature using <code>Signal/SignalHandler</code>.  The use cases might be rare but anyway it&#8217;s good to know things.</p>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p>Since a Buck converter is efficient with close to 90% efficiency, I chose Buck converter. I got <a href="https://www.amazon.in/gp/product/B00TQUU2SA/ref=od_aui_detailpages00?ie=UTF8&amp;psc=1">this</a> under ₹140. Also there is an adjustment available in this converter, which helps to adjust the output voltage to desired voltage.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_an_op_interface">An O/P Interface</h3>
-<div class="paragraph">
-<p>My main intention was to have a mobile charger. So I used a USB female, which can be utilized by many other electronic equipments such camera, power bank, etc.</p>
-</div>
-<div class="paragraph">
-<p>When you keep the female USB in a way, that the metal connectors faces up, out of 4 metal connectors, the right extreme of the USB is Vcc and the left extreme is GND.  Where Vcc is expected to be <code>5V</code> wrt GND.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Solar_panel/usb-spec.png" alt="usb spec">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_misc">Misc</h3>
-<div class="paragraph">
-<p>Required wires and adapter-pair/Connectors. Utility equipment such as Multimeter and a Soldering gun.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_assembling_them">Assembling Them</h3>
-<div class="paragraph">
-<p>Since everything was readily available, assembling them is the only actual work that I have done. I soldered all the components with adapters so that I can assemble or change any of the components when needed(modular).</p>
-</div>
-<div class="paragraph">
-<p>And as I assembled all these, I am able to charge my mobile using a data-cable.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Solar_panel/circuit.jpg" alt="circuit" width="500" height="500">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_performance">Performance</h3>
-<div class="paragraph">
-<p>I am getting an output of <code>5V</code> and <code>0.8A</code>, which is <code>4W</code>, from a solar panel delivering <code>4.4W</code>. So I am getting almost <code>90%</code> of efficiency.</p>
-</div>
-<div class="paragraph">
-<p>Daily, I am able to harvest enough energy to charge my 3000mAh mobile battery.</p>
-</div>
 </div>
 </div>
 </div>
@@ -223,10 +196,10 @@
 <div>
         <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
             <p style="margin-top: 2%;">
-                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./diy-solar-panel-powered-charger.html&text=DIY Solar Panel powered charger&via="><img class="social-icons-a" src="./theme/images/icons/twitter.png"></a></span>
-                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./diy-solar-panel-powered-charger.html&t=DIY Solar Panel powered charger"><img class="social-icons-a" src="./theme/images/icons/facebook.png"></a></span>
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./playing-around-terminal-pipe-and-java.html&text=Playing around terminal pipe and Java&via="><img class="social-icons-a" src="./theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./playing-around-terminal-pipe-and-java.html&t=Playing around terminal pipe and Java"><img class="social-icons-a" src="./theme/images/icons/facebook.png"></a></span>
 
-                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./diy-solar-panel-powered-charger.html&title=DIY Solar Panel powered charger" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="./theme/images/icons/linkedin.png"></a>
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./playing-around-terminal-pipe-and-java.html&title=Playing around terminal pipe and Java" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="./theme/images/icons/linkedin.png"></a>
             </p>
 </div>
 <hr>

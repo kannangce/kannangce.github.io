@@ -1,0 +1,33 @@
+= Playing around terminal pipe and Java
+
+:date: 2019-10-02 02:00
+:category: Java
+:tags: Java, Sig_Pipe, Command-line
+
+
+## About:
+
+This article is just to showcase the SignalHandler in Java with an example of showing a Java program that prints some content infinite times and how to use it along with head, which just takes the given lines and expect to stop the execution.
+
+## Context:
+
+Assume that you have a file of around 100M rows of data, if you would like to `cat` the content of the file, it might take a couple of minutes for the operation to get completed. But assume that if you have to execute the below line,
+
+`cat my_big_file.txt|head -10`
+
+It would get completed instantaneously. What happens here is that, `cat` start printing out the content of the file, head takes as much as it needs and says _“I’m done”_. `cat` is able to hear that and stops reading the file and the whole execution completes.
+
+Instead of `cat`, assume that you have some java program that returns an infinite stream of data. And how to make it work the same way as the `cat` above? How would we make the Java program hear when the `head` says _“I’m done”_?
+
+## On SIGPIPE:
+
+The solution might not be apparent until you have a bit of understanding about `SIGPIPE`. Signals are communications to the process from OS. In this context head saying _“I’m done”_ is via `SIGPIPE`. I.e., `head` takes the first 10 lines from the pipe and gets completed. And since there is no process to read from the pipe, the process that is writing to the pipe (`cat`) receives a `SIGPIPE` signal, on which it has a choice to act on.
+
+## Implementation:
+
+Given enough context about `SIGPIPE`, we have to explicitly write the code to handle the `SIGPIPE` within a Java program. This https://gist.github.com/kannangce/f6c0a9d43c1632be8e72b55e45044e7a[example] would showcase usage.
+
+## Caveats:
+
+- The Signal/SignalHandler are part of sun.misc package so not guaranteed to stay always. Which is why you get warnings while compiling the example program.
+- You might be thinking _“Why on earth anyone would use a Java program along with pipe?”_. I got to know about this when I was playing around with a Graalvm compiled, https://github.com/borkdude/babashka[CLI utility] in Clojure. That utility achieves the lazy series feature using `Signal/SignalHandler`.  The use cases might be rare but anyway it's good to know things.
