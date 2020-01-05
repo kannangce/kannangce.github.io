@@ -1,0 +1,36 @@
+= 2019 - A look back
+
+:date: 2020-01-05 23:50
+:category: Personal
+:tags: Personal, Retrospect
+
+Though this is not much of a retrospect. It feels happy to list down the things that has been completed or materialzied. 
+This year seem to be a relatively more productive. And below are the things that is feel worth listing down.
+
+* Bought a new home (of course with help of my father and loan).
+
+* Took my family to a 5 day trip.
+
+* Completed reading the below books,
+
+** Algorithms to Live By: The Computer Science of Human Decisions
+** The Practicing Mind: Bringing Discipline and Focus into Your Life	
+** Clojure for the Brave and True
+** The Prophet
+** Becoming a Technical Leader: An Organic Problem-Solving Approach
+** Man's Search for Meaning
+** The Last Lecture
+
+* Wrote around 11 blogs.
+
+* Took a 100 day code challenge, started with clojure and got a better understanding of functional programming which I was thinking for a long time.
+
+* Almost single-handedly developed a analytics module for one of our product.
+
+* Gave a talk on Clojure.
+
+* Took a regex series to my team.
+
+* Contributed a couple of bugfixes to some opensource projects.
+
+Lot of above actions opened up new paths as it usually happens with any action. It's in my hand to choose the needed paths. Magizhchi :-)
