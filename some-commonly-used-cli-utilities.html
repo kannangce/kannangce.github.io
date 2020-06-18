@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./some-commonly-used-cli-utilities.html">
 <meta name="twitter:title" content="My Thought Buddy ~ Some commonly used CLI utilities">
-<meta name="twitter:description" content="Intro: This is a follow-up article for CLI Intro. I have tried to capture a few commands that is being by me used as a developer. This might help someone to get started with CLI if they are facing these tasks and not using CLI so far. Pre-requisites: The one-liners …">
+<meta name="twitter:description" content="">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Thought Buddy ~ Some commonly used CLI utilities" />
-<meta property="og:description" content="Intro: This is a follow-up article for CLI Intro. I have tried to capture a few commands that is being by me used as a developer. This might help someone to get started with CLI if they are facing these tasks and not using CLI so far. Pre-requisites: The one-liners …" />
+<meta property="og:description" content="" />
 <meta property="og:image" content="" />
 </head>
 
@@ -58,6 +58,36 @@
 
   <!-- Sidebar -->
     <sidebar>
+       <!-- Content showing social links -->
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+       <!-- Content showing social links -->
+
+        <p>
+        </p>
+        <p>
+        </p>
+
         <ul class="static-item">
 
         </ul>        
@@ -87,32 +117,6 @@
         </ul>
 
    
-        <p> 
-                <span>
-                    <a href="https://github.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/github.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/so.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
-                    </a>
-                </span>
-        </p>
-        <p>
-        </p>
-        <p>
-        </p>
     </sidebar>
     
     <maincontent>
@@ -132,152 +136,7 @@
 
 <div>
     <mainarticle>
-    <div class="sect1">
-<h2 id="_intro">Intro:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>This is a follow-up article for <a href="http://kannangce.in/getting-started-with-terminal-try-replacing-utility-services-with-cli.html">CLI Intro</a>. I have tried to capture a few commands that is being by me used as a developer. This might help someone to get started with CLI if they are facing these tasks and not using CLI so far.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_pre_requisites">Pre-requisites:</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>The one-liners here extensively uses <code>pbcopy</code> and <code>pbpaste</code>. If you using <code>*nix</code> you might be required to have some <a href="https://coderwall.com/p/kdoqkq/pbcopy-and-pbpaste-on-linux">workaround</a> to use the one-liners as is. I strongly suggest to have <code>pbcopy</code> and <code>pbpaste</code>, it lets you compose the one-liners with your normal activities through clipboards.</p>
-</li>
-<li>
-<p>There might be few commands such as <code>jq</code> that are not available out-of-the-box, if you get some error saying "Command not found", please take time to get it installed. I assure that the time you spend on these CLI will worth the efforts in long run.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_common_commands">Common commands:</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_pretty_printvalidate_xml">Pretty Print/Validate xml:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pbpaste|xmllint --format - | pbcopy</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_pretty_printvalidate_json">Pretty Print/Validate Json:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pbpaste|jq . | pbcopy</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_encode_a_string_to_base64">Encode a string to base64:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pbpaste| base64 | pbcopy</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_decode_a_string_from_base64">Decode a string from base64:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pbpaste| base64 --decode| pbcopy</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_resumable_copy">Resumable Copy:</h3>
-<div class="paragraph">
-<p>The below command was helpful when I had to copy a huge set of files from my hard-disk to the laptop. I was unable to do it in a single day, so I used the below command to have a resumable copy across multiple days.</p>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>rsync --progress -r ‘&lt;source folder&gt;’ ‘&lt;destination folder&gt;’</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_copy_the_current_directory_to_clipboard">Copy the current directory to clipboard:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pwd|pbcopy</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_check_if_a_port_is_open_in_a_host">Check if a port is open in a host:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>telnet &lt;host&gt; &lt;port&gt;</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_find_the_files_containing_particular_content">Find the files containing particular content:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>grep -r "&lt;the content to find&gt;" "&lt;partent location from which the search happens recursively&gt;"</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_find_content_for_a_specific_set_of_files">Find content for a specific set of files:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>grep -r "&lt;the content to find&gt;" --include "&lt;comma separated list of file patterns. ex: '*.java, *js'&gt;" "&lt;partent location from which the search happens recursively&gt;"</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_stop_all_the_dockers">Stop all the dockers:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>docker ps|awk '{print $1}' | tail -n +2 | xargs docker stop</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_sort">Sort:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pbpaste | sort | pbcopy</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_sort_and_de_deplicate">Sort and De-deplicate:</h3>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code>pbpaste | sort -u | pbcopy</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_summary">Summary:</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>Apart from the above commands, it will be good to get comfortable with commands like <code>curl</code>, <code>sed</code>, <code>awk</code> and whatever you think might be needed for your tasks.</p>
-</li>
-<li>
-<p>Leaving it to the reader to get the details of the commands.</p>
-</li>
-<li>
-<p>Apart from that, it&#8217;s good to have a mindset that tries to spend some extra time for the first time and automate the mundane tasks. CLI accomplish that automation to certain extent.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
+    
     </mainarticle>
 </div>
 <hr>

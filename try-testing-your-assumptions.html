@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./try-testing-your-assumptions.html">
 <meta name="twitter:title" content="My Thought Buddy ~ Try testing your assumptions!">
-<meta name="twitter:description" content="While developing applications, we are being confronted with many choices. And while making choices, sometimes we are being fooled by assumptions. Though &#39;choices being fooled by assumption&#39; is a much bigger problem in a wide spectrum, I am limiting myself to the context of software development. Because, it is much …">
+<meta name="twitter:description" content="">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Thought Buddy ~ Try testing your assumptions!" />
-<meta property="og:description" content="While developing applications, we are being confronted with many choices. And while making choices, sometimes we are being fooled by assumptions. Though &#39;choices being fooled by assumption&#39; is a much bigger problem in a wide spectrum, I am limiting myself to the context of software development. Because, it is much …" />
+<meta property="og:description" content="" />
 <meta property="og:image" content="" />
 </head>
 
@@ -58,6 +58,36 @@
 
   <!-- Sidebar -->
     <sidebar>
+       <!-- Content showing social links -->
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+       <!-- Content showing social links -->
+
+        <p>
+        </p>
+        <p>
+        </p>
+
         <ul class="static-item">
 
         </ul>        
@@ -87,32 +117,6 @@
         </ul>
 
    
-        <p> 
-                <span>
-                    <a href="https://github.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/github.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/so.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
-                    </a>
-                </span>
-        </p>
-        <p>
-        </p>
-        <p>
-        </p>
     </sidebar>
     
     <maincontent>
@@ -133,231 +137,7 @@
 
 <div>
     <mainarticle>
-    <div id="preamble">
-<div class="sectionbody">
-<div class="paragraph">
-<p><br>
-While developing applications, we are being confronted with many choices. And while making choices, sometimes  we are being fooled by assumptions.</p>
-</div>
-<div class="paragraph">
-<p>Though <strong>'choices being fooled by assumption'</strong>  is a much bigger problem in a wide spectrum, I am limiting myself  to the context of software development. Because, it is much easier to test and verify your assumption/intuition  in software development.</p>
-</div>
-<div class="paragraph">
-<p>I am trying to explore the point of <em>"testing your assumptions"</em> with one of our recent assignment as an example.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_background">Background:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Recently I had to work on fixing a utility that is being used to load test our application. Our application is primarily an authentication provider, so the load testing primarily involves registering random users and authenticating them. So we have to retain the users that we have registered, so that we can authenticate them.</p>
-</div>
-<div class="paragraph">
-<p>Since testing utility has to retain the registered users across multiple sessions of test, we have store it somewhere externally. Also the data that we have to store is very less(may be a maximum of <strong>100K</strong> users). Since we have to store data and since the amount of data is very less, we chose a lightweight DB, <em>SQLite</em>.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_the_problem">The problem:</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>Since the load testing spins multiple threads to test the application, the utility which is supposed to test the application got hung.  Instead of hitting the limitation of the application, we hit the limitation of the tool which is supposed to test the limitation.</p>
-</div>
-<div class="paragraph">
-<p>Though we are running the test script from multiple machines using <em>"Jmeter distributed testing"</em>, we wanted to make sure that there are no performance issues in the script that does the performance testing.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_towards_the_solution">Towards the solution:</h2>
-<div class="sectionbody">
-<div class="sect2">
-<h3 id="_questioning_assumptions">Questioning assumptions:</h3>
-<div class="paragraph">
-<p>After hitting the limits we questioned some of our basic assumptions and answered it ourself.</p>
-</div>
-<div class="paragraph">
-<p><strong>Q:</strong> Do we need a DB?</p>
-</div>
-<div class="paragraph">
-<p><strong>A:</strong> Yes we need to retain the data across executions.</p>
-</div>
-<div class="paragraph">
-<p><br></p>
-</div>
-<div class="paragraph">
-<p><strong>Q:</strong> Do we need a 'DB'?</p>
-</div>
-<div class="paragraph">
-<p><strong>A:</strong> Of course, we have to retain the data across test executions. And DB is meant for the purpose.</p>
-</div>
-<div class="paragraph">
-<p><br>
-<strong>Q:</strong> Why can’t we have our data in-memory and store it to a file before shutting down and retrieve it in next run?</p>
-</div>
-<div class="paragraph">
-<p><strong>A:</strong> Having <strong>100K</strong> user objects in-memory. That will make the system slower.</p>
-</div>
-<div class="paragraph">
-<p><br></p>
-</div>
-<div class="paragraph">
-<p><strong>Q:</strong> Really? Having <strong>100K</strong> objects in-memory makes system slower? How we know that?</p>
-</div>
-<div class="paragraph">
-<p><strong>A:</strong>  Just an intuition, it’s not 1 or 2 objects, it’s <strong>100K</strong> objects.</p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="_testing_the_assumptions">Testing the assumptions:</h3>
-<div class="paragraph">
-<p>As we questioned the way we are storing the data, we see, we have a decision based on our intuition that <strong>100k</strong> objects is too large to have it in-memory. We wanted to test that assumption.</p>
-</div>
-<div class="paragraph">
-<p>The steps taken to test the assumption is enumerated as below,</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>We created a test script that <strong>"Inserts random data"</strong>, <strong>"Updates a specific object"</strong> and <strong>"Read random data"</strong> form <strong>"any given data store"</strong>.</p>
-</li>
-<li>
-<p>We implemented an <strong>‘In-memory data-store’</strong> that stores all the objects in just a hash-map indexed using the primary key of the object.</p>
-</li>
-<li>
-<p>The <strong>‘In-memory data-store’</strong> is implemented in such a way that the data of the map is serialized and stored in a file periodically(for our use case we
-can afford some data loss). During initialization the content from the file will be loaded and deserialized to the map.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Using the above implementation we tested SQLite and the custom in-memory datastore and compared the test result as below,</p>
-</div>
-<table class="tableblock frame-all grid-all stretch">
-<colgroup>
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2857%;">
-<col style="width: 14.2858%;">
-</colgroup>
-<thead>
-<tr>
-<th class="tableblock halign-left valign-top"><strong>Object Count</strong></th>
-<th class="tableblock halign-left valign-top" colspan="3"><strong>In memory</strong></th>
-<th class="tableblock halign-left valign-top" colspan="3"><strong>SQLite</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="tableblock halign-left valign-top"></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max(read time)</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total Time</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total JVM Memory</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Max(read time)</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total Time</strong></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><strong>Total JVM Memory</strong></p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">0ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">294ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">26 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">21ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">8180ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">110 MB</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">10000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">99ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1921ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">22 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">22ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">541520ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">714 MB</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock">100000</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">98.5 ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">1491 ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">116 MB</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">3895 ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">2286362ms</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">35 MB</p></td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="sect2">
-<h3 id="_notes">Notes:</h3>
-<div class="ulist">
-<ul>
-<li>
-<p><code>read time</code> is the time taken to read one object. <code>Max(read time)</code> is the maximum time taken to read an object, in the process of reading all the objects, one-by-one from the datastore.</p>
-</li>
-<li>
-<p>The JVM memory is measured using <code>Runtime.getRuntime().totalMemory()</code>.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_inferences">Inferences:</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>As we see the above metrics, for a data of around <strong>100K</strong> objects the magnitude of difference is around 23k, and that is phenomenal.</p>
-</li>
-<li>
-<p>The memory it took for <strong>100k</strong> objects is 116MB, which is actually not much.</p>
-</li>
-<li>
-<p>There is unexplainable decrease of memory in SQLite. We didn’t try exploring that, as it is seems trivial for the moment.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>So now, we can make a choice to use our custom <em>"In-memory datastore"</em>. And now, we have a test script that doesn’t have any known bottlenecks of its own and actually test the limitation of our application.</p>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="_summary">Summary:</h2>
-<div class="sectionbody">
-<div class="ulist">
-<ul>
-<li>
-<p>While making a choice, and if the choice is going to have an impact, make sure that the choice is backed-up with proper metrics.</p>
-</li>
-<li>
-<p>Sometimes a choice might seem trivial initially, and you might have built things on top of that choice. But the moment the choice seems matters, test your assumptions.</p>
-</li>
-<li>
-<p>Sometimes, we are not doing some meta-tasks, because we don’t consider it as <em>"actual work"</em>. So we don’t want to spend time on things that are not <em>"actual work"</em>. But a wrong choice might have a severe impact on your <em>"actual work"</em>.</p>
-</li>
-<li>
-<p>Sometimes, we assume that the time spent on proving a choice is not worth it. That holds true for a trivial choice, but for an impactful choice, the time spent on verifying and proving  the assumptions worth it. For ex, developing the test script and coming up with the above metrics might have taken maximum of a day. But that 1 day would have saved us several days of exploring and working around with SQLite.</p>
-</li>
-<li>
-<p>Sometimes, the steps for verifications doesn’t even take much time, for ex, the test script that we used to arrive at the metrics took less than 2hrs to develop.</p>
-</li>
-<li>
-<p>Sometimes, you don’t have to do the verification yourself. Any verification done from a reliable source can be taken as proof.</p>
-</li>
-<li>
-<p>The heading says <em>"<strong>Try</strong> testing"</em>, because it might not be possible to breakdown all the assumptions. So IMHO, it is better to start with those, which you identify as impactful to the best of your knowledge.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-
+    
     </mainarticle>
 </div>
 <hr>

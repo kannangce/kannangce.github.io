@@ -1,0 +1,52 @@
+= Some sample heading
+
+:date: 2019-06-17 23:30
+:category: Productivity
+:tags: Productivity, Introspection
+
+
+## Target Audience:
+
+This is targeted for people with the intention to do more at what they are doing. This is not a go-to solution, but a collection of possible patterns that breaks productivity, which helps you to identify them and act accordingly.
+
+## Context:
+
+If we define Productivity as the amount of _“required”_ work done in a given time. Where the _“required”_ is qualitatively and quantitatively defined based on the context. Below are some of my observations on the patterns that break productivity. Also, this is not "The patterns". Expecting the list to be ever growing.
+
+## Some identifiable patterns:
+
+### Not working on the right things:
+
+Working on the right things will help you do more of the _“required”_ work. Based on the context there are below “Not-right” things which you can identify and cut-off,
+
+- You might find something interesting, and doing it, rather than doing what is needed. This doesn't mean avoiding what amuses you if you don't materialize anything. But be aware of this and make a call based on your best judgment.
+- As observed sometimes, for some reasons, we find other’s works more interesting than ours.
+- To get a feel of doing something, we are caught up with some easy things which are not needed. In other words, this is procrastination. This is a bit different than the first one.
+
+### Distractions:
+
+Distractions are one big time killers. A talkative neighbor, call/mail/message notifications, social media addictions many such things are reducing our ability to do more. Reducing the distraction could give a great boost to our productivity. At least it is better to _interrupt coalescing_. i.e., handle all the interrupts at once, periodically.
+
+### Multitasking:
+
+If you have multiple things to do, try doing it one by one, until and unless you have a strong reason to do it concurrently. Mostly we(at least I) end up becoming stupid when trying to be super smart by doing multiple things at once. With multitasking, you get a feel of being busy, but might not be effectively productive.
+
+### Lack of competence:
+
+Being competent let you achieve more. Especially in the field of programming, the definition of being competent is highly contextual and evolves continuously. So it is necessary to questions oneself and improve on the competence front continuously.
+
+### Lacking clarity:
+
+Clarity on what is _“required”_ is also a factor in getting the _“required”_ things done. When the expectations are so vague, we will be playing around without doing what is needed. Before starting, it is required to take time to get clarity. If things are so complex, it is necessary to break down things and make it clear. Sometimes it is not possible to get everything clear upfront. So start with what you have and get clarity as you move on.
+
+### Going mad at hard times:
+
+When you lose confidence, you go mad, work on random things, possibly ending up doing nothing. Even though the situation is hopeless, face it with confidence, so that you can get the maximum out of the situation.
+
+### Overestimate:
+
+Sometimes we avoid doing certain things thinking that we can’t afford the time and energy it might take. It seems like most of the times what we think is just an illusion. We tend to overestimate a few things and avoid doing it. At times it's better to assess your estimation.
+
+### Not knowing that you're out of the mud:
+
+Sometimes we get into deep mud. We know we are caught up and not taking up anything more. When we are actually out of the mud, we didn’t know that we are out of it. And continue to be in the same mindset and losing the opportunity to take up things. So it necessary to assess oneself often that we are actually busy, or continuing to be in the mindset of things that left us recently.

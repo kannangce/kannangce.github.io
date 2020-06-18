@@ -24,8 +24,7 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# THEME = "/Users/kannan.r/Desktop/Kannan/Personal/graymill"
-THEME = "../graymill"
+THEME = "graymill"
 
 
 # Blogroll
