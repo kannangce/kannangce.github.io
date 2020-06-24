@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./kedanes-algorithm.html">
 <meta name="twitter:title" content="My Thought Buddy ~ Kedane's algorithm">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Problem: Have to find the sequence with the largest sum in a given sequence. To elaborate the question, a sequence is given with positive and negative integers mixed say, {3, -4, 5,-2, 10}. In this, continues sequence with the largest sum is {5, -2, 10}. Personal Background: Had this …">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Thought Buddy ~ Kedane's algorithm" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Problem: Have to find the sequence with the largest sum in a given sequence. To elaborate the question, a sequence is given with positive and negative integers mixed say, {3, -4, 5,-2, 10}. In this, continues sequence with the largest sum is {5, -2, 10}. Personal Background: Had this …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -58,36 +58,6 @@
 
   <!-- Sidebar -->
     <sidebar>
-       <!-- Content showing social links -->
-        <p> 
-                <span>
-                    <a href="https://github.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/github.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/so.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
-                    </a>
-                </span>
-        </p>
-       <!-- Content showing social links -->
-
-        <p>
-        </p>
-        <p>
-        </p>
-
         <ul class="static-item">
 
         </ul>        
@@ -117,6 +87,32 @@
         </ul>
 
    
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
     </sidebar>
     
     <maincontent>
@@ -136,7 +132,79 @@
 
 <div>
     <mainarticle>
-    
+    <div class="paragraph">
+<p><strong>Problem:</strong> Have to find the sequence with the largest sum in a given sequence. To elaborate the question, a sequence is given with positive and negative integers mixed say, <code>{3, -4, 5,-2, 10}</code>. In this, continues sequence with the largest sum is <code>{5, -2, 10}</code>.</p>
+</div>
+<div class="paragraph">
+<p><strong>Personal Background:</strong>
+Had this question in an technical interview. Without knowing that this is a known technical problem, I solved it independently. So just keeping it here as a personal note and memory.</p>
+</div>
+<div class="paragraph">
+<p><strong>Code:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>/**
+ * Class to find the continuous sequence with the largest sum in a given sequence.
+ *
+ */
+public class MaxSumSequence {
+ public static void main(String[] args) {
+  // The sequence in which we need to find the (sub-)seuence with the
+  // largest sum.
+  int[] a = {
+   6,
+   -6,
+   1,
+   11
+  };
+  Sequence aMaxSequence = getMaxSumSequence(a);
+  System.out.print("The continuos sequence with the maximum sum:{");
+  for (int i = aMaxSequence.start; i &lt; aMaxSequence.end; i++) {
+   System.out.print(a[i] + ",");
+  }
+  System.out.print(a[aMaxSequence.end] + "}");
+ }
+
+
+ private static Sequence getMaxSumSequence(int[] a) {
+  Sequence theMaxSequence = new Sequence(0, 0, a[0]);
+  Sequence theCurrentSequence = new Sequence(0, -1, 0);
+  for (int i = 0; i &lt; a.length; i++) {
+   theCurrentSequence.end = i;
+   theCurrentSequence.sum += a[i];
+   if (theCurrentSequence.sum &gt; theMaxSequence.sum) {
+    theMaxSequence.start = theCurrentSequence.start;
+    theMaxSequence.end = theCurrentSequence.end;
+    theMaxSequence.sum = theCurrentSequence.sum;
+   }
+   // If the current sequence is not have a sum greater than 0, its not
+   // going to contribute for the sequence
+   if (theCurrentSequence.sum &lt;= 0) {
+    theCurrentSequence.start = i + 1;
+    theCurrentSequence.sum = 0;
+   }
+  }
+  return theMaxSequence;
+ }
+
+ /**
+  * The class represent a sequence.
+  */
+ private static class Sequence {
+  public Sequence(int theStart, int theEnd, int theSum) {
+   start = theStart;
+   end = theEnd;
+   sum = theSum;
+  }
+  int start;
+  int end;
+  int sum;
+ }
+}</code></pre>
+</div>
+</div>
+
     </mainarticle>
 </div>
 <hr>

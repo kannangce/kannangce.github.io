@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./i18n-support-for-spring-boot-apis.html">
 <meta name="twitter:title" content="My Thought Buddy ~ I18n support for Spring boot APIs">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="About: This document is intended for the developers who implement i18n in their Spring/Spring boot application. Since the available articles in the net are not quite helpful on why we have to do certain things, writing this documentation to help people start with the i18n for Spring-boot apps. Introduction …">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Thought Buddy ~ I18n support for Spring boot APIs" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="About: This document is intended for the developers who implement i18n in their Spring/Spring boot application. Since the available articles in the net are not quite helpful on why we have to do certain things, writing this documentation to help people start with the i18n for Spring-boot apps. Introduction …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -58,36 +58,6 @@
 
   <!-- Sidebar -->
     <sidebar>
-       <!-- Content showing social links -->
-        <p> 
-                <span>
-                    <a href="https://github.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/github.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/so.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
-                    </a>
-                </span>
-        </p>
-       <!-- Content showing social links -->
-
-        <p>
-        </p>
-        <p>
-        </p>
-
         <ul class="static-item">
 
         </ul>        
@@ -117,6 +87,32 @@
         </ul>
 
    
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
     </sidebar>
     
     <maincontent>
@@ -139,7 +135,229 @@
 
 <div>
     <mainarticle>
-    
+    <h1 id="_about" class="sect0">About:</h1>
+<div class="paragraph">
+<p>This document is intended for the developers who implement <code>i18n</code> in their <code>Spring/Spring boot</code> application.</p>
+</div>
+<div class="paragraph">
+<p>Since the available articles in the net are not quite helpful on why we have to do certain things, writing this documentation to help people start with the <code>i18n</code> for Spring-boot apps.</p>
+</div>
+<h1 id="_introduction" class="sect0">Introduction</h1>
+<div class="paragraph">
+<p>With <code>i18n</code> we&#8217;ll make sure that our app is capable of responding the requests in the specific locales of the client.
+The scope of this document is not to address all the edge cases of the i18n support but to provide the technical help on facilitating the i18n support in Spring-boot applications, along with the answers for <strong>why</strong> of the technical part. Further, this focuses only the <code>i18n</code> support based on <code>accept-language</code> header.</p>
+</div>
+<div class="paragraph">
+<p>Also please note that this is not <strong>the way</strong>, it is one of a neat way possible in Spring-boot.</p>
+</div>
+<h1 id="_how" class="sect0">How?</h1>
+<div class="paragraph">
+<p>For <code>i18n</code>, typically you will not hardcode any string within your code, and have it defined as <code>property</code> files for each language you support, outside your code.</p>
+</div>
+<div class="sect1">
+<h2 id="_steps">Steps</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_1_define_the_messages_class">1. Define the Messages class</h3>
+<div class="paragraph">
+<p>The below class will be the facade that returns the message in required locale for a given key.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>@Component
+public class Messages
+{
+    @Autowired
+    private MessageSource messageSource;
+
+    private MessageSourceAccessor accessor;
+
+    // To let the messages accessed statically
+    private static Messages ownInstance;
+
+    // Default locale for your app.
+    // app.default.locale expected to be available in application.properties/yml
+    @Value("${app.default.locale}")
+    private String defaultLocale;
+
+    @PostConstruct
+    public void init()
+    {
+        Locale.setDefault(new Locale(defaultLocale));
+        accessor = new MessageSourceAccessor(messageSource);
+        ownInstance = this;
+    }
+
+    private String getString(String key)
+    {
+        try
+        {
+            return accessor.getMessage(key);
+        } catch (MissingResourceException e)
+        {
+            return '!' + key + '!';
+        }
+    }
+
+    /**
+     * Returns the Locale specific message from the configured
+     * {@link MessageSource}
+     *
+     * @param theKey
+     *            The key for which the message will be returned.
+     * @return The message string associated with the given key.
+     */
+    public static String getMessage(String theKey)
+    {
+        return ownInstance.getString(theKey);
+    }
+}</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_2_initialize_messagesource">2. Initialize MessageSource</h3>
+<div class="paragraph">
+<p>The <code>MessageSource</code> abstracts the source from which the value of a string is being fetched.</p>
+</div>
+<div class="paragraph">
+<p>In the <code>@configuration</code> class, you have to initialize a <code>MessageSource</code>.</p>
+</div>
+<div class="paragraph">
+<p>Please note that the method name should be <code>messageSource</code> or else you have to explicitly define the id of the <code>@Bean</code> to be <code>messageSource</code>. The reason is Spring&#8217;s convention.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>    @Bean
+    public MessageSource messageSource()
+    {
+        ReloadableResourceBundleMessageSource aMessageSrc = new ReloadableResourceBundleMessageSource();
+        // all files under the classpath with prefix messages
+        aMessageSrc.setBasename("classpath:messages");
+        return aMessageSrc;
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_3_initialize_localeresolver">3. Initialize LocaleResolver</h3>
+<div class="paragraph">
+<p>The <code>LocaleResolver</code> takes the responsibility of resolves the Locale for each request.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>    @Bean
+    public LocaleResolver localeResolver()
+    {
+        SessionLocaleResolver slr = new SessionLocaleResolver();
+        return slr;
+    }</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_4_externalize_strings">4. Externalize strings</h3>
+<div class="paragraph">
+<p>Externalize the hardcoded strings that could be responses for API. And store in <strong>message_&lt;locale&gt;.properties</strong>, so that the values of the properties will be your actual message for a specific locale.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><strong>Note:</strong> Eclipse users can take the help from eclipse. To use it right click on src project open "Source"&gt;"Externalize Strings&#8230;&#8203;"</p>
+</div>
+</blockquote>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_5_refer_the_messages_using_keys">5. Refer the messages using keys</h3>
+<div class="paragraph">
+<p>In your actual code, use the below call to get the respective message.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>Messages.getMessage("mesage_key");</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_6_i18n_in_filter">6. I18n in Filter</h3>
+<div class="paragraph">
+<p>If you have filters(classes that extend <code>Filter</code>), you would be required to add the below line in the <code>doFilter</code> method.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>LocaleContextHolder.setLocale(request.getLocale());</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_7_i18n_in_security_filtersuntested">7 . I18n in Security Filters(untested)</h3>
+<div class="paragraph">
+<p>If you are using Spring Security filters, you will be required to add the below initialization in the configuration.</p>
+</div>
+<div class="paragraph">
+<p>The configuration class is expected to extend <code>WebMvcConfigurerAdapter</code> to make use of <code>addInterceptors</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>   @Bean
+   public LocaleChangeInterceptor localeChangeInterceptor() {
+       LocaleChangeInterceptor lci = new LocaleChangeInterceptor();
+       return lci;
+   }
+
+   @Override
+   public void addInterceptors(InterceptorRegistry registry) {
+       registry.addInterceptor(localeChangeInterceptor());
+   }</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h1 id="_why_part" class="sect0">Why part?</h1>
+<div class="sect1">
+<h2 id="_why_reloadableresourcebundlemessagesource">Why <code>ReloadableResourceBundleMessageSource</code>?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The below is an excerpt from Javadoc of the class,
+ &gt; This strategy is not only capable of reloading files based on timestamp changes, but also of loading properties files with a specific character encoding. It will detect XML property files as well.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_sessionlocaleresolver">Why <code>SessionLocaleResolver</code>?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The <code>SessionLocaleResolver</code> supports the below support,
+- Support for default local, when <code>defaultLocale</code> set, that will be used.
+- If Locale not set, along with <code>LocaleChangeInterceptor</code> we can use <strong>query param</strong> to choose the locale.
+- Support to locale from from <strong>'Accept-language'</strong> header.
+- Support to control Locale through <strong>cookie</strong>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_to_explicitly_set_locale_for_filter">Why to explicitly set locale for Filter?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Adding <code>LocaleChangeInterceptor</code> intercepter didn&#8217;t help, as the interceptor&#8217;s <code>preHandle</code> method is running after the <code>doFilter</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_to_add_interceptor_and_adding_it_to_registry_for_security_filter">Why to add Interceptor and adding it to registry for Security filter?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Responsibility of <code>LocaleChangeInterceptor</code> is to set the <code>Locale</code> for the request. Adding the <code>LocaleChangeInterceptor</code> config instantiates it.  To ensure that it is being invoked we are adding it to interceptor.</p>
+</div>
+</div>
+</div>
+<h1 id="_sample" class="sect0">Sample:</h1>
+<div class="paragraph">
+<p>Checkout <a href="https://github.com/kannangce/spring-boot-demos/tree/master/i18n">this project</a> for a sample <code>i18n</code> implementation, using the simple values in <code>accept-language</code> in header.</p>
+</div>
+
     </mainarticle>
 </div>
 <hr>

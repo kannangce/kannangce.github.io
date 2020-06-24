@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./possible-accidental-complexity-in-nexmo-voice-api.html">
 <meta name="twitter:title" content="My Thought Buddy ~ Possible Accidental Complexity in Nexmo Voice API">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Intro: Accidental and Essential complexity are the terms that were mentioned in the book The mythical man month. In my own words, the definitions are, Accidental Complexity is a complexity that software has by accident and could be avoided with a careful thought process. For example, ArrayList offers indefinite element …">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Thought Buddy ~ Possible Accidental Complexity in Nexmo Voice API" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Intro: Accidental and Essential complexity are the terms that were mentioned in the book The mythical man month. In my own words, the definitions are, Accidental Complexity is a complexity that software has by accident and could be avoided with a careful thought process. For example, ArrayList offers indefinite element …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -58,36 +58,6 @@
 
   <!-- Sidebar -->
     <sidebar>
-       <!-- Content showing social links -->
-        <p> 
-                <span>
-                    <a href="https://github.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/github.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/so.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
-                    </a>
-                </span>
-        </p>
-       <!-- Content showing social links -->
-
-        <p>
-        </p>
-        <p>
-        </p>
-
         <ul class="static-item">
 
         </ul>        
@@ -117,6 +87,32 @@
         </ul>
 
    
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
     </sidebar>
     
     <maincontent>
@@ -136,7 +132,144 @@
 
 <div>
     <mainarticle>
-    
+    <div class="sect1">
+<h2 id="_intro">Intro:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>Accidental</strong> and <strong>Essential</strong> complexity are the terms that were mentioned in the book <a href="https://en.wikipedia.org/wiki/The_Mythical_Man-Month">The mythical man month</a>.</p>
+</div>
+<div class="paragraph">
+<p>In my own words, the definitions are,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Accidental Complexity</strong> is a complexity that software has by accident and could be avoided with a careful thought process. For example, ArrayList offers indefinite element addition. If you ask the user resize the internal array before adding each element, that would be insane. Because that can be internally taken care without the knowledge of the user.</p>
+</li>
+<li>
+<p><strong>Essential Complexity</strong> is a complexity in the software that occurs by the nature of the problem. For eg, to communicate a server with a self-signed certificate, the user must take the responsibility of providing the truststore or necessary configuration to ignore SSL check. Because it is not possible for the JVM to make a choice. This type of complexity is inevitable.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In an ideal system, there must be no <em>"Accidental Complexity"</em>. Extreme care and a review by third-eye are required to avoid this type of complexities.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_recent_experience_with_accidental_complexity">Recent experience with Accidental Complexity:</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_problem">Problem:</h3>
+<div class="paragraph">
+<p>Recently, I was playing around with <a href="https://developer.nexmo.com/voice/voice-api/overview">Nexmo Voice API</a>. Basically, the Nexmo Voice is to connect a call to a given number and to talk a given <a href="https://en.wikipedia.org/wiki/Speech_Synthesis_Markup_Language">SSML</a> or stream audio.</p>
+</div>
+<div class="paragraph">
+<p>There are a lot of APIs for Nexmo Voice. But let&#8217;s consider a couple of APIs to discuss the concept,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We have a <code>startTalk</code> to talk a given message in the call identified by the given id.</p>
+</li>
+<li>
+<p>A <code>stopTalk</code> to stop speaking in the call identified by the given call id.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Assume that you have to speak a message, pause for 2 seconds, talk another message and stop talking. You might expect the code something like this,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>client.startTalk("&lt;call Id&gt;", "SSML for message#1"); #1
+Thread.sleep(2000); #2
+client.startTalk("&lt;call Id&gt;", "SSML for message#2"); #3
+client.stopTalk("&lt;call Id&gt;"); #4</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>But it won&#8217;t work that way.</p>
+</div>
+<div class="paragraph">
+<p>The Nexmo server will respond to your call asynchronously.</p>
+</div>
+<div class="paragraph">
+<p>Hence,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Message in <code>#1</code> will be spoken for <code>2s</code>, whether the 'message #1' is completed or not, Nexmo will start talking 'message#2'. Hence if 'message#1' is not completed, you will hear those 2 messages spoken in parallel.</p>
+</li>
+<li>
+<p>Immediately after that, whether the "messages" are completed or not, <code>stopTalk</code> will abruptly stop the messages being spoken.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Hence to have it work in the expected way, you have to code in the below way,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>client.startTalk("&lt;call Id&gt;", "SSML for message#1"); #1
+Thread.sleep(&lt;number of seconds taken to complete speaking message#1&gt;); #1.1
+Thread.sleep(2000); #2
+client.startTalk("&lt;call Id&gt;", "SSML for message#2"); #3
+Thread.sleep(&lt;number of seconds taken to complete speaking message#2&gt;); #3.1
+client.stopTalk("&lt;call Id&gt;"); #4</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You have to experiment and calculate the number of seconds required for <strong>"#1.1"</strong> and <strong>"#3.1"</strong> to have the Nexmo speak the message in expected way.</p>
+</div>
+<div class="paragraph">
+<p>Now the problem is <strong>"Nexmo expects the caller to know the number of seconds required to speak a given message"</strong>, to synchronize between multiple messages. In my opinion, this is an "Accidental complexity". A client can just give the set of instruction to be executed by Nexmo server. It need not know how much time the server takes to execute the instruction.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_proposal">Proposal:</h3>
+<div class="paragraph">
+<p>To avoid the "Accidental Complexities", probably Nexmo might have implemented a queue based approach, in which the server executes the instruction one by one that is being called on a "call id". So that the works just fine,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>client.startTalk("&lt;call Id&gt;", "SSML for message#1"); #1
+Thread.sleep(2000); #2
+client.startTalk("&lt;call Id&gt;", "SSML for message#2"); #3
+client.stopTalk("&lt;call Id&gt;"); #4</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary">Summary:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>In case, if we need a facility to preempt, there can be additional calls such as <code>preemptTalk</code>, <code>preemptStop</code> which <em>pre-empts</em> the calls that has been made already.</p>
+</li>
+<li>
+<p>As I used Nexmo, the APIs that we are talking about has nothing to do with what the other user talks, so it can be exected as <strong>fire-and-forgot</strong>.</p>
+</li>
+<li>
+<p>If you still think, you need the status for each invocation before making the next call, the Nexmo can provide the libraries that let us write the Nexmo instructions conditionally or platform that supports DSLs with conditional instructions for Nexmo, but never adding the complexities to the users as mentioned above.</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Note: Nexmo is one of the widely used servers for Voice. I believe there might be some points on the design considerations that I miss. In that case, this
+article will open up the discussion on that front.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+
     </mainarticle>
 </div>
 <hr>

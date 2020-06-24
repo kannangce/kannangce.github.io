@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./getting-started-with-terminal-try-replacing-utility-services-with-cli.html">
 <meta name="twitter:title" content="My Thought Buddy ~ Getting started with terminal - Try replacing  utility services with CLI">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="Intro: In my opinion, using terminal makes you more productive and lets you get your mundane tasks done quickly. For ex, I spend no more than few seconds for the tasks like, Encoding/Decoding a string to and from base64. Formatting/Validating a JSON. Formatting/Validating an XML. Searching files …">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Thought Buddy ~ Getting started with terminal - Try replacing  utility services with CLI" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="Intro: In my opinion, using terminal makes you more productive and lets you get your mundane tasks done quickly. For ex, I spend no more than few seconds for the tasks like, Encoding/Decoding a string to and from base64. Formatting/Validating a JSON. Formatting/Validating an XML. Searching files …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -58,36 +58,6 @@
 
   <!-- Sidebar -->
     <sidebar>
-       <!-- Content showing social links -->
-        <p> 
-                <span>
-                    <a href="https://github.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/github.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/so.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
-                    </a>
-                </span>
-        </p>
-       <!-- Content showing social links -->
-
-        <p>
-        </p>
-        <p>
-        </p>
-
         <ul class="static-item">
 
         </ul>        
@@ -117,6 +87,32 @@
         </ul>
 
    
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
     </sidebar>
     
     <maincontent>
@@ -136,7 +132,161 @@
 
 <div>
     <mainarticle>
-    
+    <div class="sect1">
+<h2 id="_intro">Intro:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In my opinion, using terminal makes you more productive and lets you get your mundane tasks done quickly. For ex, I spend no more than few seconds for the tasks like,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Encoding/Decoding a string to and from base64.</p>
+</li>
+<li>
+<p>Formatting/Validating a JSON.</p>
+</li>
+<li>
+<p>Formatting/Validating an XML.</p>
+</li>
+<li>
+<p>Searching files containing a particular string.</p>
+</li>
+<li>
+<p>Find and replace a particular pattern.</p>
+</li>
+<li>
+<p>Sort/de-duplicate a text content.</p>
+</li>
+<li>
+<p>And similar tasks that I do regularly.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>But it was a bit difficult for me to convey these things to the people around me and pass on the comfort that I have so that they will also get more productive on similar tasks.</p>
+</div>
+<div class="paragraph">
+<p>This is an effort to try to convience someone to start using CLI.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_step_by_step">Step-by-step:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Typically, the general alternatives for the tasks mentioned above are some websites that offer encoding, decoding, formatting, and validation.  The steps to achieve what they intended to do is,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Copy the text that they need to encode/decode/validate/format.</p>
+</li>
+<li>
+<p>Paste it to the site that performs expected action.</p>
+</li>
+<li>
+<p>Click on encode/decode/validate/format.</p>
+</li>
+<li>
+<p>Copy the output.</p>
+</li>
+<li>
+<p>Paste it back to the intended place.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_example">Example:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I believe these are fair enough use-cases that let you start with command-line. I am trying to compare the step-by-step breakdown of CLI and non-CLI way of achieving a base64 encoding.</p>
+</div>
+<div class="sect2">
+<h3 id="_without_using_cli">Without using CLI,</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Copy the string that needs to be encoded.</p>
+</li>
+<li>
+<p>Open some website like www.base64encode.org and paste your string there.</p>
+</li>
+<li>
+<p>Click on encode.</p>
+</li>
+<li>
+<p>Copy the output text.</p>
+</li>
+<li>
+<p>Paste it in your intended location.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_while_doing_the_same_thing_with_cli">While doing the same thing with CLI,</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Copy the string that needs to be encoded.</p>
+</li>
+<li>
+<p>In terminal execute the command <code>pbpaste|base64|pbcopy</code>.</p>
+</li>
+<li>
+<p>Paste the base64 encoded string to the intended location.</p>
+</li>
+</ul>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Note: <code>pbpaste</code> pastes the content from the clipboard, <code>pbcopy</code> copies the content to the clipboard. If you are a non-mac user, try finding the equivalent of it.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_benchmarking">Benchmarking:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As verified, I took <code>28.62s</code> in the way of not using CLI and took <code>17.50s</code> when I executed in CLI.</p>
+</div>
+<div class="paragraph">
+<p>To be fair, I assumed that I already have knowledge of <a href="http://www.base64encode.org">the site</a> and the knowledge of the commands and typed in those by hand.</p>
+</div>
+<div class="paragraph">
+<p>The time taken when you using non-cli is nearly 63% more than the time it was taken in CLI. Further, you can save more time if you have the CLI version defined as an alias.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_summary">Summary:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Apart from the time that you save, CLI&#8217;s are more native to your system that provides you more power which is not available otherwise. For ex, you can format the content of a json file and save it to another file using the one-liner, <code>cat "ip_file" | jq . &gt; "op_file"</code>. In a non-cli way, you will be required to take care of file operations(reading/saving the file) yourself manually.</p>
+</li>
+<li>
+<p>You will also be able to combine multiple commands to achieve something new, that might not be possible when you are using separate services for each use cases. I’ll try to prove more on that in the upcoming articles.</p>
+</li>
+<li>
+<p>Once you start using the terminal, you understand that commands provide so many options that it is difficult to have a UI with all possible functionalities that a terminal can provide.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In general, I strongly believe that commands let you do more without spending much time in fiddling on different services. Compiled some of my commonly used commands <a href="http://kannangce.in/some-commonly-used-cli-utilities.html">here</a>, might be helpful for you if you have already faced the use-cases mentioned there.</p>
+</div>
+</div>
+</div>
+
     </mainarticle>
 </div>
 <hr>

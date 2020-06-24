@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./number-divisible-by-24816525125.html">
 <meta name="twitter:title" content="My Thought Buddy ~ Number divisible by 2,4,8,16../5,25,125..">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="For any number 2^n(or 5^n), if you need to find out if it is a factor of number X, it is enough if you check the last n digits of the number X. For ex., say a number 120016, if I need to find if the number …">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Thought Buddy ~ Number divisible by 2,4,8,16../5,25,125.." />
-<meta property="og:description" content="" />
+<meta property="og:description" content="For any number 2^n(or 5^n), if you need to find out if it is a factor of number X, it is enough if you check the last n digits of the number X. For ex., say a number 120016, if I need to find if the number …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -58,36 +58,6 @@
 
   <!-- Sidebar -->
     <sidebar>
-       <!-- Content showing social links -->
-        <p> 
-                <span>
-                    <a href="https://github.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/github.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/so.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
-                    </a>
-                </span>
-        </p>
-       <!-- Content showing social links -->
-
-        <p>
-        </p>
-        <p>
-        </p>
-
         <ul class="static-item">
 
         </ul>        
@@ -117,6 +87,32 @@
         </ul>
 
    
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
     </sidebar>
     
     <maincontent>
@@ -136,7 +132,38 @@
 
 <div>
     <mainarticle>
-    
+    <div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>For any number <code>2^n</code>(or <code>5^n</code>), if you need to find out if it is a factor of number X, it is enough if you check the last n digits of the number X.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>For ex., say a number <code>120016</code>, if I need to find if the number is divisible by <code>16</code> (=<code>2^4</code>), I just need to check if the last 4 digits is divisible by <code>4</code>. So here <code>120016</code> is divisible by <code>16</code>, because the last 4 digit is divisible by 16.</p>
+</div>
+<div class="paragraph">
+<p>Now, let’s not convinced just with some shortcut.</p>
+</div>
+<div class="paragraph">
+<p>Let’s understand the concept by taking a 5 digit number represented by <code>abcde</code>, where a,b,c,d,e each represents some decimal from <code>0</code> to <code>9</code>.</p>
+</div>
+<div class="paragraph">
+<p>I need to find out if the number <code>abcde</code> is divisible by <code>8</code> (=<code>2^3</code>).</p>
+</div>
+<div class="paragraph">
+<p>Expressing the number abcde as <code>ab000 +cde</code></p>
+</div>
+<div class="paragraph">
+<p>So now, <code>ab000</code> is nothing but <code>abX1000</code>, no doubt this is divisible by 8. Because <code>1000</code> is a factor for it which is multiple of <code>8</code>.</p>
+</div>
+<div class="paragraph">
+<p>Now we just need to confirm if the number <code>cde</code> is divisible by 8. The same applies for any number X , to confirm if it is divisible by <code>2^n</code> we just need to check if the <strong>last n digits is divisible by n</strong>.</p>
+</div>
+<div class="paragraph">
+<p>The similar way we can prove for powers of <code>5</code>!</p>
+</div>
+
     </mainarticle>
 </div>
 <hr>

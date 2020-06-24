@@ -29,11 +29,11 @@
 <meta name="twitter:creator" content="">
 <meta name="twitter:url" content="./playing-around-terminal-pipe-and-java.html">
 <meta name="twitter:title" content="My Thought Buddy ~ Playing around terminal pipe and Java">
-<meta name="twitter:description" content="">
+<meta name="twitter:description" content="About: This article is just to showcase the SignalHandler in Java with an example of showing a Java program that prints some content infinite times and how to use it along with head, which just takes the given lines and expect to stop the execution. Context: Assume that you have …">
 
 <!-- Facebook Meta Data -->
 <meta property="og:title" content="My Thought Buddy ~ Playing around terminal pipe and Java" />
-<meta property="og:description" content="" />
+<meta property="og:description" content="About: This article is just to showcase the SignalHandler in Java with an example of showing a Java program that prints some content infinite times and how to use it along with head, which just takes the given lines and expect to stop the execution. Context: Assume that you have …" />
 <meta property="og:image" content="" />
 </head>
 
@@ -58,36 +58,6 @@
 
   <!-- Sidebar -->
     <sidebar>
-       <!-- Content showing social links -->
-        <p> 
-                <span>
-                    <a href="https://github.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/github.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/so.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
-                    </a>
-                </span>
-                <span>
-                    <a href="https://twitter.com/kannangce" target="_blank">
-                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
-                    </a>
-                </span>
-        </p>
-       <!-- Content showing social links -->
-
-        <p>
-        </p>
-        <p>
-        </p>
-
         <ul class="static-item">
 
         </ul>        
@@ -117,6 +87,32 @@
         </ul>
 
    
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+        <p>
+        </p>
+        <p>
+        </p>
     </sidebar>
     
     <maincontent>
@@ -137,7 +133,81 @@
 
 <div>
     <mainarticle>
-    
+    <div class="sect1">
+<h2 id="_about">About:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This article is just to showcase the SignalHandler in Java with an example of showing a Java program that prints some content infinite times and how to use it along with head, which just takes the given lines and expect to stop the execution.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_context">Context:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Assume that you have a file of around 100M rows of data, if you would like to <code>cat</code> the content of the file, it might take a couple of minutes for the operation to get completed. But assume that if you have to execute the below line,</p>
+</div>
+<div class="paragraph">
+<p><code>cat my_big_file.txt|head -10</code></p>
+</div>
+<div class="paragraph">
+<p>It would get completed instantaneously. What happens here is that, <code>cat</code> start printing out the content of the file, head takes as much as it needs and says <em>“I’m done”</em>. <code>cat</code> is able to hear that and stops reading the file and the whole execution completes.</p>
+</div>
+<div class="paragraph">
+<p>Instead of <code>cat</code>, assume that you have some java program that returns an infinite stream of data. And how to make it work the same way as the <code>cat</code> above? How would we make the Java program hear when the <code>head</code> says <em>“I’m done”</em>?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_on_sigpipe">On SIGPIPE:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The solution might not be apparent until you have a bit of understanding about <code>SIGPIPE</code>. Signals are communications to the process from OS. In this context head saying <em>“I’m done”</em> is via <code>SIGPIPE</code>. I.e., <code>head</code> takes the first 10 lines from the pipe and gets completed. And since there is no process to read from the pipe, the process that is writing to the pipe (<code>cat</code>) receives a <code>SIGPIPE</code> signal, on which it has a choice to act on.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_implementation">Implementation:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Given enough context about <code>SIGPIPE</code>, we have to explicitly write the code to handle the <code>SIGPIPE</code> within a Java program. This <a href="https://gist.github.com/kannangce/f6c0a9d43c1632be8e72b55e45044e7a">example</a> would showcase usage. The program prints a string infinite number of times. Without the implmentation of signal handling the program would never stop.</p>
+</div>
+<div class="paragraph">
+<p>Usage of the above program,</p>
+</div>
+<div class="paragraph">
+<p><em>To Compile:</em></p>
+</div>
+<div class="paragraph">
+<p><code>javac RespectSigPipe.java</code></p>
+</div>
+<div class="paragraph">
+<p><em>Respecting SIGPIPE:</em></p>
+</div>
+<div class="paragraph">
+<p>This prints just the first 20 lines and stops.</p>
+</div>
+<div class="paragraph">
+<p><code>java RespectSigPipe | head -20</code></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_caveats">Caveats:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The Signal/SignalHandler are part of sun.misc package so not guaranteed to stay always. Which is why you get warnings while compiling the example program.</p>
+</li>
+<li>
+<p>You might be thinking <em>“Why on earth anyone would use a Java program along with pipe?”</em>. I got to know about this when I was playing around with a Graalvm compiled, <a href="https://github.com/borkdude/babashka">CLI utility</a> in Clojure. That utility achieves the lazy series feature using <code>Signal/SignalHandler</code>.  The use cases might be rare but anyway it&#8217;s good to know things.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
     </mainarticle>
 </div>
 <hr>

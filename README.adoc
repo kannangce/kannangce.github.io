@@ -1,2 +1,18 @@
-# kannangce.github.io
-Contains the content of my blog.
+# About:
+
+Contains the content of my http://kannangce.in[blog].
+
+- This contains the blog contents under link:content[content] folder.
+- The pages are generated using the https://github.com/getpelican/pelican[pelican] static site generator.
+- This site uses https://github.com/kannangce/graymill[graymill] template, which is embedded as submodule in this project.
+
+
+## Pre-requisite to build:
+
+- We need `python`/`pip`, in which the pelican is built.
+- Install pelican using `pip3 install pelican`.
+- Since the content is written in asciidoc, to convert into Html, we need https://github.com/asciidoctor/asciidoctor[`asciidoctor`] utility, which need to be installed(`brew install asciidoctor`) in the machine that builds.
+
+## Build:
+
+`make html` - To generate the html out of the adocs under the link:content[content] folder.
