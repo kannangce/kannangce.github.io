@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Seeing code in the config</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kannan Ramamoorthy">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="My Thought Buddy">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="./theme/css/milligram.css" type="text/css" />
+  <link rel="stylesheet" href="./theme/css/custom.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="./seeing-code-in-the-config.html">
+<meta name="twitter:title" content="My Thought Buddy ~ Seeing code in the config">
+<meta name="twitter:description" content="About: This is an effort to give a perspective to see config(data) as a code, which is not typical for programmers from an imperative programming background. With this you‘ll be able to gain a technique with which you can express any arbitrary logic as part of your config …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="My Thought Buddy ~ Seeing code in the config" />
+<meta property="og:description" content="About: This is an effort to give a perspective to see config(data) as a code, which is not typical for programmers from an imperative programming background. With this you‘ll be able to gain a technique with which you can express any arbitrary logic as part of your config …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <div class="container">
+
+    <!-- Navbar -->
+      <div class="navbar">
+        <ul>
+            <div>
+                <li>
+                    <a href="."><h2>My Thought Buddy</h2></a>
+                </li>
+                <li>
+                        <em><h5>(->> thoughts 
+ (filter #(curious? %)) 
+ (post-here))</h5></em>
+                </li>
+            </div>
+        </ul>
+      </div>
+
+  <!-- Sidebar -->
+    <sidebar>
+       <!-- Content showing social links -->
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+       <!-- Content showing social links -->
+
+        <p>
+        </p>
+        <p>
+        </p>
+
+        <ul class="static-item">
+
+        </ul>        
+
+        <ul>
+                <div class="cat-border">
+                <li style="color: #F2F1EF; background-color: #6C7A89;">Categories</li>
+                    <li><a href="./category/clojure.html">Clojure</a></li>
+                    <li><a href="./category/command-line.html">Command-Line</a></li>
+                    <li><a href="./category/computer-science-algorithm.html">Computer Science, Algorithm</a></li>
+                    <li><a href="./category/diy.html">DIY</a></li>
+                    <li><a href="./category/docker.html">Docker</a></li>
+                    <li><a href="./category/documentation.html">Documentation</a></li>
+                    <li><a href="./category/dsl.html">DSL</a></li>
+                    <li><a href="./category/introspection.html">Introspection</a></li>
+                    <li><a href="./category/java.html">Java</a></li>
+                    <li><a href="./category/java-java-debugging.html">Java, Java Debugging</a></li>
+                    <li><a href="./category/java-spring.html">Java Spring</a></li>
+                    <li><a href="./category/mathematics.html">Mathematics</a></li>
+                    <li><a href="./category/misc-thoughts.html">Misc Thoughts</a></li>
+                    <li><a href="./category/personal.html">Personal</a></li>
+                    <li><a href="./category/practice.html">Practice</a></li>
+                    <li><a href="./category/productivity.html">Productivity</a></li>
+                    <li><a href="./category/qa.html">QA</a></li>
+                    <li><a href="./category/software.html">Software</a></li>
+                    <li><a href="./category/software-design.html">Software Design</a></li>
+                </div>
+        </ul>
+
+   
+    </sidebar>
+    
+    <maincontent>
+<h2>
+    <a href="./seeing-code-in-the-config.html" rel="bookmark" title="Permalink to Seeing code in the config">Seeing code in the config</a>
+</h2>
+
+<div>
+    <b>By: </b><a href="./author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Thu 15 October 2020<br />
+    <b>In: </b><a href="./category/dsl.html" rel="bookmark" title="Permalink to DSL">DSL</a><br />
+    <em><b>Tags: </b>
+                <span><a href="./tag/expressive-configs.html">#Expressive-Configs </a></span>
+                <span><a href="./tag/dsl.html">#DSL </a></span>
+                <span><a href="./tag/s-expression.html">#S-expression </a></span>
+    </em>
+    <hr>
+</div>
+
+<div>
+    <mainarticle>
+    <div class="sect1">
+<h2 id="_about">About:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This is an effort to give a perspective to see config(data) as a code, which is not typical for programmers from an imperative programming background. With this you‘ll be able to gain a technique with which you can express any arbitrary logic as part of your config(data). In other words, where others see just data you can see code.</p>
+</div>
+<div class="paragraph">
+<p>For the benefit of a larger audience, I’m trying to explain this with an example and trying to be as concrete as possible.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_context">Context:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A couple of months back I was working on the problem of implementing a survey module for one of our clients. This example is about  a subset of the bigger problem that any typical Survey module has to solve, the problem of conditional display of questions.
+Problem in focus:
+Assume that we are managing each survey as  a JSON, let’s just focus on how to achieve the conditional branching of questions.</p>
+</div>
+<div class="paragraph">
+<p>In detail,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Say you have 3 MCQ questions as part of your survey - Q(1|2|3).</p>
+</li>
+<li>
+<p>And assume each of them has respective answers Q(1|2|3)A(1|2|3).</p>
+</li>
+<li>
+<p>Assume, you have to write a conditional display for Q2, that displays Q2 only when the answer for Q1 is Q1A1.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_solution_first_cut">Solution - first cut:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Based on a couple of Java developers I talked with, If you are from a background of imperative language your solution for conditional display could most likely looks like this,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>{
+  "questions": [
+    {
+      "qId": "Q1",
+      "options": {
+        "id": "Q1A1",
+        "displayOnSelect": "Q3"
+      }
+    },
+    {
+      "qId": "Q2",
+      "options": {
+        "id": "Q2A1"
+      },
+      "display": "hidden"
+    }
+  ]
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where-in, in your code you give the meaning to the json by defining,
+By default all questions are displayed until "display" is mentioned as hidden.
+When a particular answer is selected the question is mentioned in "displayOnSelect" will be displayed
+&gt; If you think about alternative choice write it down and see how it evolves as the below complexities are added.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_adding_complexity">Adding complexity:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Think about it how would you address the below scenarios when you have to address the below cases,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Display Q3 when the selected answers are Q1A1 and Q2A1.</p>
+</li>
+<li>
+<p>Display Q4 when the selected answers are Q1A1 or Q2A1.</p>
+</li>
+<li>
+<p>Also think about the case in which you get input from the user and use reg-ex match or numerical comparison on that.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>You’ll be required to <em>invent a syntax</em> to express the above logic and give meaning to those syntax by <em>interpreting it in a certain way</em> as part of your code if you follow the aforementioned approach.
+Problem with the solution:
+The problem with the above solution is, it is not easily extensible when additional constraints are added, we treat the json just as a data and the whole logic of display is just implemented in the code.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_alternative_solution">Alternative Solution:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Instead, think if we can have an expression for each field that says whether to display that field or not.
+And think if the syntax of the expression is extensible to express any logic.And all we have to do in the program is to evaluate that expression and decide.</p>
+</div>
+<div class="paragraph">
+<p>Embed plain javascript in json and call an <code>eval</code>? Nope, eval doesn’t have a sandbox and could cause security issues. Otherwise it’s not a bad idea.</p>
+</div>
+<div class="paragraph">
+<p>So, what else is that extensible syntax? <a href="https://en.wikipedia.org/wiki/S-expression">S-expression</a> is one of the (most?)  simplest syntax to express any logic in an extensible way.</p>
+</div>
+<div class="paragraph">
+<p>For ex, your data for Q3 with the logic “Display Q3 when the selected answers are Q1A1 and Q2A1." looks like this,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>{
+      "qId": "Q3",
+      “canDisaply" : ["and", ["equals?", "Q1A1", ["answer", "Q1"]] , ["equals?", "Q2A1", ["answer", "Q2"] ]]
+      "options": {
+        "id": "Q3A1"
+      }
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>So our whole expression is expressed as a nested list, where the first element of each list contains an operator that does some operation.</p>
+</div>
+<div class="paragraph">
+<p>So how would the evaluation happen?</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_implementing_evaluator">Implementing Evaluator:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>There is a library called <a href="https://github.com/ysmood/nisp">nisp</a>, which lets us evaluate s-expressions. All we will be required to do is define the operators (for ex, “and", “equals", “answer") that we are going to use and ask the nisp to evaluate the expression thus returning the result.
+For ex, to evaluate the aforementioned expression, your code might looks like this,</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code>import nisp from 'nisp'
+var sandbox = {
+    'answer': (quid) =&gt; answers[quid],
+    'and': (e1, e2) =&gt; e1 &amp;&amp; e2,
+    'equals?': (v1, v2) =&gt; v1 == v2
+};
+var exp = ["and", ["equals?", "Q1A1", ["answer", "Q1"]] , ["equals?", "Q2A1", ["answer", "Q2"] ]];
+nisp(exp, sandbox);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Where the <code>answers</code> is the global that you will be required to maintain, containing an array of answers given by the user.</p>
+</div>
+<div class="paragraph">
+<p>In this way, you can evaluate expressions to express any logic and it’s completely a sandboxed evaluation.</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>There is also a concept of <a href="http://sriku.org/blog/2012/04/15/j-expressions/">J-expression</a> which has the same nature as s-expression and expresses logic in json instead of deeply nested list.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion">Conclusion:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>It&#8217;s not that this is <strong>the design</strong> for all the survey module, if your requirement doesn&#8217;t needs such controls mentioned above, this would be an over-engineering.</p>
+</li>
+<li>
+<p>Though the implementation/idea per se is not so difficult, it helps you gain a new perspective to express your logic as part of data in an extensible and elegant way.</p>
+</li>
+<li>
+<p>There are implementations of NISP in different languages hence the same expression can be used to be evaluated in the backend as well if required.</p>
+</li>
+<li>
+<p>For Java developers, though using Code in Config is common using <a href="https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html"><code>SpEL</code></a>. The advantage of this is, you have precise sandbox control and let your config be shared with applications return in other lanugages as well. Java evaluator for S-expression is available <a href="https://github.com/kannangce/j-s-exp">here</a>.</p>
+</li>
+<li>
+<p>It’s something worth exploring for the people who come from imperative programming background. The perspective of seeing code as part of data is something that I should thank Clojure for(and <a href="https://twitter.com/tamizhvendan">Tamizh</a> who introduced NISP in the first <a href="https://www.youtube.com/watch?v=btdsrZwH0no&amp;ab_channel=ClojureChennai">Chennai Clojure meet</a>).</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+    </mainarticle>
+</div>
+<hr>
+
+<div>
+        <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
+            <p style="margin-top: 2%;">
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./seeing-code-in-the-config.html&text=Seeing code in the config&via="><img class="social-icons-a" src="./theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./seeing-code-in-the-config.html&t=Seeing code in the config"><img class="social-icons-a" src="./theme/images/icons/facebook.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./seeing-code-in-the-config.html&title=Seeing code in the config" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="./theme/images/icons/linkedin.png"></a>
+            </p>
+</div>
+<hr>
+    <p><i>For any feedback or corrections, please write in to: </i><b> kannangce@rediffmail.com </b></p>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "kannangce-in"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </maincontent>
+
+  <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-127824340-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </div>
+</body>
+
+</html>

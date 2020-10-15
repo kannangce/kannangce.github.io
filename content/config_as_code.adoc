@@ -1,0 +1,120 @@
+= Seeing code in the config
+
+:date: 2020-10-15 13:34
+:category: DSL
+:tags: Expressive-Configs, DSL, S-expression
+
+## About:
+
+This is an effort to give a perspective to see config(data) as a code, which is not typical for programmers from an imperative programming background. With this you‘ll be able to gain a technique with which you can express any arbitrary logic as part of your config(data). In other words, where others see just data you can see code.
+
+For the benefit of a larger audience, I’m trying to explain this with an example and trying to be as concrete as possible.
+
+## Context:
+
+A couple of months back I was working on the problem of implementing a survey module for one of our clients. This example is about  a subset of the bigger problem that any typical Survey module has to solve, the problem of conditional display of questions.
+Problem in focus:
+Assume that we are managing each survey as  a JSON, let’s just focus on how to achieve the conditional branching of questions.
+
+In detail,
+
+- Say you have 3 MCQ questions as part of your survey - Q(1|2|3).
+- And assume each of them has respective answers Q(1|2|3)A(1|2|3).
+- Assume, you have to write a conditional display for Q2, that displays Q2 only when the answer for Q1 is Q1A1.
+
+## Solution - first cut:
+
+Based on a couple of Java developers I talked with, If you are from a background of imperative language your solution for conditional display could most likely looks like this,
+
+```
+{
+  "questions": [
+    {
+      "qId": "Q1",
+      "options": {
+        "id": "Q1A1",
+        "displayOnSelect": "Q3"
+      }
+    },
+    {
+      "qId": "Q2",
+      "options": {
+        "id": "Q2A1"
+      },
+      "display": "hidden"
+    }
+  ]
+}
+```
+
+Where-in, in your code you give the meaning to the json by defining,
+By default all questions are displayed until "display" is mentioned as hidden.
+When a particular answer is selected the question is mentioned in "displayOnSelect" will be displayed
+> If you think about alternative choice write it down and see how it evolves as the below complexities are added.
+
+## Adding complexity:
+
+Think about it how would you address the below scenarios when you have to address the below cases,
+
+- Display Q3 when the selected answers are Q1A1 and Q2A1.
+- Display Q4 when the selected answers are Q1A1 or Q2A1.
+- Also think about the case in which you get input from the user and use reg-ex match or numerical comparison on that.
+
+You’ll be required to _invent a syntax_ to express the above logic and give meaning to those syntax by _interpreting it in a certain way_ as part of your code if you follow the aforementioned approach.
+Problem with the solution:
+The problem with the above solution is, it is not easily extensible when additional constraints are added, we treat the json just as a data and the whole logic of display is just implemented in the code. 
+
+## Alternative Solution:
+
+Instead, think if we can have an expression for each field that says whether to display that field or not.
+And think if the syntax of the expression is extensible to express any logic.And all we have to do in the program is to evaluate that expression and decide.
+
+Embed plain javascript in json and call an `eval`? Nope, eval doesn’t have a sandbox and could cause security issues. Otherwise it’s not a bad idea.
+
+So, what else is that extensible syntax? https://en.wikipedia.org/wiki/S-expression[S-expression] is one of the (most?)  simplest syntax to express any logic in an extensible way.
+
+For ex, your data for Q3 with the logic “Display Q3 when the selected answers are Q1A1 and Q2A1." looks like this,
+
+```
+{
+      "qId": "Q3",
+      “canDisaply" : ["and", ["equals?", "Q1A1", ["answer", "Q1"]] , ["equals?", "Q2A1", ["answer", "Q2"] ]]
+      "options": {
+        "id": "Q3A1"
+      }
+}
+```
+
+So our whole expression is expressed as a nested list, where the first element of each list contains an operator that does some operation.
+
+So how would the evaluation happen?
+
+## Implementing Evaluator:
+
+There is a library called https://github.com/ysmood/nisp[nisp], which lets us evaluate s-expressions. All we will be required to do is define the operators (for ex, “and", “equals", “answer") that we are going to use and ask the nisp to evaluate the expression thus returning the result.
+For ex, to evaluate the aforementioned expression, your code might looks like this,
+
+```
+import nisp from 'nisp'
+var sandbox = {
+    'answer': (quid) => answers[quid],
+    'and': (e1, e2) => e1 && e2,
+    'equals?': (v1, v2) => v1 == v2
+};
+var exp = ["and", ["equals?", "Q1A1", ["answer", "Q1"]] , ["equals?", "Q2A1", ["answer", "Q2"] ]];
+nisp(exp, sandbox);
+
+```
+Where the `answers` is the global that you will be required to maintain, containing an array of answers given by the user.
+
+In this way, you can evaluate expressions to express any logic and it’s completely a sandboxed evaluation.
+
+> There is also a concept of http://sriku.org/blog/2012/04/15/j-expressions/[J-expression] which has the same nature as s-expression and expresses logic in json instead of deeply nested list. 
+
+## Conclusion:
+
+- It's not that this is *the design* for all the survey module, if your requirement doesn't needs such controls mentioned above, this would be an over-engineering.
+- Though the implementation/idea per se is not so difficult, it helps you gain a new perspective to express your logic as part of data in an extensible and elegant way.
+- There are implementations of NISP in different languages hence the same expression can be used to be evaluated in the backend as well if required.
+- For Java developers, though using Code in Config is common using https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html[`SpEL`]. The advantage of this is, you have precise sandbox control and let your config be shared with applications return in other lanugages as well. Java evaluator for S-expression is available https://github.com/kannangce/j-s-exp[here].
+- It’s something worth exploring for the people who come from imperative programming background. The perspective of seeing code as part of data is something that I should thank Clojure for(and https://twitter.com/tamizhvendan[Tamizh] who introduced NISP in the first https://www.youtube.com/watch?v=btdsrZwH0no&ab_channel=ClojureChennai[Chennai Clojure meet]). 
