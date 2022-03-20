@@ -96,7 +96,7 @@ Think about it how would you address the below scenarios,
 
 - Display Q3 when the selected answers are Q1A1 and Q2A1.
 - Display Q4 when the selected answers are Q1A1 or Q2A1.
-- Also think about the case in which you get input from the user and use reg-ex match or numerical comparison on that.
+- Also think about the case in which you get input from the user and use regex match or numerical comparison on that.
 
 You’ll be required to _invent a syntax_ to express the logic and give meaning to those syntax by _interpreting it in a certain way_ as part of your code if you follow the aforementioned approach.
 
@@ -125,13 +125,13 @@ So the simplest approach that we came up with is,
 - Based on the response of the expression, decide whether to display a particular answer or not.
 
 
-### Solution in action:
+## Solution in action:
 
-## Expressing the logic:
+### Expressing the logic:
 
 Lets see how we can achieve our goal on implementation the conditional display of questions when the conditions get complicated.
 
-For ex, your data for Q3 with the logic “Display Q3 when the selected answers are Q1A1 and Q2A1." can like this,
+For ex, your data for Q3 with the logic “Display Q3 when the selected answers are Q1A1 and Q2A1." can be like this,
 
 ```
 {
@@ -158,7 +158,7 @@ And the meaning of the expression and the sub-expression would be as in the belo
 
 
 
-## Evaluating the logic:
+### Evaluating the logic:
 
 To evaluate the expression , you can use the library https://github.com/ysmood/nisp[nisp] and can extend it with the implementation of required operators(ex, “and", “equals", “answer"). (You can even implement your own quickly. We did a https://github.com/kannangce/j-s-exp[Java variant] in just a couple of hours).
 , which lets us evaluate s-expressions.

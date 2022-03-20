@@ -165,7 +165,7 @@
 </div>
 <div class="paragraph">
 <p>Assume that we are building a survey web-app. Ans assume that we have to implement conditional branching. i.e., certain questions need to be displayed only when certain conditions are met (For ex, display/hide a question based on the answer given by the user for another question).
-By de facto, consider that we are getting the the questions and answer as a JSON and the UI is deciding which questions to show/hide. Let’s see how we can achieve the conditional branching here.</p>
+By de facto, consider that we are getting the questions and answers as a JSON and the UI is deciding which questions to show/hide. Let’s see how we can achieve conditional branching here.</p>
 </div>
 <div class="paragraph">
 <p>In detail,</p>
@@ -247,8 +247,14 @@ By de facto, consider that we are getting the the questions and answer as a JSON
 <div class="paragraph">
 <p>Where-in, in your code you give the meaning to the json by defining,
 By default all questions are displayed until "display" is mentioned as hidden.
-When a particular answer is selected the question is mentioned in "displayOnSelect" will be displayed
-&gt; If you think about alternative choice write it down and see how it evolves as the below complexities are added. And feel free to share it with me, curious to know about it.</p>
+When a particular answer is selected the question mentioned in "displayOnSelect" will be displayed</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>If you think about alternative choice write it down and see how it evolves as the below complexities are added. And feel free to share it with me, curious to know about it.</p>
+</div>
+</blockquote>
 </div>
 </div>
 </div>
@@ -267,7 +273,7 @@ When a particular answer is selected the question is mentioned in "displayOnSele
 <p>Display Q4 when the selected answers are Q1A1 or Q2A1.</p>
 </li>
 <li>
-<p>Also think about the case in which you get input from the user and use reg-ex match or numerical comparison on that.</p>
+<p>Also think about the case in which you get input from the user and use regex match or numerical comparison on that.</p>
 </li>
 </ul>
 </div>
@@ -294,32 +300,40 @@ And all we have to do in the program is to evaluate that expression and decide.<
 </div>
 <div class="paragraph">
 <p>So do we have to embed a program inside the data and evaluate it as needed?
-If so what would be the syntax of the language and how would we evaluate it?</p>
+If so, what would be the syntax of the language and how would we evaluate it?</p>
 </div>
 <div class="paragraph">
-<p>Since we&#8217;re dealing with the display of survey questions in browser, can we embed plain javascript in json and call an <code>eval</code>? Nope, eval doesn’t have a sandbox and could cause security issues. Otherwise it’s not a bad idea.</p>
+<p>Since we&#8217;re dealing with the display of survey questions in the browser, can we embed plain javascript in json and call an <code>eval</code>? Nope, eval doesn’t have a sandbox and could cause security issues. Otherwise it’s not a bad idea.</p>
 </div>
 <div class="paragraph">
-<p>So how about we come up with a custom sytax for the language that we&#8217;re going to use to define the logic of which questions are available?
-Yeah, we can. And with that we also need to make sure that the bringing in custom language doesn&#8217;t pull in lot of other complexities such as dealing with parse, execution environment, etc.</p>
+<p>So how about we come up with a custom syntax for the language that we&#8217;re going to use to define the logic of which questions are available?
+Yeah, we can. And with that we also need to make sure that the bringing in custom language doesn&#8217;t pull in a lot of other complexities such as dealing with parse, execution environment, etc.</p>
 </div>
 <div class="paragraph">
-<p>So the simplest approach that we came up with is,
-- Use <a href="https://en.wikipedia.org/wiki/S-expression">S-expression</a> to express the condition.
-- Evaluate the expression using a custom implementor in the context of the answer given.
-- Based on the response of the expresssion decide whether to display a particular answer or not.</p>
+<p>So the simplest approach that we came up with is,</p>
 </div>
-<div class="sect2">
-<h3 id="_solution_in_action">Solution in action:</h3>
-
+<div class="ulist">
+<ul>
+<li>
+<p>Use <a href="https://en.wikipedia.org/wiki/S-expression">S-expression</a> to express the condition.</p>
+</li>
+<li>
+<p>Evaluate the expression using a custom implementer in the context of the answer given.</p>
+</li>
+<li>
+<p>Based on the response of the expression, decide whether to display a particular answer or not.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="_expressing_the_logic">Expressing the logic:</h2>
+<h2 id="_solution_in_action">Solution in action:</h2>
 <div class="sectionbody">
+<div class="sect2">
+<h3 id="_expressing_the_logic">Expressing the logic:</h3>
 <div class="paragraph">
-<p>Lets see how we can achieve our goal conditionally displaying a question when the conditions gets complicated.</p>
+<p>Lets see how we can achieve our goal on implementation the conditional display of questions when the conditions get complicated.</p>
 </div>
 <div class="paragraph">
 <p>For ex, your data for Q3 with the logic “Display Q3 when the selected answers are Q1A1 and Q2A1." can like this,</p>
@@ -342,7 +356,7 @@ Yeah, we can. And with that we also need to make sure that the bringing in custo
 <p>For example, <code>equals?</code>, <code>answer</code> and <code>and</code> are the operators.</p>
 </div>
 <div class="paragraph">
-<p>And they meaning of the expression and the sub-expression would be as in the below table,</p>
+<p>And the meaning of the expression and the sub-expression would be as in the below table,</p>
 </div>
 <table class="tableblock frame-all grid-all stretch">
 <colgroup>
@@ -356,25 +370,23 @@ Yeah, we can. And with that we also need to make sure that the bringing in custo
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>["answer", "Q1"]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Gets and returns the answer for the question <code>Q1</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Gets and returns the answer for the question with <code>Q1</code>.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>["equals?", "Q1A1", ["answer", "Q1"]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the answer for the question <code>Q1</code> os "Q1A1". Returns true or false.</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the answer for the question <code>Q1</code> is "Q1A1". Returns true or false.</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>["and", ["equals?", "Q1A1", ["answer", "Q1"]] , ["equals?", "Q2A1", ["answer", "Q2"]]]</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the answer for the question <code>Q1</code> os "Q1A1". Returns true or false</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Check if the answer for the question <code>Q1</code> is "Q1A1". Returns true or false.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
-</div>
-<div class="sect1">
-<h2 id="_evaluating_the_logic">Evaluating the logic:</h2>
-<div class="sectionbody">
+<div class="sect2">
+<h3 id="_evaluating_the_logic">Evaluating the logic:</h3>
 <div class="paragraph">
-<p>To evaluate the expression , you can use the library <a href="https://github.com/ysmood/nisp">nisp</a> and extended it with the implementation of required operators(ex, “and", “equals", “answer"). (You can even implement your own quickly. We did a <a href="https://github.com/kannangce/j-s-exp">Java variant</a> in just a couple of hours).
+<p>To evaluate the expression , you can use the library <a href="https://github.com/ysmood/nisp">nisp</a> and can extend it with the implementation of required operators(ex, “and", “equals", “answer"). (You can even implement your own quickly. We did a <a href="https://github.com/kannangce/j-s-exp">Java variant</a> in just a couple of hours).
 , which lets us evaluate s-expressions.</p>
 </div>
 <div class="paragraph">
@@ -400,6 +412,7 @@ nisp(exp, sandbox); // The return value here is expected to be a boolean. Use th
 </div>
 </div>
 </div>
+</div>
 <div class="sect1">
 <h2 id="_advantage">Advantage:</h2>
 <div class="sectionbody">
@@ -412,7 +425,7 @@ nisp(exp, sandbox); // The return value here is expected to be a boolean. Use th
 <p>As proven by Lisp family of languages, s-expression can be used to express any arbitrary logic that we need.</p>
 </li>
 <li>
-<p>We can implement an s-expression evaluator on any languages in a couple of hours.</p>
+<p>We can implement an s-expression evaluator in any languages in a couple of hours.</p>
 </li>
 </ul>
 </div>
@@ -424,7 +437,7 @@ nisp(exp, sandbox); // The return value here is expected to be a boolean. Use th
 <div class="ulist">
 <ul>
 <li>
-<p>It&#8217;s not that this is <strong>the design</strong> for all the survey module, if your requirement doesn&#8217;t need complex conditions as mentioned above, this would be an over-engineering.</p>
+<p>It&#8217;s not that this is <strong>the design</strong> for all the survey module, if your requirement doesn&#8217;t need complex conditions as mentioned above, this would be over-engineering.</p>
 </li>
 <li>
 <p>Though the implementation/idea per se is not so difficult, it helps you gain a new perspective to express your logic as part of data in an extensible and elegant way.</p>
@@ -433,13 +446,13 @@ nisp(exp, sandbox); // The return value here is expected to be a boolean. Use th
 <p>There are implementations of NISP in different languages hence the same expression can be used to be evaluated in the backend as well if required.</p>
 </li>
 <li>
-<p>For Java developers, though using Code in Config is common using <a href="https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html"><code>SpEL</code></a>. The advantage of this is, you have precise sandbox control and let your config be shared with applications return in other lanugages as well. Java evaluator for S-expression is available <a href="https://github.com/kannangce/j-s-exp">here</a>.</p>
+<p>For Java developers, using Code in Config is common using <a href="https://docs.spring.io/spring-framework/docs/3.2.x/spring-framework-reference/html/expressions.html"><code>SpEL</code></a>. The advantage of this is, you have precise sandbox control and let your config be shared with applications in other languages as well. Java evaluator for S-expression is available <a href="https://github.com/kannangce/j-s-exp">here</a>.</p>
 </li>
 <li>
-<p>There is also a concept of <a href="http://sriku.org/blog/2012/04/15/j-expressions/">J-expression</a> which has the same nature as s-expression and expresses logic in json instead of deeply nested list.</p>
+<p>There is also a concept of <a href="http://sriku.org/blog/2012/04/15/j-expressions/">J-expression</a> which has the same nature as s-expression and expresses logic in json instead of deeply nested lists.</p>
 </li>
 <li>
-<p>It’s something worth exploring for the people who come from imperative programming background. The perspective of seeing code as part of data is something that I should thank Clojure for(and <a href="https://twitter.com/tamizhvendan">Tamizh</a> who introduced NISP in the first <a href="https://www.youtube.com/watch?v=btdsrZwH0no&amp;ab_channel=ClojureChennai">Chennai Clojure meet</a>).</p>
+<p>It’s something worth exploring for the people who come from an imperative programming background. The perspective of seeing code as part of data is something that I should thank Clojure for(and <a href="https://twitter.com/tamizhvendan">Tamizh</a> who introduced NISP in the first <a href="https://www.youtube.com/watch?v=btdsrZwH0no&amp;ab_channel=ClojureChennai">Chennai Clojure meet</a>).</p>
 </li>
 </ul>
 </div>
