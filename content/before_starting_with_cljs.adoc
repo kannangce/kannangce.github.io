@@ -1,0 +1,63 @@
+= Things to know Before starting your app with ClojureScript
+
+:date: 2022-08-22 11:58
+:category: Dev
+:tags: Language Choice, ClojureScript
+
+{empty} +
+
+This blog is to capture some lessons that someone is expected to know before starting their application with ClojureScript.
+
+Though, I eventually ended up scrapping the work and decided to start with Next Js, it could help people to decide when they
+are in the same situation as mine.
+
+== Background:
+
+I picked up Clojure a while back and for various reasons I love Clojure(will explain in another blog post).
+
+And for recently for one of our product, I decided to develop the front end in ClojureScript.
+
+Before going further, here's the context,
+
+- We're a small team, and I'm the only person who is interested in Clojure and intended to do Clojure.
+
+- I have never used Clojure for any serious applications in the past.
+
+- I have never done any serious front-end work in the past 10 years or so.
+
+- I have partially been through the https://www.jacekschae.com/learn-re-frame-pro[Learn re-frame] course by Jacek Shae.
+
+- I was working in a client project, so I couldn't spend more than 10hrs/week for this.
+
+Since I haven't completed the journey of making it in Clojurescript. I would refrain from sharing the journey, rather share the
+lessons alone.
+
+== Learnings:
+
+- The course was indeed decent to get a mental model of the re-agent framework and how to structure your app.
+
+- ClojureScript majorly has 2 build tools, Shadow-Cljs and FigWheel-main. Shadow-cljs is most widely used.
+
+- If you're using Cursive, Shadow-cljs is https://github.com/cursive-ide/cursive/issues/1804#issuecomment-528441496[not
+understood] by cursive, and you have to https://github.com/cursive-ide/cursive/issues/1804[work-around] by having a pom file
+side-by-side and having it updated.
+
+- You'll have to maintain both `package.json` and dependency definition based on the CLJS build tool you use. Because there are
+CLJS dependencies that are coming as Clojars and JS dependencies that are coming from "node modules" via `package.json`.
+
+- If you're using Cursive, dependencies that are coming from `package.json` https://github.com/cursive-ide/cursive/issues/2333[will not be resolved].
+
+- Considering the dependency resolution issues mentioned above, it's better to go with VS Code + Calva Or Atom + Proto REPL.
+
+- Shadow-cljs https://github.com/thheller/shadow-cljs/issues/162#issuecomment-355501108[doesn't resolve] jars coming from
+`cljsjs`. You'll have to use the respective dependency from `package.json`. Per se this is not an issue, but when you're using
+Cursive, you'll lose the ability to resolve dependencies for IDE because of the issue mentioned above.
+
+- You cannot debug your Cljs application, though repl can be useful to some extent.
+
+- When you have to work through existing React examples and if you want to convert the example/template into re-agent components,
+https://github.com/madvas/jsx-to-clojurescript[jsx-to-clojurescript] might be useful to some extent. Though,
+it has a lot of bugs and limited in translation capability.
+
+Though the tooling eco-system is still evolving, there are a https://clojurescript.org/community/companies[lot of companies]
+using CLJS, would love to hear from people on how they are getting around these issues.
