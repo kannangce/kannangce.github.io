@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en" itemscope itemtype="http://schema.org/Person">
+<head>
+  <meta charset="utf-8">
+  <!-- Site Meta Data -->
+  <title>Things to know Before starting your app with ClojureScript</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="Kannan Ramamoorthy">
+
+  <link rel="shortcut icon" href="">
+
+  <!-- schema.org -->
+  <meta itemprop="name" content="My Thought Buddy">
+  <meta itemprop="image" content="">
+  <meta itemprop="description" content="">
+
+  <!-- Style Meta Data -->
+  <link rel="stylesheet" href="./theme/css/milligram.css" type="text/css" />
+  <link rel="stylesheet" href="./theme/css/custom.css" type="text/css" />
+
+  <!-- Feed Meta Data -->
+
+  <!-- Twitter Feed -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:site" content="">
+  <meta name="twitter:image" content="">
+
+<meta name="twitter:creator" content="">
+<meta name="twitter:url" content="./things-to-know-before-starting-your-app-with-clojurescript.html">
+<meta name="twitter:title" content="My Thought Buddy ~ Things to know Before starting your app with ClojureScript">
+<meta name="twitter:description" content="This blog is to capture some lessons that someone is expected to know before starting their application with ClojureScript. Though, I eventually ended up scrapping the work and decided to start with Next Js, it could help people to decide when they are in the same situation as mine. Background …">
+
+<!-- Facebook Meta Data -->
+<meta property="og:title" content="My Thought Buddy ~ Things to know Before starting your app with ClojureScript" />
+<meta property="og:description" content="This blog is to capture some lessons that someone is expected to know before starting their application with ClojureScript. Though, I eventually ended up scrapping the work and decided to start with Next Js, it could help people to decide when they are in the same situation as mine. Background …" />
+<meta property="og:image" content="" />
+</head>
+
+<body>
+    <div class="container">
+
+    <!-- Navbar -->
+      <div class="navbar">
+        <ul>
+            <div>
+                <li>
+                    <a href="."><h2>My Thought Buddy</h2></a>
+                </li>
+                <li>
+                        <em><h5>(->> thoughts 
+ (filter #(curious? %)) 
+ (post-here))</h5></em>
+                </li>
+            </div>
+        </ul>
+      </div>
+
+  <!-- Sidebar -->
+    <sidebar>
+       <!-- Content showing social links -->
+        <p> 
+                <span>
+                    <a href="https://github.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/github.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://stackexchange.com/users/2333642/kannan?tab=accounts" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/so.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://www.linkedin.com/in/kannan-ramamoorthy-54793145/" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/linked-in.png">
+                    </a>
+                </span>
+                <span>
+                    <a href="https://twitter.com/kannangce" target="_blank">
+                        <img class="social-icons-m" src="./theme/images/icons/twitter.png">
+                    </a>
+                </span>
+        </p>
+       <!-- Content showing social links -->
+
+        <p>
+        </p>
+        <p>
+        </p>
+
+        <ul class="static-item">
+
+        </ul>        
+
+        <ul>
+                <div class="cat-border">
+                <li style="color: #F2F1EF; background-color: #6C7A89;">Categories</li>
+                    <li><a href="./category/clojure.html">Clojure</a></li>
+                    <li><a href="./category/command-line.html">Command-Line</a></li>
+                    <li><a href="./category/computer-science-algorithm.html">Computer Science, Algorithm</a></li>
+                    <li><a href="./category/dev.html">Dev</a></li>
+                    <li><a href="./category/diy.html">DIY</a></li>
+                    <li><a href="./category/docker.html">Docker</a></li>
+                    <li><a href="./category/documentation.html">Documentation</a></li>
+                    <li><a href="./category/dsl.html">DSL</a></li>
+                    <li><a href="./category/introspection.html">Introspection</a></li>
+                    <li><a href="./category/java.html">Java</a></li>
+                    <li><a href="./category/java-java-debugging.html">Java, Java Debugging</a></li>
+                    <li><a href="./category/java-spring.html">Java Spring</a></li>
+                    <li><a href="./category/mathematics.html">Mathematics</a></li>
+                    <li><a href="./category/misc-thoughts.html">Misc Thoughts</a></li>
+                    <li><a href="./category/personal.html">Personal</a></li>
+                    <li><a href="./category/practice.html">Practice</a></li>
+                    <li><a href="./category/productivity.html">Productivity</a></li>
+                    <li><a href="./category/qa.html">QA</a></li>
+                    <li><a href="./category/software.html">Software</a></li>
+                    <li><a href="./category/software-design.html">Software Design</a></li>
+                    <li><a href="./category/thoughts.html">Thoughts</a></li>
+                </div>
+        </ul>
+
+   
+    </sidebar>
+    
+    <maincontent>
+<h2>
+    <a href="./things-to-know-before-starting-your-app-with-clojurescript.html" rel="bookmark" title="Permalink to Things to know Before starting your app with ClojureScript">Things to know Before starting your app with ClojureScript</a>
+</h2>
+
+<div>
+    <b>By: </b><a href="./author/kannan-ramamoorthy.html">Kannan Ramamoorthy</a><b>    On: </b>Mon 22 August 2022<br />
+    <b>In: </b><a href="./category/dev.html" rel="bookmark" title="Permalink to Dev">Dev</a><br />
+    <em><b>Tags: </b>
+                <span><a href="./tag/language-choice.html">#Language Choice </a></span>
+                <span><a href="./tag/clojurescript.html">#ClojureScript </a></span>
+    </em>
+    <hr>
+</div>
+
+<div>
+    <mainarticle>
+    <div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p><br></p>
+</div>
+<div class="paragraph">
+<p>This blog is to capture some lessons that someone is expected to know before starting their application with ClojureScript.</p>
+</div>
+<div class="paragraph">
+<p>Though, I eventually ended up scrapping the work and decided to start with Next Js, it could help people to decide when they
+are in the same situation as mine.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_background">Background:</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>I picked up Clojure a while back and for various reasons I love Clojure(will explain in another blog post).</p>
+</div>
+<div class="paragraph">
+<p>And for recently for one of our product, I decided to develop the front end in ClojureScript.</p>
+</div>
+<div class="paragraph">
+<p>Before going further, here&#8217;s the context,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>We&#8217;re a small team, and I&#8217;m the only person who is interested in Clojure and intended to do Clojure.</p>
+</li>
+<li>
+<p>I have never used Clojure for any serious applications in the past.</p>
+</li>
+<li>
+<p>I have never done any serious front-end work in the past 10 years or so.</p>
+</li>
+<li>
+<p>I have partially been through the <a href="https://www.jacekschae.com/learn-re-frame-pro">Learn re-frame</a> course by Jacek Shae.</p>
+</li>
+<li>
+<p>I was working in a client project, so I couldn&#8217;t spend more than 10hrs/week for this.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Since I haven&#8217;t completed the journey of making it in Clojurescript. I would refrain from sharing the journey, rather share the
+lessons alone.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_learnings">Learnings:</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>The course was indeed decent to get a mental model of the re-agent framework and how to structure your app.</p>
+</li>
+<li>
+<p>ClojureScript majorly has 2 build tools, Shadow-Cljs and FigWheel-main. Shadow-cljs is most widely used.</p>
+</li>
+<li>
+<p>If you&#8217;re using Cursive, Shadow-cljs is <a href="https://github.com/cursive-ide/cursive/issues/1804#issuecomment-528441496">not
+understood</a> by cursive, and you have to <a href="https://github.com/cursive-ide/cursive/issues/1804">work-around</a> by having a pom file
+side-by-side and having it updated.</p>
+</li>
+<li>
+<p>You&#8217;ll have to maintain both <code>package.json</code> and dependency definition based on the CLJS build tool you use. Because there are
+CLJS dependencies that are coming as Clojars and JS dependencies that are coming from "node modules" via <code>package.json</code>.</p>
+</li>
+<li>
+<p>If you&#8217;re using Cursive, dependencies that are coming from <code>package.json</code> <a href="https://github.com/cursive-ide/cursive/issues/2333">will not be resolved</a>.</p>
+</li>
+<li>
+<p>Considering the dependency resolution issues mentioned above, it&#8217;s better to go with VS Code + Calva Or Atom + Proto REPL.</p>
+</li>
+<li>
+<p>Shadow-cljs <a href="https://github.com/thheller/shadow-cljs/issues/162#issuecomment-355501108">doesn&#8217;t resolve</a> jars coming from
+<code>cljsjs</code>. You&#8217;ll have to use the respective dependency from <code>package.json</code>. Per se this is not an issue, but when you&#8217;re using
+Cursive, you&#8217;ll lose the ability to resolve dependencies for IDE because of the issue mentioned above.</p>
+</li>
+<li>
+<p>You cannot debug your Cljs application, though repl can be useful to some extent.</p>
+</li>
+<li>
+<p>When you have to work through existing React examples and if you want to convert the example/template into re-agent components,
+<a href="https://github.com/madvas/jsx-to-clojurescript">jsx-to-clojurescript</a> might be useful to some extent. Though,
+it has a lot of bugs and limited in translation capability.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Though the tooling eco-system is still evolving, there are a <a href="https://clojurescript.org/community/companies">lot of companies</a>
+using CLJS, would love to hear from people on how they are getting around these issues.</p>
+</div>
+</div>
+</div>
+
+    </mainarticle>
+</div>
+<hr>
+
+<div>
+        <i>If you found the article helpful, please share or cite the article, and spread the word:</i>
+            <p style="margin-top: 2%;">
+                <span><a target="_blank" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=400,width=700');return false;" title="Twitter" href="https://twitter.com/share?url=./things-to-know-before-starting-your-app-with-clojurescript.html&text=Things to know Before starting your app with ClojureScript&via="><img class="social-icons-a" src="./theme/images/icons/twitter.png"></a></span>
+                <span><a target="_blank" title="Facebook" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=500,width=700');return false;" href="https://www.facebook.com/sharer.php?u=./things-to-know-before-starting-your-app-with-clojurescript.html&t=Things to know Before starting your app with ClojureScript"><img class="social-icons-a" src="./theme/images/icons/facebook.png"></a></span>
+
+                <a  target="_blank" title="Linkedin" href="https://www.linkedin.com/shareArticle?mini=true&url=./things-to-know-before-starting-your-app-with-clojurescript.html&title=Things to know Before starting your app with ClojureScript" rel="nofollow" onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=450,width=650');return false;"><img class="social-icons-a" src="./theme/images/icons/linkedin.png"></a>
+            </p>
+</div>
+<hr>
+    <p><i>For any feedback or corrections, please write in to: </i><b> kannangce@rediffmail.com </b></p>
+
+    <div class="comments">
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = "kannangce-in"; // required: replace example with your forum shortname
+
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+    </maincontent>
+
+  <!-- Analytics -->
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-127824340-1']);
+        _gaq.push(['_trackPageview']);
+        (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    </script>
+
+  </div>
+</body>
+
+</html>
