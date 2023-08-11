@@ -12,11 +12,12 @@ Though the pattern can be expanded to broader context, I limit the content to wo
 
 ## Noise:
 
-Making your mark by making some noise. Mostly BS, name calling, talking about things that you know nothing about more than just names, uttering jargons or acronyms that you can’t even answer the level-1 questions about.
+Making your mark by making some noise. Mostly BS, name-dropping, talking about things that you know nothing about more than just names, uttering jargons or acronyms that you can’t even answer the level-1 questions about.
 
 Typically when doing this, the person is very less self-aware and tries this tactic to make a mark. The self-delusion is so high here(self-delusion is not exclusive here).
 
 Signs that you’re in this mode often are,
+
 - Typically there will be no materialization.
 - People rarely reach out to you for help unless you’re in power.
 
@@ -27,8 +28,9 @@ The effort of making a mark this way has almost no effect or has negative effect
 Might not be BS. But typically about virtue signaling on how good a person you are or how great your intentions are. These are words without any actions.
 
 For example,
-Whenever you say how much you love to do something but you couldn’t get a chance to do that something.
-Whenever you say you couldn’t sleep when your team is working hard. Sometimes this could genuinely be true, sometimes you’re probably just signaling rather than actually doing anything useful.
+
+- Whenever you say how much you love to do something but you couldn’t get a chance to do that something.
+- Whenever you say you couldn’t sleep when your team is working hard. Sometimes this could genuinely be true, sometimes you’re probably just signaling rather than actually doing anything useful.
 And the peak of it, signaling modesty and openness by admitting that you just say more than you do.
 You’re mostly lying to others, or worse to yourself.
 
@@ -41,9 +43,10 @@ Could be actions that you can do at the moment of need. Won’t take deeper thou
 I refrain from giving examples here, as sometimes it’s hard to define and people might argue how important the specific action is.
 
 But it’s good to define it for yourself by asking the questions like,
-Is it a consequential action?
-Am I doing it because it is needed?
-Is my content from doing stops me from doing Huge things?
+
+- Is it a consequential action?
+- Am I doing it because it is needed?
+- Is my feeling of content from doing stops me from doing "Huge" things?
 
 Sometimes the actions of small dents need to be done, and no place exists without chores.
 But the problem is ensuring that it is not filling up yourself with inconsequential actions and giving an excuse for not taking up consequential ones.
@@ -52,7 +55,12 @@ But the problem is ensuring that it is not filling up yourself with inconsequent
 
 Action that is often thought through, long/medium-termed. Probably need a consistent/meticulous/thought-through effort from people. These acts could be highly consequential.
 
-Things like, making a decision of where you/your team/ your firm should be in a few months and consistently working towards it. For example, putting effort on learning a language that could make you a better programmer.
+Things like, making a decision of where you/your team/ your firm should be in a few months and consistently working towards it. One rough measure that you can have for this is, you might need days/months or even years to get it done.
+
+For example,
+
+- Putting effort on learning a new skill that could make you a better at something.
+- Setting a roadmap for your team/firm and steering the efforts toward it diligently.
 
 Though such actions are important and consequential, it’s important not to think so-high of one-self while involved in this. Such feeling is possible when you think your action has so much power. On such events, one great lesson from https://www.amazon.in/Skin-Game-Hidden-Asymmetries-Daily/dp/0141982659[The Skin in the Game], esp for people with consequential actions in hand is, owning the complete responsibility(not just in words) of the consequence even when you might not have obligation to do so.
 
